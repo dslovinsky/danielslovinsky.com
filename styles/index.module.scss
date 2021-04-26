@@ -1,3 +1,5 @@
+@use 'partials/fonts';
+
 .placeholder {
-	color: blue;
+	font-family: fonts.$Droid;
 }
