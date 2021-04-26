@@ -1,10 +1,5 @@
-import styled from 'styled-components'
-
-const Title = styled.h1`
-  color: red;
-  font-size: 50px;
-`
+import styles from 'styles/index.module.scss'
 
 export default function Home() {
-  return <Title>My page</Title>
+	return <div className={styles.placeholder}>My page</div>
 }
