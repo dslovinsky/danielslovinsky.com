@@ -78,9 +78,9 @@ export default function Resume() {
       <div className={styles.experience}>
         <h1>— Experience —</h1>
         {jobs.map(({title, employer, dates, location, duties}) => (
-          <div>
-            <h2>{title}</h2>
-            <h3>{employer}</h3>
+          <div key={employer}>
+            <h2 className="text-xl font-bold">{title}</h2>
+            <h3 className="text-xl">{employer}</h3>
             <h3>{dates}</h3>
             <h3>{location}</h3>
             {duties.map((duty) => (
@@ -92,7 +92,7 @@ export default function Resume() {
       <div className={styles.education}>
         <h1>— Education —</h1>
         {schools.map(({name, degree, dates}) => (
-          <div>
+          <div key={name}>
             <h2>{name}</h2>
             <h3>{degree}</h3>
             <h3>{dates}</h3>
