@@ -1,5 +1,11 @@
 @use 'partials/fonts';
 
 .placeholder {
-	font-family: fonts.$Droid;
+  font-family: fonts.$Droid;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
