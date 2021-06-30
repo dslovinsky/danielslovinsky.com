@@ -9,8 +9,8 @@ import styles from 'styles/index.module.scss';
 
 export default function Home() {
   // const [width, height] = useWindowSize();
-  const width = 1000;
-  const height = 800;
+  const width = 1800;
+  const height = 900;
 
   return (
     <>

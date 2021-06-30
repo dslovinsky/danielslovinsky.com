@@ -12,20 +12,24 @@ const operations = [
   [1, 1],
 ];
 
+const mod = (a: number, b: number) => ((a % b) + b) % b;
+
 export default function GoL({rows, cols}: {rows: number; cols: number}) {
   const [grid, setGrid] = useState(() => {
     let initialGrid: number[][] = [];
     initialGrid = Array.from({length: rows}).map(() =>
       Array.from({length: cols}).fill(0),
-    );
+    ) as number[][];
 
     initialGrid.forEach((row, i) => {
       row.forEach((_col, j) => {
-        if (i % 10 === 1 && j % 10 === 1) {
-          initialGrid[i][j] = 1;
-        } else if (i % 10 === 2 && j % 10 === 2) {
-          initialGrid[i][j] = 1;
-        } else if (i % 10 === 3 && [0, 1, 2].includes(j % 10)) {
+        const posX = i % 10;
+        const posY = j % 10;
+        if (
+          (posX === 0 && posY === 1) ||
+          (posX === 1 && posY === 2) ||
+          (posX === 2 && [0, 1, 2].includes(posY))
+        ) {
           initialGrid[i][j] = 1;
         }
       });
@@ -42,11 +46,9 @@ export default function GoL({rows, cols}: {rows: number; cols: number}) {
             row.forEach((_col, j) => {
               let liveNeighbors = 0;
               operations.forEach(([x, y]) => {
-                const newI = i + x;
-                const newJ = j + y;
-                if (newI >= 0 && newI < rows && newJ >= 0 && newJ < cols) {
-                  liveNeighbors += g[newI][newJ];
-                }
+                const newI = mod(i + x, rows);
+                const newJ = mod(j + y, cols);
+                liveNeighbors += g[newI][newJ];
               });
 
               if (liveNeighbors < 2 || liveNeighbors > 3) {
@@ -58,11 +60,9 @@ export default function GoL({rows, cols}: {rows: number; cols: number}) {
           });
         });
       });
-    }, 10);
+    }, 50);
 
-    return () => {
-      clearInterval(frame);
-    };
+    return () => clearInterval(frame);
   }, [grid, setGrid]);
 
   return (
@@ -80,8 +80,8 @@ export default function GoL({rows, cols}: {rows: number; cols: number}) {
               width: 10,
               height: 10,
               backgroundColor: grid[i][k] ? 'black' : 'white',
-              border: 'solid 1px black',
-            }}></div>
+            }}
+          />
         )),
       )}
     </div>
