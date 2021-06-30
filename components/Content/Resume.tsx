@@ -84,7 +84,7 @@ export default function Resume() {
             <h3>{dates}</h3>
             <h3>{location}</h3>
             {duties.map((duty) => (
-              <p>- {duty}</p>
+              <p key={duty}>- {duty}</p>
             ))}
           </div>
         ))}
