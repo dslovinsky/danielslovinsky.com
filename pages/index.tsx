@@ -2,9 +2,10 @@ import {NextSeo} from 'next-seo';
 
 import Resume from '@components/Content/Resume';
 import Profile from '@components/Content/Profile';
-import GoL from '@components/Animations/GoL';
-import useWindowDimensions from '@utils/useWindowDimensions';
+// import GoL from '@components/Animations/GoL';
 // import GoLSquares from '@components/Animations/GoLSquares';
+import CanvasGoL from '@components/Animations/CanvasGoL';
+import useWindowDimensions from '@utils/useWindowDimensions';
 
 import styles from 'styles/index.module.scss';
 
@@ -18,7 +19,7 @@ export default function Home() {
     <>
       <NextSeo title="Website coming soon... | Daniel Slovinsky" />
       <main className={styles.main}>
-        {width && <GoL key={`${calcW}${calcH}`} cols={calcW} rows={calcH} />}
+        {width && <CanvasGoL key={`${calcW}${calcH}`} cols={calcW} rows={calcH} resolution={10} />}
         <Profile />
         <Resume />
       </main>
