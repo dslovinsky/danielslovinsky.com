@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import produce from 'immer';
 
-import styles from 'styles/index.module.scss';
+// alternative solution that iterates through a single 10x10 square and rerenders it as many times as necessary
 
 const operations = [
   [-1, -1],
@@ -19,9 +19,13 @@ const mod = (a: number, b: number) => ((a % b) + b) % b;
 export default function GoL({
   rows = 10,
   cols = 10,
+  squaresW = 18,
+  squaresH = 9,
 }: {
   rows?: number;
   cols?: number;
+  squaresW?: number;
+  squaresH?: number;
 }) {
   const [grid, setGrid] = useState(() => {
     let initialGrid: number[][] = [];
@@ -73,23 +77,47 @@ export default function GoL({
     return () => clearInterval(frame);
   }, [grid, setGrid]);
 
-  return (
+  const Square = () => (
     <div
       style={{
+        display: 'grid',
         gridTemplateColumns: `repeat(${cols}, 10px)`,
         gridTemplateRows: `repeat(${rows}, 10px)`,
-      }}
-      className="grid">
+        // overflow: 'hidden',
+        // position: 'absolute',
+        // zIndex: -1,
+      }}>
       {grid.map((rows, i) =>
-        rows.map((_col, j) => (
+        rows.map((_col, k) => (
           <div
-            key={`${i}-${j}`}
-            className={`${styles.cell} ${
-              grid[i][j] ? 'bg-black' : 'bg-white'
-            } text-xs`}
+            key={`${i}-${k}`}
+            style={{
+              width: 10,
+              height: 10,
+              backgroundColor: grid[i][k] ? 'black' : 'white',
+              border: '1px black solid',
+              overflow: 'hidden',
+              // zIndex: -1,
+            }}
           />
         )),
       )}
     </div>
+  );
+
+  return (
+    <>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: `repeat(${squaresW}, 1fr)`,
+          gridTemplateRows: `repeat(${squaresH}, 1fr)`,
+          overflow: 'hidden',
+        }}>
+        {[...Array(squaresW * squaresH)].map((_e, i) => (
+          <Square key={i} />
+        ))}
+      </div>
+    </>
   );
 }
