@@ -14,15 +14,18 @@ const operations = [
 const mod = (a: number, b: number) => ((a % b) + b) % b;
 
 export default function CanvasGoL({
-  rows = 10,
-  cols = 10,
+  height = 100,
+  width = 190,
   resolution = 10,
 }: {
-  rows?: number;
-  cols?: number;
+  height?: number;
+  width?: number;
   resolution?: number;
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  const numRows = Math.ceil((height * (10 / resolution)) / 10) * 10;
+  const numCols = Math.ceil((width * (10 / resolution)) / 10) * 10;
 
   const buildGrid = (r: number, c: number) => {
     let initialGrid = Array.from({length: r}).map(() =>
@@ -46,17 +49,17 @@ export default function CanvasGoL({
     return initialGrid;
   };
 
-  let grid = buildGrid(rows, cols);
+  let grid = buildGrid(numRows, numCols);
 
-  const nextFrame = (g: number[][]) => {
+  const nextFrame = (g: number[][], r: number, c: number) => {
     const gridCopy = grid.map((arr) => [...arr]);
 
     gridCopy.forEach((row, i) => {
       row.forEach((_col, j) => {
         let liveNeighbors = 0;
         operations.forEach(([x, y]) => {
-          const newI = mod(i + x, rows);
-          const newJ = mod(j + y, cols);
+          const newI = mod(i + x, r);
+          const newJ = mod(j + y, c);
           liveNeighbors += g[newI][newJ];
         });
 
@@ -75,10 +78,8 @@ export default function CanvasGoL({
     g.forEach((row, i) => {
       row.forEach((_col, j) => {
         ctx.beginPath();
-        ctx.rect(j * resolution, i * resolution, resolution, resolution);
         ctx.fillStyle = g[i][j] ? 'black' : 'white';
-        // ctx.stroke(); displays grid lines
-        ctx.fill();
+        ctx.fillRect(j * resolution, i * resolution, resolution, resolution);
       });
     });
   };
@@ -86,13 +87,13 @@ export default function CanvasGoL({
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    canvas.width = cols * resolution;
-    canvas.height = rows * resolution;
+    canvas.width = numCols * resolution;
+    canvas.height = numRows * resolution;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
     const update = () => {
-      grid = nextFrame(grid);
+      grid = nextFrame(grid, numRows, numCols);
       render(grid, ctx);
     };
 
