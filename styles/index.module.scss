@@ -1,14 +1,11 @@
 @use 'partials/fonts';
-
-.placeholder {
-  font-family: fonts.$Droid;
-}
+@use 'partials/colors';
 
 .main {
   display: flex;
   flex-direction: column;
-  align-items: center;
   overflow-x: hidden;
+  background-color: #0d1117;
 }
 
 .profile_container {
@@ -16,26 +13,33 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: absolute;
 
   .profile {
-    background-color: rgba(royalblue, 0.1);
+    background-color: rgba(colors.$black-pearl, 0.95);
     padding: 20px;
     min-width: 600px;
-    border-radius: 50px;
+    margin-left: 70px;
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    .photo_container {
-      background-color: white;
-      padding: 5px;
-      border-radius: 50%;
-      display: inherit;
-      border: solid black 1px;
+    // .photo_container {
+    //   background-color: white;
+    //   padding: 5px;
+    //   border-radius: 50%;
+    //   display: inherit;
+    //   border: solid black 1px;
 
-      .photo {
-        border-radius: 50%;
-      }
+    //   .photo {
+    //     border-radius: 50%;
+    //   }
+    // }
+
+    .typed {
+      text-shadow: 3px 3px red;
+      min-height: 144px;
+      min-width: 355px;
     }
   }
 }
