@@ -2,39 +2,58 @@
 
 .navbar {
   display: flex;
-  justify-content: space-between;
   position: absolute;
   width: 100%;
   z-index: 100;
 
-  > a {
-    margin: 24px 48px;
-  }
+  > .home_link {
+    margin: 24px auto 24px 48px;
 
-  > .home_link img {
-    border: red solid 4px;
-    border-radius: 8px;
-  }
-
-  > .contact {
-    background-color: colors.$white-smoke;
-    border-radius: 2rem;
-    border: red solid 4px;
-    padding: 8px 16px;
-    transition: all 0.2s ease-in-out;
-
-    &:hover {
-      background-color: red;
-
-      span {
-        color: colors.$white-smoke;
-      }
+    > div {
+      border: solid 2px rgba(red, 0.8);
+      height: 48px;
     }
+  }
 
-    span {
-      color: colors.$black-pearl;
-      font-weight: bolder;
-      transition: all 0.2s ease-in-out;
+  > ul {
+    align-items: center;
+    display: flex;
+    margin-right: 48px;
+
+    > li {
+      display: flex;
+      margin: 12px;
+
+      > .social > div {
+        background-color: colors.$black-pearl;
+        box-shadow: 2px 2px 2px white;
+        display: flex;
+        height: 44px;
+        justify-content: center;
+        width: 44px;
+      }
+
+      div.contact {
+        background-color: colors.$white-smoke;
+        border-radius: 2rem;
+        border: red solid 4px;
+        padding: 8px 16px;
+        transition: all 0.1s ease-in-out;
+
+        &:hover {
+          background-color: red;
+
+          > span {
+            color: colors.$white-smoke;
+          }
+        }
+
+        > span {
+          color: colors.$black-pearl;
+          font-weight: bolder;
+          transition: all 0.1s ease-in-out;
+        }
+      }
     }
   }
 }

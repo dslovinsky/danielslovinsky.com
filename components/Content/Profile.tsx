@@ -25,7 +25,7 @@ export default function Profile() {
             <h1 className="font-medium">Hi, I'm</h1>
           </div>
           &nbsp;
-          <div className={`${styles.typed} flex flex-col font-bold`}>
+          <div className={`${styles.typed} flex flex-col font-bold antialiased`}>
             <Typed
               onComplete={() => typedRef.current.start()}
               showCursor={false}

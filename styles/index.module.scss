@@ -8,20 +8,20 @@
   background-color: #0d1117;
 
   .profile_container {
-    height: 100vh; //change to vh units later
     display: flex;
     flex-direction: column;
+    height: 100vh; //change to vh units later
     justify-content: center;
     position: absolute;
   
     .profile {
+      align-items: center;
       background-color: rgba(colors.$black-pearl, 0.95);
-      padding: 20px;
-      min-width: 600px;
-      margin-left: 70px;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      margin-left: 70px;
+      padding: 20px;
+      box-shadow: 4px 4px 2px red;
   
       // .photo_container {
       //   background-color: white;
@@ -46,31 +46,31 @@
 
 
 
-.resume {
-  h1 {
-    display: flex;
-    justify-content: center;
-    font-size: x-large;
-    font-weight: bold;
-  }
+// .resume {
+//   h1 {
+//     display: flex;
+//     justify-content: center;
+//     font-size: x-large;
+//     font-weight: bold;
+//   }
 
-  .experience {
-    > div {
-      background-color: rgba(royalblue, 0.1);
-      padding: 20px;
-      min-width: 600px;
-      border-radius: 50px;
-      margin: 20px 0;
-    }
-  }
+//   .experience {
+//     > div {
+//       background-color: rgba(royalblue, 0.1);
+//       padding: 20px;
+//       min-width: 600px;
+//       border-radius: 50px;
+//       margin: 20px 0;
+//     }
+//   }
 
-  .education {
-    > div {
-      background-color: rgba(darkgreen, 0.1);
-      padding: 20px;
-      min-width: 600px;
-      border-radius: 50px;
-      margin: 20px 0;
-    }
-  }
-}
+//   .education {
+//     > div {
+//       background-color: rgba(darkgreen, 0.1);
+//       padding: 20px;
+//       min-width: 600px;
+//       border-radius: 50px;
+//       margin: 20px 0;
+//     }
+//   }
+// }

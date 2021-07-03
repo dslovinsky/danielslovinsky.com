@@ -3,6 +3,7 @@ import Head from 'next/head';
 export default function DefaultHead() {
   return (
     <Head>
+      <link key="favicon" rel="icon" type="image/ico" href="/icons/favicon.ico" />
       <link
         key="preconnect-google-fonts"
         rel="preconnect"
