@@ -3,7 +3,9 @@ import {NextSeo} from 'next-seo';
 // import Resume from '@components/Content/Resume';
 import GoL from '@components/Animations/GoL';
 import Profile from '@components/Content/Profile';
+import Test from '@components/Content/Test';
 import NavBar from '@components/Navs/NavBar';
+import ScrollAnchor from '@components/Navs/ScrollAnchor';
 import useWindowDimensions from '@utils/useWindowDimensions';
 
 import styles from 'styles/index.module.scss';
@@ -20,6 +22,7 @@ export default function Home() {
       <NextSeo title="Website coming soon... | Daniel Slovinsky" />
       <main className={styles.main}>
         <NavBar />
+        <ScrollAnchor />
         {width && (
           <GoL
             key={`${calcW}${calcH}`}
@@ -30,6 +33,7 @@ export default function Home() {
           />
         )}
         <Profile />
+        <Test />
         {/* <Resume /> */}
       </main>
     </>

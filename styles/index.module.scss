@@ -13,13 +13,13 @@
     height: 100vh; //change to vh units later
     justify-content: center;
     position: absolute;
+    left: 70px;
   
     .profile {
       align-items: center;
       background-color: rgba(colors.$black-pearl, 0.95);
       display: flex;
       flex-direction: column;
-      margin-left: 70px;
       padding: 20px;
       box-shadow: 4px 4px 2px red;
   

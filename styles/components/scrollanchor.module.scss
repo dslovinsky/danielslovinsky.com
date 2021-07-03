@@ -1,0 +1,11 @@
+.anchor {
+  position: fixed;
+  top: 35vh;
+  right: 10px;
+  width: 100px;
+  background-color: black;
+
+  > li.link {
+    cursor: pointer;
+  }
+}
