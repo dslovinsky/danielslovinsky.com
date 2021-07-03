@@ -31,6 +31,11 @@
         height: 44px;
         justify-content: center;
         width: 44px;
+
+        &:hover {
+          background-color: red;
+          // once solution is found to svg issue, change div background to white, fill color to red on hover
+        }
       }
 
       div.contact {
