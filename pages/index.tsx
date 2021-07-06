@@ -4,6 +4,7 @@ import GoL from '@components/Animations/GoL';
 import Title from '@components/Content/Title';
 // import SectionPlaceholder from '@components/Content/SectionPlaceholder';
 import About from '@components/Content/About';
+import Portfolio from '@components/Content/Portfolio';
 import NavBar from '@components/Navs/NavBar';
 import ScrollAnchor from '@components/Navs/ScrollAnchor';
 import useWindowDimensions from '@utils/useWindowDimensions';
@@ -24,7 +25,7 @@ export default function Home() {
         <NavBar />
         <ScrollAnchor />
         <Title />
-        {width && (
+        {/* {width && (
           <GoL
             key={`${calcW}${calcH}`}
             width={calcW}
@@ -33,10 +34,11 @@ export default function Home() {
             streak={0.5}
             id="Home"
           />
-        )}
-        {/* <div id="Home" style={{height: '100vh'}}>GoL placeholder</div> */}
+        )} */}
+        <div id="Home" style={{height: '100vh'}}>GoL placeholder</div>
         {/* <SectionPlaceholder /> */}
         <About id="About" />
+        <Portfolio id="Portfolio" />
       </main>
     </>
   );
