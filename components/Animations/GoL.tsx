@@ -1,4 +1,4 @@
-import {memo, useRef, useEffect} from 'react';
+import {memo, useRef, useEffect, CanvasHTMLAttributes} from 'react';
 
 const operations = [
   [-1, -1],
@@ -11,6 +11,14 @@ const operations = [
   [1, 1],
 ];
 
+interface Props extends CanvasHTMLAttributes<HTMLCanvasElement> {
+  height: number;
+  width: number;
+  resolution?: number;
+  fps?: number;
+  streak?: number;
+}
+
 const mod = (a: number, b: number) => ((a % b) + b) % b;
 
 function CanvasGoL({
@@ -19,13 +27,8 @@ function CanvasGoL({
   resolution = 10,
   fps = 10,
   streak = 0,
-}: {
-  height: number;
-  width: number;
-  resolution?: number;
-  fps?: number;
-  streak?: number;
-}) {
+  ...props
+}: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const numRows = Math.ceil((height * (10 / resolution)) / 10) * 10;
@@ -112,7 +115,7 @@ function CanvasGoL({
     return () => clearInterval(frame);
   }, []);
 
-  return <canvas ref={canvasRef} />;
+  return <canvas {...props} ref={canvasRef} />;
 }
 
 export default memo(CanvasGoL);

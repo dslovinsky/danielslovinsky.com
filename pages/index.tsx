@@ -3,7 +3,7 @@ import {NextSeo} from 'next-seo';
 // import Resume from '@components/Content/Resume';
 import GoL from '@components/Animations/GoL';
 import Profile from '@components/Content/Profile';
-import Test from '@components/Content/Test';
+import SectionPlaceholder from '@components/Content/SectionPlaceholder';
 import NavBar from '@components/Navs/NavBar';
 import ScrollAnchor from '@components/Navs/ScrollAnchor';
 import useWindowDimensions from '@utils/useWindowDimensions';
@@ -30,10 +30,11 @@ export default function Home() {
             height={calcH}
             resolution={10}
             streak={0.5}
+            id="Home"
           />
         )}
         <Profile />
-        <Test />
+        <SectionPlaceholder />
         {/* <Resume /> */}
       </main>
     </>
