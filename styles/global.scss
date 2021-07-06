@@ -1,3 +1,16 @@
+@use 'partials/fonts';
+@use 'partials/colors';
+
 body {
   margin: 0;
+  font-family: fonts.$Mont;
+}
+
+h1,
+h2,
+h3,
+h4,
+span,
+p {
+  color: colors.$white-smoke;
 }

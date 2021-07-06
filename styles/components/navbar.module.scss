@@ -1,0 +1,64 @@
+@use '../partials/colors';
+
+.navbar {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+
+  > .home_link {
+    margin: 24px auto 24px 48px;
+
+    > div {
+      border: solid 2px rgba(red, 0.8);
+      height: 48px;
+    }
+  }
+
+  > ul {
+    align-items: center;
+    display: flex;
+    margin-right: 48px;
+
+    > li {
+      display: flex;
+      margin: 12px;
+
+      > .social > div {
+        background-color: colors.$black-pearl;
+        box-shadow: 2px 2px 2px white;
+        display: flex;
+        height: 44px;
+        justify-content: center;
+        width: 44px;
+
+        &:hover {
+          background-color: red;
+          // once solution is found to svg issue, change div background to white, fill color to red on hover
+        }
+      }
+
+      div.contact {
+        background-color: colors.$white-smoke;
+        border-radius: 2rem;
+        border: red solid 4px;
+        padding: 8px 16px;
+        transition: all 0.1s ease-in-out;
+
+        &:hover {
+          background-color: red;
+
+          > span {
+            color: colors.$white-smoke;
+          }
+        }
+
+        > span {
+          color: colors.$black-pearl;
+          font-weight: bolder;
+          transition: all 0.1s ease-in-out;
+        }
+      }
+    }
+  }
+}
