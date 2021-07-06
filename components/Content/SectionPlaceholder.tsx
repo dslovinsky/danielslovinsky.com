@@ -1,4 +1,4 @@
-const testSections = ['About', 'Portfolio', 'Skills', 'Other Work', 'Contact']
+const testSections = ['Home', 'Portfolio', 'Skills', 'Other Work', 'Contact']
 
 export default function Placeholder() {
   return (

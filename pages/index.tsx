@@ -1,9 +1,9 @@
 import {NextSeo} from 'next-seo';
 
-// import Resume from '@components/Content/Resume';
 import GoL from '@components/Animations/GoL';
-import Profile from '@components/Content/Profile';
-import SectionPlaceholder from '@components/Content/SectionPlaceholder';
+import Title from '@components/Content/Title';
+// import SectionPlaceholder from '@components/Content/SectionPlaceholder';
+import About from '@components/Content/About';
 import NavBar from '@components/Navs/NavBar';
 import ScrollAnchor from '@components/Navs/ScrollAnchor';
 import useWindowDimensions from '@utils/useWindowDimensions';
@@ -23,6 +23,7 @@ export default function Home() {
       <main className={styles.main}>
         <NavBar />
         <ScrollAnchor />
+        <Title />
         {width && (
           <GoL
             key={`${calcW}${calcH}`}
@@ -33,9 +34,9 @@ export default function Home() {
             id="Home"
           />
         )}
-        <Profile />
-        <SectionPlaceholder />
-        {/* <Resume /> */}
+        {/* <div id="Home" style={{height: '100vh'}}>GoL placeholder</div> */}
+        {/* <SectionPlaceholder /> */}
+        <About id="About" />
       </main>
     </>
   );
