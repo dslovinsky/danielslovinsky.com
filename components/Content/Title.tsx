@@ -19,14 +19,14 @@ export default function Title() {
               onComplete={() => typedRef.current.start()}
               showCursor={false}
               strings={['Daniel']}
-              typeSpeed={100}
+              typeSpeed={130}
             />
             <Typed
               showCursor={false}
               stopped
               strings={['Slovinsky']}
               typedRef={(ref: unknown) => (typedRef.current = ref)}
-              typeSpeed={100}
+              typeSpeed={130}
             />
           </div>
         </div>

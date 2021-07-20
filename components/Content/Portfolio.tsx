@@ -23,11 +23,13 @@ export default function Portfolio({...props}): ReactElement {
           </Link>
         </div>
         <div className={styles.paragraphs}>
-          <Link href="https://verd.es/">
-            <a>
-              <h3 className="text-4xl font-bold underline">Verd.es</h3>
-            </a>
-          </Link>
+          <div>
+            <Link href="https://verd.es/">
+              <a>
+                <h3 className="text-4xl font-bold underline">Verd.es</h3>
+              </a>
+            </Link>
+          </div>
           <ul>
             <li>
               <p>
@@ -38,8 +40,8 @@ export default function Portfolio({...props}): ReactElement {
             </li>
             <li>
               <p>
-                I completely refactored existing pages to improve speed by over
-                90% and added all new pages.
+                I refactored all existing pages to improve speed by over 90% and
+                added all new pages.
               </p>
             </li>
             <li>
@@ -57,7 +59,7 @@ export default function Portfolio({...props}): ReactElement {
           </ul>
         </div>
       </div>
-      <div className={`${styles.card} justify-center p-6`}>
+      <div className={`${styles.card} flex justify-center p-6`}>
         <p>More to come . . .</p>
       </div>
     </div>
