@@ -2,7 +2,7 @@ import {Link as AnchorLink} from 'react-scroll';
 
 import styles from 'styles/components/scrollanchor.module.scss';
 
-const sections = ['Home', 'About', 'Portfolio', 'Skills', 'Other Work', 'Contact'];
+const sections = ['Home', 'About', 'Portfolio', 'Skills', 'Contact'];
 
 export default function Anchor() {
   return (

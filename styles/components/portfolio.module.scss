@@ -1,0 +1,40 @@
+@use '../partials/colors';
+
+.section {
+  display: flex;
+  flex-direction: column;
+
+  .card {
+    background-color: colors.$black-pearl-lite;
+    margin: 24px calc(5% + 100px) 24px 24px;
+
+    .site_image {
+      float: left;
+      clip-path: polygon(0% 0%, 95% 0%, 65% 100%, 0% 100%);
+      shape-outside: polygon(0% 0%, 100% 0%, 70% 100%, 0% 100%);
+    }
+
+    .paragraphs {
+      padding: 8px 32px;
+
+      > div {
+        display: flex;
+        justify-content: center;
+
+        h3 {
+          text-shadow: 2px 2px red;
+
+          &:hover,
+          &:active {
+            color: red;
+            text-shadow: 2px 2px colors.$white-smoke;
+          }
+        }
+      }
+
+      li {
+        margin: 1% 0 2% 0;
+      }
+    }
+  }
+}

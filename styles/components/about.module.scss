@@ -1,0 +1,36 @@
+@use '../partials/colors';
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  > .card {
+    display: flex;
+    background-color: colors.$black-pearl-lite;
+    max-width: 920px;
+    padding: 24px;
+
+    .photo_container {
+      background-color: white;
+      padding: 5px;
+      border-radius: 50%;
+      display: inherit;
+      border: solid black 1px;
+      min-width: 212px;
+      height: fit-content;
+      width: fit-content;
+
+      .photo {
+        border-radius: 50%;
+      }
+    }
+
+    > .paragraphs {
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+}
