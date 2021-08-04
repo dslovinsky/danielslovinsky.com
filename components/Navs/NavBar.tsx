@@ -1,3 +1,5 @@
+import {IconName} from '@fortawesome/free-brands-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -7,12 +9,12 @@ const links = [
   {
     name: 'LinkedIn',
     url: 'https://www.linkedin.com/in/daniel-slovinsky/',
-    iconPath: '/icons/linkedin.svg',
+    icon: 'linkedin-in' as IconName,
   },
   {
     name: 'GitHub',
     url: 'https://github.com/Quickthorpe',
-    iconPath: '/icons/github.svg',
+    icon: 'github' as IconName,
   },
 ];
 
@@ -32,16 +34,16 @@ export default function NavBar() {
         </a>
       </Link>
       <ul>
-        {links.map((link) => (
-          <li key={link.name}>
-            <Link href={link.url}>
+        {links.map(({name, url, icon}) => (
+          <li key={name}>
+            <Link href={url}>
               <a className={styles.social}>
                 <div>
-                  <Image
-                    height={24}
-                    width={24}
-                    src={link.iconPath}
-                    alt={link.name}
+                  <FontAwesomeIcon
+                    icon={['fab', icon]}
+                    width={22}
+                    height={22}
+                    title={name}
                   />
                 </div>
               </a>
