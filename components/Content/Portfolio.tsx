@@ -1,11 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import {ReactElement} from 'react';
 import verdes from 'public/photos/verdes.png';
 
 import styles from 'styles/components/portfolio.module.scss';
 
-export default function Portfolio({...props}): ReactElement {
+export default function Portfolio({...props}) {
   return (
     <div {...props} className={`${styles.section} h-screen`}>
       <h1 className="text-3xl my-8 font-bold self-center">— Portfolio —</h1>
