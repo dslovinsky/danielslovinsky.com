@@ -1,4 +1,4 @@
-import dom from '@src/fontawesome';
+import dom from 'fontawesome/fontawesome';
 import Head from 'next/head';
 
 export default function DefaultHead() {
