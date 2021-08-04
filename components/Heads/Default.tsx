@@ -1,3 +1,4 @@
+import dom from '@src/fontawesome';
 import Head from 'next/head';
 
 export default function DefaultHead() {
@@ -26,6 +27,7 @@ export default function DefaultHead() {
         href="/fonts/custom.css"
         rel="stylesheet"
       />
+      <style key="fontawesome" dangerouslySetInnerHTML={{__html: dom.css()}} />
       <noscript>You need to enable Javascript to use this app.</noscript>
     </Head>
   );
