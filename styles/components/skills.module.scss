@@ -1,0 +1,20 @@
+@use '../partials/colors.scss';
+
+.section {
+  display: flex;
+  flex-direction: column;
+
+  > .skills_container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 24px calc(5% + 100px);
+    justify-content: center;
+
+    > .skill {
+      height: 150px;
+      width: 150px;
+      margin: 30px;
+      background-color: colors.$black-pearl-lite;
+    }
+  }
+}
