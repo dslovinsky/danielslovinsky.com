@@ -1,0 +1,13 @@
+@use '../partials/colors';
+
+.section {
+  display: flex;
+  flex-direction: column;
+
+  form {
+    margin: 50px;
+    background-color: colors.$black-pearl-lite;
+    display: flex;
+    flex-direction: column;
+  }
+}

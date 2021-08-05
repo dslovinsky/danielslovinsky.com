@@ -4,6 +4,7 @@ import {NextSeo} from 'next-seo';
 import About from '@components/Content/About';
 import Title from '@components/Content/Title';
 import Skills from '@components/Content/Skills';
+import Contact from '@components/Content/Contact';
 import Portfolio from '@components/Content/Portfolio';
 import NavBar from '@components/Navs/NavBar';
 import ScrollAnchor from '@components/Navs/ScrollAnchor';
@@ -35,11 +36,14 @@ export default function Home() {
             id="Home"
           />
         )} */}
-        <div id="Home" style={{height: '100vh'}}>GoL placeholder</div>
+        <div id="Home" style={{height: '100vh'}}>
+          GoL placeholder
+        </div>
         {/* <SectionPlaceholder /> */}
         <About id="About" />
         <Portfolio id="Portfolio" />
         <Skills id="Skills" />
+        <Contact id="Contact" />
       </main>
     </>
   );
