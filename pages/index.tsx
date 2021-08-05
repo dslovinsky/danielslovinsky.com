@@ -1,8 +1,9 @@
 import {NextSeo} from 'next-seo';
 
 // import GoL from '@components/Animations/GoL';
-import Title from '@components/Content/Title';
 import About from '@components/Content/About';
+import Title from '@components/Content/Title';
+import Skills from '@components/Content/Skills';
 import Portfolio from '@components/Content/Portfolio';
 import NavBar from '@components/Navs/NavBar';
 import ScrollAnchor from '@components/Navs/ScrollAnchor';
@@ -38,6 +39,7 @@ export default function Home() {
         {/* <SectionPlaceholder /> */}
         <About id="About" />
         <Portfolio id="Portfolio" />
+        <Skills id="Skills" />
       </main>
     </>
   );

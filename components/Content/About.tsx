@@ -1,10 +1,9 @@
 import Image from 'next/image';
-import {ReactElement} from 'react';
 import selfPhoto from 'public/photos/me.png';
 
 import styles from 'styles/components/about.module.scss';
 
-export default function About({...props}): ReactElement {
+export default function About({...props}) {
   return (
     <div {...props} className={`${styles.section} h-screen`}>
       <h1 className="text-3xl my-8 font-bold">— About Me —</h1>
