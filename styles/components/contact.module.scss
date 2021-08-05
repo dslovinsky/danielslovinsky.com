@@ -5,9 +5,42 @@
   flex-direction: column;
 
   form {
-    margin: 50px;
-    background-color: colors.$black-pearl-lite;
     display: flex;
     flex-direction: column;
+    margin: 50px;
+    max-width: 800px;
+
+    .toprow {
+      display: flex;
+      justify-content: space-between;
+
+      > div {
+        width: 49%;
+      }
+    }
+
+    .subject > div {
+      width: 100%;
+    }
+
+    > .toprow,
+    .subject,
+    .message {
+      margin: 5px 0;
+
+      > div > div {
+        background-color: colors.$black-pearl-lite;
+        color: white;
+        height: 45px;
+        padding: 0px 10px;
+      }
+
+      > textarea {
+        background-color: colors.$black-pearl-lite;
+        color: white;
+        padding: 10px;
+        width: 100%;
+      }
+    }
   }
 }
