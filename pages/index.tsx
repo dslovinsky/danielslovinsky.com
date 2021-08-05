@@ -36,7 +36,7 @@ export default function Home() {
             id="Home"
           />
         )} */}
-        <div id="Home" style={{height: '100vh'}}>
+        <div id="Home" className="h-screen">
           GoL placeholder
         </div>
         {/* <SectionPlaceholder /> */}
