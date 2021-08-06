@@ -7,7 +7,8 @@
   form {
     display: flex;
     flex-direction: column;
-    margin: 50px;
+    align-self: center;
+    width: 60%;
     max-width: 800px;
 
     .toprow {
@@ -23,6 +24,53 @@
       width: 100%;
     }
 
+    .message {
+      position: relative;
+
+      &::before {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        content: '';
+        position: absolute;
+        transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+        pointer-events: none;
+      }
+
+      &::after {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        content: '';
+        position: absolute;
+        transform: scaleX(0);
+        transition: transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+        border-bottom: 2px solid #3f51b5;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        border-bottom: 2px solid rgba(0, 0, 0, 0.87);
+      }
+
+      &:focus-within::after {
+        transform: scaleX(1);
+      }
+
+      > textarea {
+        background-color: colors.$black-pearl-lite;
+        color: white;
+        display: block;
+        padding: 10px;
+        width: 100%;
+
+        &:focus-visible {
+          outline: none;
+        }
+      }
+    }
+
     > .toprow,
     .subject,
     .message {
@@ -33,13 +81,6 @@
         color: white;
         height: 45px;
         padding: 0px 10px;
-      }
-
-      > textarea {
-        background-color: colors.$black-pearl-lite;
-        color: white;
-        padding: 10px;
-        width: 100%;
       }
     }
   }
