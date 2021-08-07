@@ -134,3 +134,17 @@
     }
   }
 }
+
+.error_message {
+  color: red;
+  margin: 6px 0;
+
+  > svg {
+    margin-bottom: 2px;
+  }
+
+  > p {
+    color: rgba(red, 0.8);
+    padding: 0 8px;
+  }
+}

@@ -1,7 +1,8 @@
-import ErrorMessages from '@components/Dialogs/ErrorMessages';
 import {TextField, TextareaAutosize, Button} from '@material-ui/core';
 import {useForm} from 'react-hook-form';
 import isEmail from 'validator/lib/isEmail';
+
+import ErrorMessages from '@components/Dialogs/ErrorMessages';
 
 import styles from 'styles/components/contact.module.scss';
 
@@ -19,7 +20,6 @@ const notEmpty = (obj: Object) => {
 };
 
 const onSubmit = (data: Data) => {
-  // replace undefined subject with empty string
   console.log('data', data);
 };
 
@@ -27,7 +27,6 @@ export default function Contact({...props}) {
   const {
     register,
     handleSubmit,
-    getValues,
     formState: {errors},
   } = useForm<Data>({
     criteriaMode: 'all',
@@ -120,8 +119,6 @@ export default function Contact({...props}) {
           disabled={notEmpty(errors)}>
           Send
         </Button>
-        {/* {console.log('values', getValues())}
-        {console.log('errors', errors, notEmpty(errors))} */}
         <div>
           {Object.keys(errors).map((key) => (
             <ErrorMessages key={key} errors={errors} name={key} />
