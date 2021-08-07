@@ -95,5 +95,14 @@
         padding: 0px 10px;
       }
     }
+
+    > .send {
+      background-color: colors.$black-pearl-lite;
+      border-radius: 0;
+      border: 1px white solid;
+      height: 40px;
+      margin: 8px 0;
+      text-transform: none;
+    }
   }
 }
