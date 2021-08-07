@@ -1,6 +1,7 @@
 import ErrorMessages from '@components/Dialogs/ErrorMessages';
 import {TextField, TextareaAutosize, Button} from '@material-ui/core';
 import {useForm} from 'react-hook-form';
+import isEmail from 'validator/lib/isEmail';
 
 import styles from 'styles/components/contact.module.scss';
 
@@ -8,7 +9,7 @@ type Data = {
   email: string;
   message: string;
   name: string;
-  subject: string;
+  subject?: string;
 };
 
 const notEmpty = (obj: Object) => {
@@ -43,25 +44,70 @@ export default function Contact({...props}) {
         </p>
         <div className={styles.toprow}>
           <TextField
-            {...register('name', {required: 'A name is required'})}
+            {...register('name', {
+              required: 'A name is required',
+              minLength: {
+                value: 3,
+                message: 'Name is too short',
+              },
+              maxLength: {
+                value: 255,
+                message: 'Name is too long',
+              },
+            })}
             placeholder="Name"
             className={errors.name ? styles.error_div : undefined}
           />
           <TextField
-            {...register('email', {required: 'An email is required'})}
+            {...register('email', {
+              required: 'An email is required',
+              minLength: {
+                value: 4,
+                message: 'Email is too short',
+              },
+              maxLength: {
+                value: 255,
+                message: 'Email is too long',
+              },
+              validate: (email) =>
+                isEmail(email || '') || 'Please enter a valid email address',
+            })}
             placeholder="Email"
             className={errors.email ? styles.error_div : undefined}
           />
         </div>
         <div className={styles.subject}>
-          <TextField {...register('subject')} placeholder="Subject" />
+          <TextField
+            {...register('subject', {
+              minLength: {
+                value: 2,
+                message: 'Subject is too short',
+              },
+              maxLength: {
+                value: 255,
+                message: 'Subject is too long',
+              },
+            })}
+            className={errors.subject ? styles.error_div : undefined}
+            placeholder="Subject"
+          />
         </div>
         <div
           className={`${styles.message} ${
             errors.message ? styles.error : undefined
           }`}>
           <TextareaAutosize
-            {...register('message', {required: 'A message is required'})}
+            {...register('message', {
+              required: 'A message is required',
+              minLength: {
+                value: 2,
+                message: 'Message is too short',
+              },
+              maxLength: {
+                value: 4400,
+                message: "That's a lot to read! Please keep it more concise",
+              },
+            })}
             placeholder="Message"
             minRows={6}
           />
