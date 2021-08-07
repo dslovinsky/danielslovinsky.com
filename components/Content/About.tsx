@@ -5,7 +5,7 @@ import styles from 'styles/components/about.module.scss';
 
 export default function About({...props}) {
   return (
-    <div {...props} className={`${styles.section} h-screen`}>
+    <div {...props} className={`${styles.section}`}>
       <h1 className="text-3xl my-8 font-bold">— About Me —</h1>
       <div className={styles.card}>
         <div className={styles.photo_container}>

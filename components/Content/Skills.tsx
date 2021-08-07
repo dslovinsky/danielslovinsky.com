@@ -44,7 +44,7 @@ const skillSet = [
 
 export default function Skills({...props}) {
   return (
-    <div {...props} className={`${styles.section} h-screen`}>
+    <div {...props} className={`${styles.section}`}>
       <h1 className="text-3xl my-8 font-bold self-center">— Skills —</h1>
       <div className={styles.skills_container}>
         {skillSet.map(({name, iconPath, className}) => (
