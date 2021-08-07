@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <>
-      <NextSeo title="Website coming soon... | Daniel Slovinsky" />
+      <NextSeo title="Daniel Slovinsky | Front-end Web Developer" />
       <main className={styles.main}>
         <NavBar />
         <ScrollAnchor />
