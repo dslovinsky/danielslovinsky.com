@@ -23,7 +23,7 @@
       justify-content: space-between;
 
       > div {
-        width: 49%;
+        width: 49.3%;
       }
     }
 
@@ -103,6 +103,34 @@
       height: 40px;
       margin: 8px 0;
       text-transform: none;
+      transition: border 300ms ease-in 0ms;
+
+      > span {
+        transition: color 300ms ease-in 0ms;
+      }
+
+      &.error_button {
+        border-color: rgba(black, 0);
+
+        > span {
+          color: rgba(white, 0.5);
+        }
+      }
+    }
+
+    .error,
+    .error_div > div {
+      &::before {
+        border-bottom-color: rgba(red, 0.8);
+      }
+
+      &::after {
+        border-bottom-color: red;
+      }
+
+      &:hover::before {
+        border-bottom: 2px solid rgba(red, 0.8);
+      }
     }
   }
 }
