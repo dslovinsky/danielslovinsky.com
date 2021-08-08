@@ -1,0 +1,151 @@
+@use '../partials/colors';
+@use '../partials/fonts';
+
+.section {
+  display: flex;
+  flex-direction: column;
+  padding: 10% 0;
+  min-height: 100vh;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 60%;
+    max-width: 800px;
+
+    > p {
+      text-align: center;
+      margin: 24px;
+    }
+
+    .toprow {
+      display: flex;
+      justify-content: space-between;
+
+      > div {
+        width: 49.3%;
+      }
+    }
+
+    .subject > div {
+      width: 100%;
+    }
+
+    .message {
+      position: relative;
+      font-family: fonts.$Roboto;
+
+      &::before {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        content: '';
+        position: absolute;
+        transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+        pointer-events: none;
+      }
+
+      &::after {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        content: '';
+        position: absolute;
+        transform: scaleX(0);
+        transition: transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+        border-bottom: 2px solid #3f51b5;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        border-bottom: 2px solid rgba(0, 0, 0, 0.87);
+      }
+
+      &:focus-within::after {
+        transform: scaleX(1);
+      }
+
+      > textarea {
+        background-color: colors.$black-pearl-lite;
+        color: white;
+        display: block;
+        padding: 10px;
+        width: 100%;
+
+        &:focus-visible {
+          outline: none;
+        }
+
+        &::placeholder {
+          color: rgba(white, 0.42);
+        }
+      }
+    }
+
+    > .toprow,
+    .subject,
+    .message {
+      margin: 5px 0;
+
+      > div > div {
+        background-color: colors.$black-pearl-lite;
+        color: white;
+        height: 45px;
+        padding: 0px 10px;
+      }
+    }
+
+    > .send {
+      background-color: colors.$black-pearl-lite;
+      border-radius: 0;
+      border: 1px white solid;
+      height: 40px;
+      margin: 8px 0;
+      text-transform: none;
+      transition: border 300ms ease-in 0ms;
+
+      > span {
+        transition: color 300ms ease-in 0ms;
+      }
+
+      &.error_button {
+        border-color: rgba(black, 0);
+
+        > span {
+          color: rgba(white, 0.5);
+        }
+      }
+    }
+
+    .error,
+    .error_div > div {
+      &::before {
+        border-bottom-color: rgba(red, 0.8);
+      }
+
+      &::after {
+        border-bottom-color: red;
+      }
+
+      &:hover::before {
+        border-bottom: 2px solid rgba(red, 0.8);
+      }
+    }
+  }
+}
+
+.error_message {
+  color: red;
+  margin: 6px 0;
+
+  > svg {
+    margin-bottom: 2px;
+  }
+
+  > p {
+    color: rgba(red, 0.8);
+    padding: 0 8px;
+  }
+}

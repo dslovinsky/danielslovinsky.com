@@ -3,10 +3,16 @@
 .section {
   display: flex;
   flex-direction: column;
+  height: 75vh;
 
   .card {
     background-color: colors.$black-pearl-lite;
     margin: 24px calc(5% + 100px) 24px 24px;
+    min-height: 72px;
+
+    &:first-of-type {
+      min-height: 316px;
+    }
 
     .site_image {
       float: left;
