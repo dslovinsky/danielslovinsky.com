@@ -1,0 +1,44 @@
+@use '../partials/colors';
+
+.top_button {
+  background-color: colors.$black-pearl-lite;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+
+  &:hover {
+    background-color: white;
+
+    p {
+      color: colors.$black-pearl;
+    }
+  }
+
+  &:active {
+    background-color: red;
+
+    p {
+      color: white;
+    }
+
+    svg {
+      color: colors.$black-pearl;
+    }
+  }
+
+  > a {
+    display: flex;
+    padding: 8px;
+    align-items: center;
+    cursor: pointer;
+
+    > p {
+      font-weight: 500;
+      padding-left: 8px;
+    }
+
+    > svg {
+      color: red;
+    }
+  }
+}

@@ -8,6 +8,7 @@ import Contact from '@components/Content/Contact';
 import Portfolio from '@components/Content/Portfolio';
 import NavBar from '@components/Navs/NavBar';
 import ScrollAnchor from '@components/Navs/ScrollAnchor';
+import BackToTop from '@components/Navs/BackToTop';
 // import useWindowDimensions from '@utils/useWindowDimensions';
 
 import styles from 'styles/index.module.scss';
@@ -44,6 +45,7 @@ export default function Home() {
         <Portfolio id="Portfolio" />
         <Skills id="Skills" />
         <Contact id="Contact" />
+        <BackToTop />
       </main>
     </>
   );
