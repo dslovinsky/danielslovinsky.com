@@ -19,10 +19,6 @@ const notEmpty = (obj: Object) => {
   return false;
 };
 
-const onSubmit = (data: Data) => {
-  console.log('data', data);
-};
-
 export default function Contact({...props}) {
   const {
     register,
@@ -31,6 +27,21 @@ export default function Contact({...props}) {
   } = useForm<Data>({
     criteriaMode: 'all',
   });
+
+  const onSubmit = async (data: Data) => {
+    console.log('data', data);
+
+    try {
+      const result = await fetch(`/api/email`, {
+        method: 'POST',
+        body: JSON.stringify(data),
+      });
+
+      console.log('result', result);
+    } catch (e) {
+      console.error('ERROR:', e)
+    }
+  };
 
   return (
     <div {...props} className={`${styles.section}`}>
