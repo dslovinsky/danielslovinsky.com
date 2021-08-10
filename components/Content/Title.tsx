@@ -3,11 +3,11 @@ import Typed from 'react-typed';
 
 import styles from 'styles/index.module.scss';
 
-export default function Title() {
+export default function Title({...props}) {
   const typedRef = useRef<any>(null); // ref type not provided
 
   return (
-    <div className={styles.profile_container}>
+    <div {...props} className={styles.profile_container}>
       <div className={styles.profile}>
         <div className="text-7xl flex">
           <div>

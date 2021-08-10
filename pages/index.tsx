@@ -26,7 +26,7 @@ export default function Home() {
       <main className={styles.main}>
         <NavBar />
         <ScrollAnchor />
-        <Title />
+        <Title id="Home" />
         {width && (
           <GoL
             key={`${calcW}${calcH}`}
@@ -34,12 +34,9 @@ export default function Home() {
             height={calcH}
             resolution={10}
             streak={0.5}
-            id="Home"
           />
         )}
-        {/* <div id="Home" className="h-screen">
-          GoL placeholder
-        </div> */}
+        <div className={styles.divide} />
         <About id="About" />
         <Portfolio id="Portfolio" />
         <Skills id="Skills" />
