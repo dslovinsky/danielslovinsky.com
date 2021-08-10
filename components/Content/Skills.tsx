@@ -33,13 +33,21 @@ const skillSet = [
     iconPath: 'tailwind.svg',
   },
   {
-    name: 'Cypress',
-    iconPath: 'cypress.svg',
+    name: 'Material-UI',
+    iconPath: 'material-ui.svg',
   },
   {
-    name: 'Jest',
-    iconPath: 'jest.svg',
+    name: 'Google Maps API',
+    iconPath: 'google-maps.svg',
   },
+  // {
+  //   name: 'Cypress',
+  //   iconPath: 'cypress.svg',
+  // },
+  // {
+  //   name: 'Jest',
+  //   iconPath: 'jest.svg',
+  // },
 ];
 
 export default function Skills({...props}) {
@@ -56,6 +64,7 @@ export default function Skills({...props}) {
                 height={85}
                 alt={name}
                 className={className}
+                unoptimized
               />
             </div>
             <p>{name}</p>

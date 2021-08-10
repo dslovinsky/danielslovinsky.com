@@ -1,5 +1,8 @@
 @use 'partials/fonts';
 @use 'partials/colors';
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 body {
   margin: 0;

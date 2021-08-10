@@ -18,9 +18,9 @@ const links = [
   },
 ];
 
-export default function NavBar() {
+export default function NavBar({...props}) {
   return (
-    <nav className={styles.navbar}>
+    <nav {...props} className={styles.navbar}>
       <Link href="/">
         <a className={styles.home_link}>
           <div>
