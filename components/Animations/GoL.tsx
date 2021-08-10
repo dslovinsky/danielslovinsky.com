@@ -37,7 +37,7 @@ function CanvasGoL({
   const opac = Math.abs(streak - 1);
 
   const buildGrid = (r: number, c: number) => {
-    let initialGrid = Array.from({length: r}).map(() =>
+    const initialGrid = Array.from({length: r}).map(() =>
       Array.from({length: c}).fill(0),
     ) as number[][];
 

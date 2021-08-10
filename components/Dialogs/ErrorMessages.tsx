@@ -14,7 +14,6 @@ interface Render {
   messages?: MultipleFieldErrors;
 }
 
-
 export default function ErrorMessages({...props}: Props<FieldValues, TAs>) {
   return (
     <ErrorMessage
@@ -22,8 +21,14 @@ export default function ErrorMessages({...props}: Props<FieldValues, TAs>) {
       render={({messages}: Render) =>
         messages &&
         Object.entries(messages).map(([type, message]) => (
-          <div key={type} className={`${styles.error_message} flex items-center`}>
-            <FontAwesomeIcon height={18} width={18} icon={'exclamation-triangle'} />
+          <div
+            key={type}
+            className={`${styles.error_message} flex items-center`}>
+            <FontAwesomeIcon
+              height={18}
+              width={18}
+              icon={'exclamation-triangle'}
+            />
             <p>{message}</p>
           </div>
         ))

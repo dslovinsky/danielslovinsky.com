@@ -45,7 +45,7 @@ export default function Portfolio({...props}) {
             </li>
             <li>
               <p>
-                I take full advantage of React's state management capabilities
+                I take full advantage of React&apos;s state management capabilities
                 to provide complex functionality while minimizing rerenders.
               </p>
             </li>
