@@ -1,17 +1,12 @@
 import {TextField, TextareaAutosize, Button} from '@material-ui/core';
+import {useState} from 'react';
 import {useForm} from 'react-hook-form';
 import isEmail from 'validator/lib/isEmail';
 
 import ErrorMessages from '@components/Dialogs/ErrorMessages';
+import Email from '@interfaces/email';
 
 import styles from 'styles/components/contact.module.scss';
-
-type Data = {
-  email: string;
-  message: string;
-  name: string;
-  subject?: string;
-};
 
 const notEmpty = (obj: Object) => {
   // @see https://stackoverflow.com/a/59787784
@@ -19,18 +14,33 @@ const notEmpty = (obj: Object) => {
   return false;
 };
 
-const onSubmit = (data: Data) => {
-  console.log('data', data);
-};
-
 export default function Contact({...props}) {
   const {
-    register,
-    handleSubmit,
     formState: {errors},
-  } = useForm<Data>({
+    handleSubmit,
+    register,
+    reset,
+  } = useForm<Email>({
     criteriaMode: 'all',
   });
+
+  const [sent, setSent] = useState(false);
+
+  const onSubmit = async (data: Email) => {
+    try {
+      const result = await fetch(`/api/email`, {
+        method: 'POST',
+        body: JSON.stringify(data),
+      });
+
+      if (result.status === 200) {
+        setSent(true);
+        reset();
+      }
+    } catch (e) {
+      console.error('ERROR:', e);
+    }
+  };
 
   return (
     <div {...props} className={`${styles.section}`}>
@@ -56,6 +66,7 @@ export default function Contact({...props}) {
             })}
             placeholder="Name"
             className={errors.name ? styles.error_div : undefined}
+            onChange={() => setSent(false)}
           />
           <TextField
             {...register('email', {
@@ -113,11 +124,11 @@ export default function Contact({...props}) {
         </div>
         <Button
           className={`${styles.send} ${
-            notEmpty(errors) ? styles.error_button : undefined
+            notEmpty(errors) || sent ? styles.error_button : undefined
           }`}
           type="submit"
-          disabled={notEmpty(errors)}>
-          Send
+          disabled={notEmpty(errors) || sent}>
+          {sent ? 'Message sent!' : 'Send'}
         </Button>
         <div>
           {Object.keys(errors).map((key) => (
