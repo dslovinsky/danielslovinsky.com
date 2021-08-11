@@ -26,7 +26,6 @@ export default function Home() {
       <main className={styles.main}>
         <NavBar />
         <ScrollAnchor />
-        <Title id="Home" className="h-screen" />
         {process.env.NODE_ENV === 'production' && width ? (
           <GoL
             key={`${calcW}${calcH}`}
@@ -34,11 +33,12 @@ export default function Home() {
             height={calcH}
             resolution={10}
             streak={0.5}
+            className="h-screen"
           />
         ) : (
           <div className="h-screen" />
         )}
-        <div className={styles.divide} />
+        <Title id="Home" className="h-screen" />
         <About id="About" />
         <Portfolio id="Portfolio" />
         <Skills id="Skills" />
