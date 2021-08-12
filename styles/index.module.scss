@@ -1,5 +1,6 @@
 @use 'partials/fonts';
 @use 'partials/colors';
+@use 'partials/breakpoints';
 
 .main {
   display: flex;
@@ -14,8 +15,13 @@
     height: 100vh; //change to vh units later
     justify-content: center;
     position: absolute;
-    left: 70px;
-  
+    width: 100%;
+
+    @media screen and (min-width: breakpoints.$medium) {
+      left: 70px;
+      width: auto;
+    }
+
     .profile {
       align-items: center;
       background-color: rgba(colors.$black-pearl, 0.95);
@@ -23,11 +29,34 @@
       flex-direction: column;
       padding: 20px;
       box-shadow: 4px 4px 2px red;
-  
+
+      > .name {
+        margin: 0 0 24px;
+
+        @media screen and (min-width: breakpoints.$x-small) {
+          font-size: 3.75rem;
+        }
+
+        @media screen and (min-width: breakpoints.$small) {
+          font-size: 4.5rem;
+        }
+      }
+
+      > h2 {
+        white-space: break-spaces;
+
+        @media screen and (min-width: breakpoints.$x-small) {
+          font-size: 1.125rem;
+          line-height: 1.75rem;
+        }
+
+        @media screen and (min-width: breakpoints.$small) {
+          font-size: 1.25rem;
+        }
+      }
+
       .typed {
         text-shadow: 3px 3px red;
-        min-height: 144px;
-        min-width: 355px;
       }
     }
   }

@@ -41,7 +41,7 @@ export default function Home() {
         ) : (
           <div className="h-screen" />
         )}
-        {/* <Title id="Home" className="h-screen" /> */}
+        <Title id="Home" className="h-screen" />
         {/* <About id="About" /> */}
         {/* <Portfolio id="Portfolio" /> */}
         {/* <Skills id="Skills" /> */}
