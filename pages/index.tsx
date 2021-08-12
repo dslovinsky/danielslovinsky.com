@@ -29,7 +29,7 @@ export default function Home() {
       <main className={styles.main}>
         <NavBar />
         {!isMobile && <ScrollAnchor />}
-        {width ? (
+        {process.env.NODE_ENV === 'production' && width ? (
           <GoL
             key={`${calcW}${calcH}`}
             width={calcW}
@@ -42,11 +42,11 @@ export default function Home() {
           <div className="h-screen" />
         )}
         <Title id="Home" className="h-screen" />
-        {/* <About id="About" /> */}
-        {/* <Portfolio id="Portfolio" /> */}
-        {/* <Skills id="Skills" /> */}
-        {/* <Contact id="Contact" /> */}
-        {/* <BackToTop /> */}
+        <About id="About" />
+        <Portfolio id="Portfolio" />
+        <Skills id="Skills" />
+        <Contact id="Contact" />
+        <BackToTop />
       </main>
     </>
   );
