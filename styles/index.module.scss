@@ -31,8 +31,6 @@
       box-shadow: 4px 4px 2px red;
 
       > .name {
-        margin: 0 0 24px;
-
         @media screen and (min-width: breakpoints.$x-small) {
           font-size: 3.75rem;
         }

@@ -9,7 +9,7 @@ export default function Title({...props}) {
   return (
     <div {...props} className={styles.profile_container}>
       <div className={`${styles.profile} lg:w-auto`}>
-        <div className={`${styles.name} text-5xl flex flex-col text-center lg:text-left lg:flex-row m-6 ml-0 lg:m-0`}>
+        <div className={`${styles.name} text-5xl flex flex-col text-center lg:text-left mb-6 lg:mb-0 lg:flex-row m-6 ml-0 lg:m-0`}>
           <div>
             <h1 className="font-medium">Hi, I'm&nbsp;</h1>
           </div>
