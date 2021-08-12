@@ -1,3 +1,4 @@
+@use '../partials/breakpoints';
 @use '../partials/colors';
 
 .anchor {
@@ -5,6 +6,10 @@
   top: 14vh;
   right: 4%;
   width: 100px;
+
+  @media screen and (max-width: breakpoints.$medium) {
+    position: initial;
+  }
 
   > li.link {
     .activeLink > p {

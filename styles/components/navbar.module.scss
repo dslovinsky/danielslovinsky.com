@@ -1,13 +1,20 @@
+@use '../partials/breakpoints';
 @use '../partials/colors';
 
-.navbar {
+nav.navbar {
   display: flex;
   position: absolute;
   width: 100%;
   z-index: 100;
+  padding: 0 36px;
+
+  @media screen and (max-width: breakpoints.$medium) {
+    position: fixed;
+    padding: 0 12px;
+  }
 
   > .home_link {
-    margin: 24px auto 24px 48px;
+    margin: 24px auto 24px 12px;
 
     > div {
       border: solid 2px rgba(red, 0.8);
@@ -18,32 +25,37 @@
   > ul {
     align-items: center;
     display: flex;
-    margin-right: 48px;
 
     > li {
       display: flex;
       margin: 12px;
 
-      > .social > div {
-        align-items: center;
-        background-color: colors.$black-pearl;
-        box-shadow: 2px 2px 2px white;
-        display: flex;
-        height: 44px;
-        justify-content: center;
-        width: 44px;
-
-        > svg {
-          color: white;
-          height: auto;
-          width: 22px;
+      &.social_item {
+        @media screen and (max-width: breakpoints.$small) {
+          display: none;
         }
 
-        &:hover {
-          background-color: white;
+        > .social > div {
+          align-items: center;
+          background-color: colors.$black-pearl;
+          box-shadow: 2px 2px 2px white;
+          display: flex;
+          height: 44px;
+          justify-content: center;
+          width: 44px;
 
           > svg {
-            color: red;
+            color: white;
+            height: auto;
+            width: 22px;
+          }
+
+          &:hover {
+            background-color: white;
+
+            > svg {
+              color: red;
+            }
           }
         }
       }
@@ -67,6 +79,42 @@
           color: colors.$black-pearl;
           font-weight: bolder;
           transition: all 0.1s ease-in-out;
+        }
+      }
+
+      .bars {
+        background-color: colors.$black-pearl;
+        border-radius: 4px;
+        border: solid white 1px;
+        color: colors.$white-smoke;
+        height: 44px;
+        width: 44px;
+      }
+    }
+  }
+}
+
+.menu > div:nth-of-type(3) {
+  border-radius: 0;
+
+  > ul {
+    padding: 0;
+
+    > li.social_item {
+      @media screen and (min-width: breakpoints.$small) {
+        display: none;
+      }
+
+      > .social > div {
+        background-color: colors.$black-pearl-lite;
+        min-height: 48px;
+        display: flex;
+        justify-content: center;
+        color: colors.$white-smoke;
+
+        svg {
+          width: 22px;
+          height: auto;
         }
       }
     }
