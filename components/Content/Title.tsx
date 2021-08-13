@@ -9,14 +9,12 @@ export default function Title({...props}) {
 
   return (
     <div {...props} className={styles.profile_container}>
-      <div className={styles.profile}>
-        <div className="text-7xl flex">
+      <div className={`${styles.profile} lg:w-auto`}>
+        <div className={`${styles.name} text-5xl flex flex-col text-left mb-6 lg:mb-0 lg:flex-row m-6 ml-0 lg:m-0`}>
           <div>
-            <h1 className="font-medium">Hi, I&apos;m</h1>
+            <h1 className="font-medium">Hi, I&apos;m&nbsp;</h1>
           </div>
-          &nbsp;
-          <div
-            className={`${styles.typed} flex flex-col font-bold antialiased`}>
+          <div className={`${styles.typed} flex flex-col font-bold antialiased`}>
             <Typed
               onComplete={() => typedRef.current.start()}
               showCursor={false}
@@ -32,7 +30,7 @@ export default function Title({...props}) {
             />
           </div>
         </div>
-        <h2 className="p-2 text-xl">
+        <h2 className="text-center md:text-left p-2 text-base">
           <strong>Front-end Web Developer</strong> based in{' '}
           <strong>San Diego, CA</strong>
         </h2>

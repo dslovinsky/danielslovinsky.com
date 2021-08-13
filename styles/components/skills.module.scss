@@ -1,28 +1,82 @@
 @use '../partials/colors.scss';
+@use '../partials/breakpoints.scss';
 
 .section {
   display: flex;
   flex-direction: column;
-  height: 66vh;
+  min-height: 66vh;
 
   > .skills_container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    margin: 24px calc(5% + 100px);
+    background-color: colors.$black-pearl-lite;
+    justify-content: space-evenly;
+
+    @media screen and (min-width: breakpoints.$medium) {
+      justify-content: space-around;
+      margin: 0 calc(3% + 84px);
+      background-color: initial;
+    }
+
+    @media screen and (min-width: breakpoints.$large) {
+      margin: 0 calc(4% + 94px);
+    }
+
+    @media screen and (min-width: breakpoints.$x-large) {
+      justify-content: center;
+    }
 
     > .skill {
       align-items: center;
       background-color: colors.$black-pearl-lite;
       display: flex;
       flex-direction: column;
-      height: 150px;
       justify-content: center;
-      margin: 30px;
-      width: 150px;
+      margin: 4px;
+
+      @media screen and (min-width: breakpoints.$small) {
+        margin: 12px;
+      }
+
+      @media screen and (min-width: breakpoints.$medium) {
+        padding: 8px 0;
+      }
+
+      @media screen and (min-width: breakpoints.$x-large) {
+        padding: 12px 0;
+      }
+
+      @media screen and (min-width: breakpoints.$x-large) {
+        margin: 32px;
+      }
 
       > div {
-        margin: 8px;
+        margin: 12px 12px 8px;
+        height: 64px;
+
+        @media screen and (min-width: breakpoints.$small) {
+          height: initial;
+        }
+
+        @media screen and (min-width: breakpoints.$medium) {
+          margin: 8px 32px;
+        }
+
+        @media screen and (min-width: breakpoints.$large) {
+          margin: 8px 36px;
+        }
+
+        > div {
+          width: 64px;
+
+          @media screen and (min-width: breakpoints.$small) {
+            width: 72px;
+          }
+
+          @media screen and (min-width: breakpoints.$large) {
+            width: initial;
+          }
+        }
 
         .nextjs {
           background-color: white;
@@ -32,6 +86,22 @@
 
       > p {
         font-weight: 600;
+        font-size: 0.875rem;
+        max-width: 80px;
+        text-align: center;
+
+        @media screen and (min-width: breakpoints.$small) {
+          font-size: 1rem;
+          max-width: initial;
+        }
+
+        @media screen and (min-width: breakpoints.$medium) {
+          max-width: 92px;
+        }
+
+        @media screen and (min-width: breakpoints.$large) {
+          max-width: initial;
+        }
       }
     }
   }

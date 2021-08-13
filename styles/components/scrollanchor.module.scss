@@ -1,10 +1,22 @@
+@use '../partials/breakpoints';
 @use '../partials/colors';
 
 .anchor {
-  position: fixed;
-  top: 14vh;
-  right: 4%;
-  width: 100px;
+  position: initial;
+  top: 96px;
+  right: 2%;
+  font-size: 0.875rem;
+  font-weight: 500;
+  z-index: 10;
+
+  @media screen and (min-width: breakpoints.$medium) {
+    position: fixed;
+  }
+
+  @media screen and (min-width: breakpoints.$large) {
+    right: 3%;
+    font-size: 1rem;
+  }
 
   > li.link {
     .activeLink > p {
@@ -16,7 +28,6 @@
       cursor: pointer;
       padding: 12px;
       text-align: center;
-      font-weight: 500;
       background-color: colors.$black-pearl-lite;
 
       &:hover {

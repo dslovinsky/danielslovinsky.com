@@ -8,8 +8,8 @@ export default function Portfolio({...props}) {
   return (
     <div {...props} className={`${styles.section}`}>
       <h1 className="text-3xl my-8 font-bold self-center">— Portfolio —</h1>
-      <div className={`${styles.card} h-2/6`}>
-        <div className={`${styles.site_image} w-1/2 relative h-full`}>
+      <div className={`${styles.card}`}>
+        <div className={`${styles.site_image}`}>
           <Link href="https://verd.es/">
             <a>
               <Image
@@ -25,11 +25,11 @@ export default function Portfolio({...props}) {
           <div>
             <Link href="https://verd.es/">
               <a>
-                <h3 className="text-4xl font-bold underline">Verd.es</h3>
+                <h3 className="text-3xl md:text-4xl font-bold underline">Verd.es</h3>
               </a>
             </Link>
           </div>
-          <ul>
+          <ul className="2xl:text-lg">
             <li>
               <p>
                 I work with a small team to create a service that provides users
@@ -52,7 +52,7 @@ export default function Portfolio({...props}) {
             <li>
               <p>
                 <span className="underline">Tools used</span>: Next.js, React,
-                TypeScript, JavaScript, and Tailwind
+                TypeScript, JavaScript, Tailwind, GoogleMaps API, and more
               </p>
             </li>
           </ul>

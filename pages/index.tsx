@@ -1,3 +1,4 @@
+import {useMediaQuery} from '@material-ui/core';
 import {NextSeo} from 'next-seo';
 
 import GoL from '@components/Animations/GoL';
@@ -20,13 +21,14 @@ export default function Home() {
   const calcW = Math.ceil(width / 100) * 10;
   const calcH = Math.ceil(height / 100) * 10;
 
+  const isDesktop = useMediaQuery('(min-width: 768px');
+
   return (
     <>
       <NextSeo title="Daniel Slovinsky | Front-end Web Developer" />
       <main className={styles.main}>
-        <NavBar />
-        <ScrollAnchor />
-        <Title id="Home" className="h-screen" />
+        <NavBar displayMenu={!isDesktop} anchorLinks />
+        {isDesktop && <ScrollAnchor/>}
         {process.env.NODE_ENV === 'production' && width ? (
           <GoL
             key={`${calcW}${calcH}`}
@@ -34,11 +36,12 @@ export default function Home() {
             height={calcH}
             resolution={10}
             streak={0.5}
+            className="h-screen"
           />
         ) : (
           <div className="h-screen" />
         )}
-        <div className={styles.divide} />
+        <Title id="Home" className="h-screen" />
         <About id="About" />
         <Portfolio id="Portfolio" />
         <Skills id="Skills" />
