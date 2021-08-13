@@ -1,27 +1,60 @@
 @use '../partials/colors';
+@use '../partials/breakpoints';
 
 .section {
   display: flex;
   flex-direction: column;
-  height: 75vh;
+  min-height: 75vh;
+
+  @media screen and (min-width: breakpoints.$large) {
+    height: 75vh;
+  }
 
   .card {
     background-color: colors.$black-pearl-lite;
-    margin: 24px calc(5% + 100px) 24px 24px;
     min-height: 72px;
+    margin: 12px 0;
+
+    @media screen and (min-width: breakpoints.$medium) {
+      margin: 24px calc(3% + 84px) 24px 24px;
+    }
+
+    @media screen and (min-width: breakpoints.$large) {
+      margin-right: calc(4% + 94px);
+    }
 
     &:first-of-type {
-      min-height: 316px;
+      @media screen and (min-width: breakpoints.$large) {
+        height: 51%;
+      }
     }
 
     .site_image {
-      float: left;
-      clip-path: polygon(0% 0%, 95% 0%, 65% 100%, 0% 100%);
-      shape-outside: polygon(0% 0%, 100% 0%, 70% 100%, 0% 100%);
+      position: relative;
+      height: 25vh;
+      margin: 0 4%;
+
+      @media screen and (min-width: breakpoints.$large) {
+        margin: 0;
+        height: 100%;
+        width: 50%;
+        float: left;
+        clip-path: polygon(0% 0%, 95% 0%, 65% 100%, 0% 100%);
+        shape-outside: polygon(0% 0%, 100% 0%, 70% 100%, 0% 100%);
+      }
     }
 
     .paragraphs {
-      padding: 8px 32px;
+      padding: 8px 20px;
+      font-size: 0.9375rem;
+
+      @media screen and (min-width: breakpoints.$x-small) {
+        font-size: 1rem;
+      }
+
+      @media screen and (min-width: breakpoints.$small) {
+        padding: 8px 36px;
+      }
 
       > div {
         display: flex;
