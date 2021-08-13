@@ -107,6 +107,7 @@ nav.navbar {
 
   > ul {
     padding: 0;
+    min-width: 85px;
 
     > li.social_item {
       @media screen and (min-width: breakpoints.$small) {

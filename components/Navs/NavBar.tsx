@@ -1,6 +1,6 @@
 import {IconName} from '@fortawesome/free-brands-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {Menu, useMediaQuery} from '@material-ui/core';
+import {Menu} from '@material-ui/core';
 import Link from 'next/link';
 import Image from 'next/image';
 import {useState} from 'react';
@@ -43,10 +43,8 @@ const SocialLinks = () => (
   </>
 );
 
-export default function NavBar({...props}) {
+export default function NavBar({displayMenu, anchorLinks, ...props}: {displayMenu: boolean, anchorLinks?: boolean}) {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement>();
-
-  const isDesktop = useMediaQuery('(min-width: 768px');
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(e.currentTarget);
@@ -81,7 +79,7 @@ export default function NavBar({...props}) {
             </a>
           </Link>
         </li>
-        {!isDesktop && (
+        {displayMenu && (
           <li>
             <button onClick={handleClick} className={styles.bars}>
               <FontAwesomeIcon icon="bars" height={16} width={14} />
@@ -93,7 +91,7 @@ export default function NavBar({...props}) {
               transitionDuration={0}
               className={styles.menu}>
               <SocialLinks />
-              <ScrollAnchor onClick={handleClose} />
+              {anchorLinks && <ScrollAnchor onClick={handleClose} />}
             </Menu>
           </li>
         )}
