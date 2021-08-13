@@ -4,12 +4,17 @@ import styles from 'styles/components/scrollanchor.module.scss';
 
 const sections = ['Home', 'About', 'Portfolio', 'Skills', 'Contact'];
 
-export default function Anchor() {
+export default function Anchor({onClick}: {onClick?: () => void}) {
   return (
     <ul className={styles.anchor}>
       {sections.map((sect) => (
         <li key={sect} className={styles.link}>
-          <AnchorLink to={sect} spy={true} smooth={true} activeClass={styles.activeLink}>
+          <AnchorLink
+            onClick={onClick}
+            to={sect}
+            spy={true}
+            smooth={true}
+            activeClass={styles.activeLink}>
             <p>{sect}</p>
           </AnchorLink>
         </li>

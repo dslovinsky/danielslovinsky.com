@@ -1,1 +1,5 @@
-export {faExclamationTriangle, faChevronUp} from '@fortawesome/free-solid-svg-icons';
+export {
+  faBars,
+  faChevronUp,
+  faExclamationTriangle,
+} from '@fortawesome/free-solid-svg-icons';

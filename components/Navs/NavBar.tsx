@@ -1,7 +1,11 @@
 import {IconName} from '@fortawesome/free-brands-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {Menu} from '@material-ui/core';
 import Link from 'next/link';
 import Image from 'next/image';
+import {useState} from 'react';
+
+import ScrollAnchor from '@components/Navs/ScrollAnchor';
 
 import styles from 'styles/components/navbar.module.scss';
 
@@ -18,7 +22,38 @@ const links = [
   },
 ];
 
-export default function NavBar({...props}) {
+const SocialLinks = () => (
+  <>
+    {links.map(({name, url, icon}) => (
+      <li key={name} className={styles.social_item}>
+        <Link href={url}>
+          <a className={styles.social}>
+            <div>
+              <FontAwesomeIcon
+                icon={['fab', icon]}
+                width={22}
+                height={22}
+                title={name}
+              />
+            </div>
+          </a>
+        </Link>
+      </li>
+    ))}
+  </>
+);
+
+export default function NavBar({displayMenu, anchorLinks, ...props}: {displayMenu: boolean, anchorLinks?: boolean}) {
+  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement>();
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(e.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(undefined);
+  };
+
   return (
     <nav {...props} className={styles.navbar}>
       <Link href="/">
@@ -34,22 +69,7 @@ export default function NavBar({...props}) {
         </a>
       </Link>
       <ul>
-        {links.map(({name, url, icon}) => (
-          <li key={name}>
-            <Link href={url}>
-              <a className={styles.social}>
-                <div>
-                  <FontAwesomeIcon
-                    icon={['fab', icon]}
-                    width={22}
-                    height={22}
-                    title={name}
-                  />
-                </div>
-              </a>
-            </Link>
-          </li>
-        ))}
+        <SocialLinks />
         <li>
           <Link href="/contact">
             <a>
@@ -59,6 +79,22 @@ export default function NavBar({...props}) {
             </a>
           </Link>
         </li>
+        {displayMenu && (
+          <li>
+            <button onClick={handleClick} className={styles.bars}>
+              <FontAwesomeIcon icon="bars" height={16} width={14} />
+            </button>
+            <Menu
+              open={!!anchorEl}
+              onClose={handleClose}
+              anchorEl={anchorEl}
+              transitionDuration={0}
+              className={styles.menu}>
+              <SocialLinks />
+              {anchorLinks && <ScrollAnchor onClick={handleClose} />}
+            </Menu>
+          </li>
+        )}
       </ul>
     </nav>
   );
