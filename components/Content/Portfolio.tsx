@@ -29,7 +29,7 @@ export default function Portfolio({...props}) {
               </a>
             </Link>
           </div>
-          <ul>
+          <ul className="2xl:text-lg">
             <li>
               <p>
                 I work with a small team to create a service that provides users

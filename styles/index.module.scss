@@ -13,11 +13,15 @@
     display: flex;
     flex-direction: column;
     height: 100vh; //change to vh units later
-    justify-content: center;
+    justify-content: flex-end;
     position: absolute;
     width: 100%;
 
-    @media screen and (min-width: breakpoints.$medium) {
+    @media screen and (min-height: breakpoints.$x-small) {
+      justify-content: center;
+    }
+
+    @media screen and (min-width: breakpoints.$medium) and (min-height: breakpoints.$x-small) {
       left: 70px;
       width: auto;
     }

@@ -3,10 +3,11 @@
 
 .anchor {
   position: initial;
-  top: 14vh;
+  top: 96px;
   right: 2%;
   font-size: 0.875rem;
   font-weight: 500;
+  z-index: 10;
 
   @media screen and (min-width: breakpoints.$medium) {
     position: fixed;

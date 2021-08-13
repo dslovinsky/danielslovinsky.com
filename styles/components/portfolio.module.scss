@@ -7,7 +7,7 @@
   min-height: 75vh;
 
   @media screen and (min-width: breakpoints.$large) {
-    height: 75vh;
+    height: 646px;
   }
 
   .card {
@@ -25,7 +25,7 @@
 
     &:first-of-type {
       @media screen and (min-width: breakpoints.$large) {
-        height: 51%;
+        height: 55%;
       }
     }
 
@@ -59,6 +59,11 @@
       > div {
         display: flex;
         justify-content: center;
+        margin: 8px 0px 12px;
+
+        @media screen and (min-width: breakpoints.$large) {
+          margin: 0;
+        }
 
         h3 {
           text-shadow: 2px 2px red;

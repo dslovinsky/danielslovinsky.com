@@ -46,7 +46,7 @@ const SocialLinks = () => (
 export default function NavBar({...props}) {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement>();
 
-  const isMobile = useMediaQuery('(max-width: 768px');
+  const isDesktop = useMediaQuery('(min-width: 768px');
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(e.currentTarget);
@@ -81,7 +81,7 @@ export default function NavBar({...props}) {
             </a>
           </Link>
         </li>
-        {isMobile && (
+        {!isDesktop && (
           <li>
             <button onClick={handleClick} className={styles.bars}>
               <FontAwesomeIcon icon="bars" height={16} width={14} />
