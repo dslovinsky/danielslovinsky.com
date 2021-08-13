@@ -21,14 +21,14 @@ export default function Home() {
   const calcW = Math.ceil(width / 100) * 10;
   const calcH = Math.ceil(height / 100) * 10;
 
-  const isMobile = useMediaQuery('(max-width: 768px');
+  const isDesktop = useMediaQuery('(min-width: 768px');
 
   return (
     <>
       <NextSeo title="Daniel Slovinsky | Front-end Web Developer" />
       <main className={styles.main}>
-        <NavBar />
-        {!isMobile && <ScrollAnchor />}
+        <NavBar displayMenu={!isDesktop} anchorLinks />
+        {isDesktop && <ScrollAnchor/>}
         {process.env.NODE_ENV === 'production' && width ? (
           <GoL
             key={`${calcW}${calcH}`}
