@@ -6,7 +6,8 @@
     "dev": "next",
     "lint": "eslint --ext .ts,.tsx",
     "prod": "NODE_ENV=production next start",
-    "start": "next start"
+    "start": "next start",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
@@ -44,11 +45,16 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^7.0.1",
+    "lint-staged": "^11.1.2",
     "postcss": "^8.3.5",
     "prettier": "^2.3.2",
     "sass": "^1.35.1",
     "tailwindcss": "^2.2.4",
     "typescript": "^4.3.4"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "lint-staged": {
+    "*.{ts,tsx}": "eslint --cache --fix"
+  }
 }
