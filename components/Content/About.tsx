@@ -5,19 +5,19 @@ import styles from 'styles/components/about.module.scss';
 
 export default function About({...props}) {
   return (
-    <div {...props} className={`${styles.section}`}>
+    <div {...props} className={`${styles.section} flex flex-col items-center`}>
       <h1 className="text-3xl my-8 font-bold">— About Me —</h1>
-      <div className={styles.card}>
-        <div className={styles.photo_container}>
+      <div className={`${styles.card} flex p-6 items-center flex-col`}>
+        <div className={`${styles.photo_container} flex rounded-full bg-white`}>
           <Image
             src={selfPhoto}
             alt="Daniel Slovinsky"
-            className={styles.photo}
+            className="rounded-full"
             height={200}
             width={200}
           />
         </div>
-        <div className={styles.paragraphs}>
+        <div className={`${styles.paragraphs} flex flex-col justify-between py-4 text-center`}>
           <p>
             Ever since I discovered how to automate parts of a previous job, I
             have become obsessed with streamlining and optimizing tasks and

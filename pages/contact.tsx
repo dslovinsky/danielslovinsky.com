@@ -10,7 +10,7 @@ export default function ContactPage() {
   const overMedium = useMediaQuery('(min-width: 576px');
 
   return (
-    <main className={styles.main}>
+    <main className={`${styles.main} flex flex-col overflow-x-hidden relative`}>
       <NextSeo title="Contact Me | Daniel Slovinsky | Front-end Web Developer" />
       <NavBar displayMenu={!overMedium} />
       <Contact />
