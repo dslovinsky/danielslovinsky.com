@@ -4,7 +4,7 @@
 .section {
   display: flex;
   flex-direction: column;
-  min-height: 66vh;
+  min-height: calc(var(--vh, 1vh) * 66);
 
   > .skills_container {
     display: flex;

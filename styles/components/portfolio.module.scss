@@ -4,7 +4,7 @@
 .section {
   display: flex;
   flex-direction: column;
-  min-height: 75vh;
+  min-height: calc(var(--vh, 1vh) * 75);
 
   @media screen and (min-width: breakpoints.$large) {
     height: 646px;
@@ -31,7 +31,7 @@
 
     .site_image {
       position: relative;
-      height: 25vh;
+      height: calc(var(--vh, 1vh) * 25);
       margin: 0 4%;
 
       @media screen and (min-width: breakpoints.$large) {
