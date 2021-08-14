@@ -29,7 +29,7 @@ export default function Home() {
       <main className={`${styles.main} flex flex-col overflow-x-hidden relative`}>
         <NavBar displayMenu={!isDesktop} anchorLinks />
         {isDesktop && <ScrollAnchor />}
-        {process.env.NODE_ENV === 'production' && width ? (
+        {width ? (
           <GoL
             key={`${calcW}${calcH}`}
             width={calcW}
