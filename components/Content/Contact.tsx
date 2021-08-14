@@ -4,7 +4,7 @@ import {useForm} from 'react-hook-form';
 import isEmail from 'validator/lib/isEmail';
 
 import ErrorMessages from '@components/Dialogs/ErrorMessages';
-import Email from '@interfaces/email';
+import {Email} from '@interfaces/email';
 
 import styles from 'styles/components/contact.module.scss';
 
@@ -115,8 +115,7 @@ export default function Contact({...props}) {
               },
               maxLength: {
                 value: 4400,
-                message:
-                  'That\'s a lot to read! Please keep it more concise',
+                message: 'That\'s a lot to read! Please keep it more concise',
               },
             })}
             placeholder="Message"

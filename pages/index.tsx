@@ -28,7 +28,7 @@ export default function Home() {
       <NextSeo title="Daniel Slovinsky | Front-end Web Developer" />
       <main className={styles.main}>
         <NavBar displayMenu={!isDesktop} anchorLinks />
-        {isDesktop && <ScrollAnchor/>}
+        {isDesktop && <ScrollAnchor />}
         {process.env.NODE_ENV === 'production' && width ? (
           <GoL
             key={`${calcW}${calcH}`}

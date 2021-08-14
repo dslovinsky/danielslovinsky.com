@@ -43,7 +43,14 @@ const SocialLinks = () => (
   </>
 );
 
-export default function NavBar({displayMenu, anchorLinks, ...props}: {displayMenu: boolean, anchorLinks?: boolean}) {
+export default function NavBar({
+  displayMenu,
+  anchorLinks,
+  ...props
+}: {
+  displayMenu: boolean;
+  anchorLinks?: boolean;
+}) {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement>();
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
