@@ -23,13 +23,14 @@ export default function ErrorMessages({...props}: Props<FieldValues, TAs>) {
         Object.entries(messages).map(([type, message]) => (
           <div
             key={type}
-            className={`${styles.error_message} flex items-center`}>
+            className={`${styles.error_message} flex items-center my-1.5`}>
             <FontAwesomeIcon
               height={18}
               width={18}
               icon={'exclamation-triangle'}
+              className="mb-0.5"
             />
-            <p>{message}</p>
+            <p className="mx-2">{message}</p>
           </div>
         ))
       }

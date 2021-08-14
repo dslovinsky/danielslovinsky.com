@@ -43,15 +43,18 @@ export default function Contact({...props}) {
   };
 
   return (
-    <div {...props} className={`${styles.section}`}>
+    <div {...props} className={`${styles.section} flex flex-col`}>
       <h1 className="text-3xl my-8 font-bold self-center">— Contact Me —</h1>
-      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        <p>
+      <form
+        className={`${styles.form} flex flex-col self-center m-3 md:px-2`}
+        onSubmit={handleSubmit(onSubmit)}>
+        <p className="text-center my-3 lg:m-6">
           Shoot me a message any time with comments, questions, offers, or just
           to say hi. While I&apos;m primarily interested in full-time
           employment, I&apos;m open to opportunities of any kind.
         </p>
-        <div className={styles.toprow}>
+        <div
+          className={`${styles.toprow} flex justify-between flex-col md:flex-row`}>
           <TextField
             {...register('name', {
               required: 'A name is required',
@@ -98,14 +101,16 @@ export default function Contact({...props}) {
                 message: 'Subject is too long',
               },
             })}
-            className={errors.subject ? styles.error_div : undefined}
+            className={`${
+              errors.subject ? styles.error_div : undefined
+            } w-full`}
             placeholder="Subject"
           />
         </div>
         <div
           className={`${styles.message} ${
             errors.message ? styles.error : undefined
-          }`}>
+          } relative`}>
           <TextareaAutosize
             {...register('message', {
               required: 'A message is required',
@@ -119,6 +124,7 @@ export default function Contact({...props}) {
               },
             })}
             placeholder="Message"
+            className="text-white block p-2.5 w-full"
             minRows={6}
           />
         </div>
