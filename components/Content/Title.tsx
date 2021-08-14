@@ -8,8 +8,8 @@ export default function Title({...props}) {
   const typedRef = useRef<any>(null); // ref type not provided
 
   return (
-    <div {...props} className={styles.profile_container}>
-      <div className={`${styles.profile} lg:w-auto`}>
+    <div {...props} className={`${styles.profile_container} flex flex-col justify-end absolute w-full`}>
+      <div className={`${styles.profile} flex flex-col items-start lg:w-auto`}>
         <div
           className={`${styles.name} text-5xl flex flex-col text-left mb-6 lg:mb-0 lg:flex-row m-6 ml-0 lg:m-0`}>
           <div>
