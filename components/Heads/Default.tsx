@@ -30,7 +30,6 @@ export default function DefaultHead() {
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,700&family=Roboto:wght@300;400;500;700&display=swap"
         rel="stylesheet"
       />
-      <link key="custom-fonts" href="/fonts/custom.css" rel="stylesheet" />
       <style key="fontawesome" dangerouslySetInnerHTML={{__html: dom.css()}} />
       <noscript>You need to enable Javascript to use this app.</noscript>
     </Head>
