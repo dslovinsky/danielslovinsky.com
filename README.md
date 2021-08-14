@@ -9,6 +9,5 @@ npm run dev
 ### Production
 
 ```
-npm run build
-npm run prod
+npm run build && npm run prod
 ```
