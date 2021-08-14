@@ -26,20 +26,19 @@ export default function Home() {
   return (
     <>
       <NextSeo title="Daniel Slovinsky | Front-end Web Developer" />
-      <main className={`${styles.main} flex flex-col overflow-x-hidden relative`}>
+      <main
+        className={`${styles.main} flex flex-col overflow-x-hidden relative`}>
         <NavBar displayMenu={!isDesktop} anchorLinks />
         {isDesktop && <ScrollAnchor />}
-        {width ? (
+        {width && (
           <GoL
             key={`${calcW}${calcH}`}
             width={calcW}
             height={calcH}
             resolution={10}
             streak={0.5}
-            className="h-screen"
+            className="absolute h-screen"
           />
-        ) : (
-          <div className="h-screen" />
         )}
         <Title id="Home" className="h-screen" />
         <About id="About" />

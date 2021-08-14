@@ -21,6 +21,8 @@ interface Props extends CanvasHTMLAttributes<HTMLCanvasElement> {
 
 const mod = (a: number, b: number) => ((a % b) + b) % b;
 
+// runs a simulation of Conway's Game of Life with an initial position that
+//  spreads Gosper gliders evenly over the page's topmost full viewport
 function CanvasGoL({
   height,
   width,
