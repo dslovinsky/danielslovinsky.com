@@ -17,7 +17,8 @@ export default function About({...props}) {
             width={200}
           />
         </div>
-        <div className={`${styles.paragraphs} flex flex-col justify-between py-4 text-center`}>
+        <div
+          className={`${styles.paragraphs} flex flex-col justify-between py-4 text-center`}>
           <p>
             Ever since I discovered how to automate parts of a previous job, I
             have become obsessed with streamlining and optimizing tasks and

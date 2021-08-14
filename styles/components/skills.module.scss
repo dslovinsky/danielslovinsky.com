@@ -2,20 +2,14 @@
 @use '../partials/breakpoints.scss';
 
 .section {
-  display: flex;
-  flex-direction: column;
   min-height: calc(var(--vh, 1vh) * 66);
 
   > .skills_container {
-    display: flex;
-    flex-wrap: wrap;
     background-color: colors.$black-pearl-lite;
-    justify-content: space-evenly;
 
     @media screen and (min-width: breakpoints.$medium) {
-      justify-content: space-around;
-      margin: 0 calc(3% + 84px);
       background-color: initial;
+      margin: 0 calc(3% + 84px);
     }
 
     @media screen and (min-width: breakpoints.$large) {
@@ -27,12 +21,7 @@
     }
 
     > .skill {
-      align-items: center;
       background-color: colors.$black-pearl-lite;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      margin: 4px;
 
       @media screen and (min-width: breakpoints.$small) {
         margin: 12px;
@@ -44,26 +33,12 @@
 
       @media screen and (min-width: breakpoints.$x-large) {
         padding: 12px 0;
-      }
-
-      @media screen and (min-width: breakpoints.$x-large) {
         margin: 32px;
       }
 
       > div {
-        margin: 12px 12px 8px;
-        height: 64px;
-
         @media screen and (min-width: breakpoints.$small) {
           height: initial;
-        }
-
-        @media screen and (min-width: breakpoints.$medium) {
-          margin: 8px 32px;
-        }
-
-        @media screen and (min-width: breakpoints.$large) {
-          margin: 8px 36px;
         }
 
         > div {
@@ -85,10 +60,7 @@
       }
 
       > p {
-        font-weight: 600;
-        font-size: 0.875rem;
         max-width: 80px;
-        text-align: center;
 
         @media screen and (min-width: breakpoints.$small) {
           font-size: 1rem;

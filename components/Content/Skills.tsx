@@ -52,12 +52,15 @@ const skillSet = [
 
 export default function Skills({...props}) {
   return (
-    <div {...props} className={`${styles.section}`}>
+    <div {...props} className={`${styles.section} flex flex-col`}>
       <h1 className="text-3xl my-8 font-bold self-center">— Skills —</h1>
-      <div className={styles.skills_container}>
+      <div
+        className={`${styles.skills_container} flex flex-wrap justify-evenly md:justify-around`}>
         {skillSet.map(({name, iconPath, className}) => (
-          <div key={name} className={styles.skill}>
-            <div>
+          <div
+            key={name}
+            className={`${styles.skill} flex items-center flex-col justify-center m-1 md:py-2`}>
+            <div className="mt-3 mx-3 mb-2 h-16 md:my-2 md:mx-8 lg:mx-9">
               <Image
                 src={`/icons/skills/${iconPath}`}
                 width={85}
@@ -67,7 +70,7 @@ export default function Skills({...props}) {
                 unoptimized
               />
             </div>
-            <p>{name}</p>
+            <p className="font-semibold text-sm text-center">{name}</p>
           </div>
         ))}
       </div>
