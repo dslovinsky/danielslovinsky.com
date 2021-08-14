@@ -88,7 +88,7 @@ function CanvasGoL({
       row.forEach((_col, j) => {
         ctx.beginPath();
         ctx.fillStyle = g[i][j]
-          ? 'rgba(255, 255, 255, 0.05)'
+          ? 'rgba(255, 255, 255, 0.2)'
           : `rgba(13, 17, 22, ${opac})`;
         ctx.fillRect(j * resolution, i * resolution, resolution, resolution);
       });
@@ -103,18 +103,25 @@ function CanvasGoL({
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const renderCallback = () => {
-      render(grid, ctx);
-      requestAnimationFrame(renderCallback);
+    let prevTime: number;
+
+    const renderCallback = (timestamp: number) => {
+      if (prevTime === undefined) {
+        prevTime = timestamp;
+      }
+
+      if (Math.round(timestamp - prevTime) >= interval) {
+        prevTime = timestamp;
+        grid = nextFrame(grid, numRows, numCols);
+        render(grid, ctx);
+      }
+
+      raf = requestAnimationFrame(renderCallback);
     };
 
-    const frame = setInterval(() => {
-      grid = nextFrame(grid, numRows, numCols);
-    }, interval);
+    let raf = requestAnimationFrame(renderCallback);
 
-    requestAnimationFrame(renderCallback);
-
-    return () => clearInterval(frame);
+    return () => cancelAnimationFrame(raf);
   }, []);
 
   return <canvas {...props} ref={canvasRef} />;
