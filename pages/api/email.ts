@@ -1,7 +1,7 @@
 import {NextApiRequest, NextApiResponse} from 'next';
 import sgMail from '@sendgrid/mail';
 
-import EmailType from '@interfaces/email';
+import {Email as EmailType} from '@interfaces/email';
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
