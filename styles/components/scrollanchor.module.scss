@@ -2,20 +2,10 @@
 @use '../partials/colors';
 
 .anchor {
-  position: initial;
-  top: 96px;
   right: 2%;
-  font-size: 0.875rem;
-  font-weight: 500;
-  z-index: 10;
-
-  @media screen and (min-width: breakpoints.$medium) {
-    position: fixed;
-  }
 
   @media screen and (min-width: breakpoints.$large) {
     right: 3%;
-    font-size: 1rem;
   }
 
   > li.link {
@@ -25,9 +15,6 @@
     }
 
     p {
-      cursor: pointer;
-      padding: 12px;
-      text-align: center;
       background-color: colors.$black-pearl-lite;
 
       &:hover {

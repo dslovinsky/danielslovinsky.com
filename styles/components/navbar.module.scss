@@ -23,6 +23,9 @@ nav.navbar {
   > ul {
     > li {
       &.social_item {
+        display: none;
+        margin: 12px;
+
         @media screen and (min-width: breakpoints.$small) {
           display: flex;
         }
@@ -92,6 +95,7 @@ nav.navbar {
         display: flex;
         justify-content: center;
         color: colors.$white-smoke;
+        width: auto;
 
         svg {
           width: 22px;

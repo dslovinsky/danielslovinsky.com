@@ -25,7 +25,7 @@ const links = [
 const SocialLinks = () => (
   <>
     {links.map(({name, url, icon}) => (
-      <li key={name} className={`${styles.social_item} m-3 hidden`}>
+      <li key={name} className={styles.social_item}>
         <Link href={url}>
           <a className={styles.social}>
             <div className="flex items-center justify-center h-11 w-11">
