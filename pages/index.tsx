@@ -10,7 +10,7 @@ import Portfolio from '@components/Content/Portfolio';
 import NavBar from '@components/Navs/NavBar';
 import ScrollAnchor from '@components/Navs/ScrollAnchor';
 import BackToTop from '@components/Navs/BackToTop';
-import useWindowDimensions from '@utils/useWindowDimensions';
+import useWindowDimensions from '@hooks/useWindowDimensions';
 
 import styles from 'styles/index.module.scss';
 
@@ -28,7 +28,7 @@ export default function Home() {
       <NextSeo title="Daniel Slovinsky | Front-end Web Developer" />
       <main className={styles.main}>
         <NavBar displayMenu={!isDesktop} anchorLinks />
-        {isDesktop && <ScrollAnchor/>}
+        {isDesktop && <ScrollAnchor />}
         {process.env.NODE_ENV === 'production' && width ? (
           <GoL
             key={`${calcW}${calcH}`}

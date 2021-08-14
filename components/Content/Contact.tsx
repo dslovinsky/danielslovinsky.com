@@ -4,11 +4,11 @@ import {useForm} from 'react-hook-form';
 import isEmail from 'validator/lib/isEmail';
 
 import ErrorMessages from '@components/Dialogs/ErrorMessages';
-import Email from '@interfaces/email';
+import {Email} from '@interfaces/email';
 
 import styles from 'styles/components/contact.module.scss';
 
-const notEmpty = (obj: Object) => {
+const notEmpty = (obj: Record<string, unknown>) => {
   // @see https://stackoverflow.com/a/59787784
   for (const _i in obj) return true;
   return false;
@@ -28,7 +28,7 @@ export default function Contact({...props}) {
 
   const onSubmit = async (data: Email) => {
     try {
-      const result = await fetch(`/api/email`, {
+      const result = await fetch('/api/email', {
         method: 'POST',
         body: JSON.stringify(data),
       });
@@ -48,8 +48,8 @@ export default function Contact({...props}) {
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <p>
           Shoot me a message any time with comments, questions, offers, or just
-          to say hi. While I'm primarily interested in full-time employment, I'm
-          open to opportunities of any kind.
+          to say hi. While I&apos;m primarily interested in full-time
+          employment, I&apos;m open to opportunities of any kind.
         </p>
         <div className={styles.toprow}>
           <TextField
@@ -115,7 +115,7 @@ export default function Contact({...props}) {
               },
               maxLength: {
                 value: 4400,
-                message: "That's a lot to read! Please keep it more concise",
+                message: 'That\'s a lot to read! Please keep it more concise',
               },
             })}
             placeholder="Message"

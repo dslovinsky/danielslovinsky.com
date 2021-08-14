@@ -18,7 +18,7 @@ nav.navbar {
   > .home_link {
     margin: 12px auto 12px 12px;
 
-    @media screen and (min-width: breakpoints.$medium) and (min-height: breakpoints.$x-small){
+    @media screen and (min-width: breakpoints.$medium) and (min-height: breakpoints.$x-small) {
       margin: 24px auto 24px 12px;
     }
 

@@ -24,12 +24,12 @@ export default function About({...props}) {
             business operations to create smooth and efficient user experiences.
           </p>
           <p>
-            As a driven, self-taught web developer, I've picked up many skills
-            in a short time to best put that dedication into practice.
+            As a driven, self-taught web developer, I&apos;ve picked up many
+            skills in a short time to best put that dedication into practice.
           </p>
           <p>
-            But learning is as much my passion as coding is, and I'm always looking
-            for more opportunities to work with new teams, build upon my
+            But learning is as much my passion as coding is, and I&apos;m always
+            looking for more opportunities to work with new teams, build upon my
             experience with modern web development tools, and expand into new
             areas.
           </p>

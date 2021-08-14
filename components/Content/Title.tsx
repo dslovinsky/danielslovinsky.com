@@ -4,16 +4,19 @@ import Typed from 'react-typed';
 import styles from 'styles/index.module.scss';
 
 export default function Title({...props}) {
+  //eslint-disable-next-line @typescript-eslint/no-explicit-any
   const typedRef = useRef<any>(null); // ref type not provided
 
   return (
     <div {...props} className={styles.profile_container}>
       <div className={`${styles.profile} lg:w-auto`}>
-        <div className={`${styles.name} text-5xl flex flex-col text-left mb-6 lg:mb-0 lg:flex-row m-6 ml-0 lg:m-0`}>
+        <div
+          className={`${styles.name} text-5xl flex flex-col text-left mb-6 lg:mb-0 lg:flex-row m-6 ml-0 lg:m-0`}>
           <div>
-            <h1 className="font-medium">Hi, I'm&nbsp;</h1>
+            <h1 className="font-medium">Hi, I&apos;m&nbsp;</h1>
           </div>
-          <div className={`${styles.typed} flex flex-col font-bold antialiased`}>
+          <div
+            className={`${styles.typed} flex flex-col font-bold antialiased`}>
             <Typed
               onComplete={() => typedRef.current.start()}
               showCursor={false}

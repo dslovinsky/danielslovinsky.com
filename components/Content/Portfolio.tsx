@@ -25,7 +25,9 @@ export default function Portfolio({...props}) {
           <div>
             <Link href="https://verd.es/">
               <a>
-                <h3 className="text-3xl md:text-4xl font-bold underline">Verd.es</h3>
+                <h3 className="text-3xl md:text-4xl font-bold underline">
+                  Verd.es
+                </h3>
               </a>
             </Link>
           </div>
@@ -45,8 +47,9 @@ export default function Portfolio({...props}) {
             </li>
             <li>
               <p>
-                I take full advantage of React's state management capabilities
-                to provide complex functionality while minimizing rerenders.
+                I take full advantage of React&apos;s state management
+                capabilities to provide complex functionality while minimizing
+                rerenders.
               </p>
             </li>
             <li>
