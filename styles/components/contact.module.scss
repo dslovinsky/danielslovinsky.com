@@ -106,14 +106,9 @@
       height: 40px;
       margin: 8px 0;
       text-transform: none;
-      transition: border 300ms ease-in 0ms;
-
-      > span {
-        transition: color 300ms ease-in 0ms;
-      }
 
       &.error_button {
-        border-color: rgba(black, 0);
+        border: none;
 
         > span {
           color: rgba(white, 0.5);

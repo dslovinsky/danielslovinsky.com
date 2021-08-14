@@ -67,9 +67,9 @@ export default function Contact({...props}) {
                 message: 'Name is too long',
               },
             })}
+            onInput={() => setSent(false)}
             placeholder="Name"
             className={errors.name ? styles.error_div : undefined}
-            onChange={() => setSent(false)}
           />
           <TextField
             {...register('email', {
