@@ -6,10 +6,10 @@ import styles from 'styles/components/portfolio.module.scss';
 
 export default function Portfolio({...props}) {
   return (
-    <div {...props} className={`${styles.section}`}>
+    <div {...props} className={`${styles.section} flex flex-col`}>
       <h1 className="text-3xl my-8 font-bold self-center">— Portfolio —</h1>
-      <div className={`${styles.card}`}>
-        <div className={`${styles.site_image}`}>
+      <div className={`${styles.card} my-3`}>
+        <div className={`${styles.site_image} relative overflow-hidden lg:w-1/2 lg:float-left`}>
           <Link href="https://verd.es/">
             <a>
               <Image
@@ -21,8 +21,8 @@ export default function Portfolio({...props}) {
             </a>
           </Link>
         </div>
-        <div className={styles.paragraphs}>
-          <div>
+        <div className={`${styles.paragraphs} py-2 px-5`}>
+          <div className="flex justify-center mt-2 mb-3 lg:m-0">
             <Link href="https://verd.es/">
               <a>
                 <h3 className="text-3xl md:text-4xl font-bold underline">

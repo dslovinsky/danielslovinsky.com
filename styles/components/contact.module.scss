@@ -3,17 +3,11 @@
 @use '../partials/breakpoints';
 
 .section {
-  display: flex;
-  flex-direction: column;
   padding: 10% 0;
   min-height: calc(var(--vh, 1vh) * 100);
 
   form {
-    display: flex;
-    flex-direction: column;
-    align-self: center;
     max-width: 800px;
-    margin: 12px;
 
     @media screen and (min-width: breakpoints.$x-small) {
       margin: 12px 16px;
@@ -25,52 +19,27 @@
 
     @media screen and (min-width: breakpoints.$medium) {
       margin: 12px calc(3% + 84px);
-      padding: 0 8px;
     }
 
     @media screen and (min-width: breakpoints.$large) {
       margin: 12px calc(4% + 94px);
     }
 
-    > p {
-      text-align: center;
-      margin: 12px 0;
-
-      @media screen and (min-width: breakpoints.$large) {
-        margin: 24px;
-      }
-    }
-
-    .toprow {
-      display: flex;
-      justify-content: space-between;
-      flex-direction: column;
-
+    .toprow > div {
       @media screen and (min-width: breakpoints.$medium) {
-        flex-direction: row;
+        width: 49.3%;
       }
 
-      > div {
+      &:first-of-type {
+        margin-bottom: 10px;
+
         @media screen and (min-width: breakpoints.$medium) {
-          width: 49.3%;
-        }
-
-        &:first-of-type {
-          margin-bottom: 10px;
-
-          @media screen and (min-width: breakpoints.$medium) {
-            margin: 0;
-          }
+          margin: 0;
         }
       }
-    }
-
-    .subject > div {
-      width: 100%;
     }
 
     .message {
-      position: relative;
       font-family: fonts.$Roboto;
 
       &::before {
@@ -92,7 +61,7 @@
         position: absolute;
         transform: scaleX(0);
         transition: transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
-        border-bottom: 2px solid #3f51b5;
+        border-bottom: 2px solid colors.$free-speech-blue;
         pointer-events: none;
       }
 
@@ -106,10 +75,6 @@
 
       > textarea {
         background-color: colors.$black-pearl-lite;
-        color: white;
-        display: block;
-        padding: 10px;
-        width: 100%;
 
         &:focus-visible {
           outline: none;
@@ -141,14 +106,9 @@
       height: 40px;
       margin: 8px 0;
       text-transform: none;
-      transition: border 300ms ease-in 0ms;
-
-      > span {
-        transition: color 300ms ease-in 0ms;
-      }
 
       &.error_button {
-        border-color: rgba(black, 0);
+        border: none;
 
         > span {
           color: rgba(white, 0.5);
@@ -175,14 +135,8 @@
 
 .error_message {
   color: red;
-  margin: 6px 0;
-
-  > svg {
-    margin-bottom: 2px;
-  }
 
   > p {
     color: rgba(red, 0.8);
-    padding: 0 8px;
   }
 }

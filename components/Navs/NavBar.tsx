@@ -28,12 +28,13 @@ const SocialLinks = () => (
       <li key={name} className={styles.social_item}>
         <Link href={url}>
           <a className={styles.social}>
-            <div>
+            <div className="flex items-center justify-center h-11 w-11">
               <FontAwesomeIcon
                 icon={['fab', icon]}
                 width={22}
                 height={22}
                 title={name}
+                className="text-white h-auto"
               />
             </div>
           </a>
@@ -62,10 +63,12 @@ export default function NavBar({
   };
 
   return (
-    <nav {...props} className={styles.navbar}>
+    <nav
+      {...props}
+      className={`${styles.navbar} flex fixed w-full z-20 px-3 md:absolute md:px-9`}>
       <Link href="/">
         <a className={styles.home_link}>
-          <div>
+          <div className="h-12">
             <Image
               height={44}
               width={44}
@@ -75,20 +78,22 @@ export default function NavBar({
           </div>
         </a>
       </Link>
-      <ul>
+      <ul className="flex items-center">
         <SocialLinks />
-        <li>
+        <li className="flex m-3">
           <Link href="/contact">
             <a>
-              <div className={styles.contact}>
-                <span>Contact</span>
+              <div className={`${styles.contact} px-4 py-2`}>
+                <span className="font-bold">Contact</span>
               </div>
             </a>
           </Link>
         </li>
         {displayMenu && (
-          <li>
-            <button onClick={handleClick} className={styles.bars}>
+          <li className="flex m-3">
+            <button
+              onClick={handleClick}
+              className={`${styles.bars} rounded h-11 w-11`}>
               <FontAwesomeIcon icon="bars" height={16} width={14} />
             </button>
             <Menu

@@ -6,7 +6,8 @@ const sections = ['Home', 'About', 'Portfolio', 'Skills', 'Contact'];
 
 export default function Anchor({onClick}: {onClick?: () => void}) {
   return (
-    <ul className={styles.anchor}>
+    <ul
+      className={`${styles.anchor} static top-24 font-medium z-10 text-sm md:fixed lg:text-base`}>
       {sections.map((sect) => (
         <li key={sect} className={styles.link}>
           <AnchorLink
@@ -15,7 +16,7 @@ export default function Anchor({onClick}: {onClick?: () => void}) {
             spy={true}
             smooth={true}
             activeClass={styles.activeLink}>
-            <p>{sect}</p>
+            <p className="cursor-pointer p-3 text-center">{sect}</p>
           </AnchorLink>
         </li>
       ))}

@@ -3,13 +3,13 @@ import {NextSeo} from 'next-seo';
 
 import GoL from '@components/Animations/GoL';
 import About from '@components/Content/About';
-import Title from '@components/Content/Title';
-import Skills from '@components/Content/Skills';
 import Contact from '@components/Content/Contact';
 import Portfolio from '@components/Content/Portfolio';
+import Skills from '@components/Content/Skills';
+import Title from '@components/Content/Title';
+import BackToTop from '@components/Navs/BackToTop';
 import NavBar from '@components/Navs/NavBar';
 import ScrollAnchor from '@components/Navs/ScrollAnchor';
-import BackToTop from '@components/Navs/BackToTop';
 import useWindowDimensions from '@hooks/useWindowDimensions';
 
 import styles from 'styles/index.module.scss';
@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <>
       <NextSeo title="Daniel Slovinsky | Front-end Web Developer" />
-      <main className={styles.main}>
+      <main className={`${styles.main} flex flex-col overflow-x-hidden relative`}>
         <NavBar displayMenu={!isDesktop} anchorLinks />
         {isDesktop && <ScrollAnchor />}
         {process.env.NODE_ENV === 'production' && width ? (
