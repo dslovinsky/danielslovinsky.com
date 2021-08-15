@@ -1,0 +1,107 @@
+@use '../partials/breakpoints';
+@use '../partials/colors';
+
+nav.navbar {
+  background-color: rgba(colors.$black-pearl, 0.95);
+
+  @media screen and (min-width: breakpoints.$medium) {
+    background-color: rgba(black, 0);
+  }
+
+  > .home_link {
+    margin: 12px auto 12px 12px;
+
+    @media screen and (min-width: breakpoints.$medium) and (min-height: breakpoints.$x-small) {
+      margin: 24px auto 24px 12px;
+    }
+
+    > div {
+      border: solid 2px rgba(red, 0.8);
+    }
+  }
+
+  > ul {
+    > li {
+      &.social_item {
+        display: none;
+        margin: 12px;
+
+        @media screen and (min-width: breakpoints.$small) {
+          display: flex;
+        }
+
+        > .social > div {
+          background-color: colors.$black-pearl;
+          box-shadow: 2px 2px 2px white;
+
+          > svg {
+            width: 22px;
+          }
+
+          &:hover {
+            background-color: white;
+
+            > svg {
+              color: red;
+            }
+          }
+        }
+      }
+
+      div.contact {
+        background-color: colors.$white-smoke;
+        border-radius: 2rem;
+        border: red solid 4px;
+        transition: background-color 100ms ease-in-out;
+
+        &:hover {
+          background-color: red;
+
+          > span {
+            color: colors.$white-smoke;
+          }
+        }
+
+        > span {
+          color: colors.$black-pearl;
+          transition: all 0.1s ease-in-out;
+        }
+      }
+
+      .bars {
+        background-color: colors.$black-pearl;
+        border: solid white 1px;
+        color: colors.$white-smoke;
+      }
+    }
+  }
+}
+
+.menu > div:nth-of-type(3) {
+  border-radius: 0;
+
+  > ul {
+    padding: 0;
+    min-width: 85px;
+
+    > li.social_item {
+      @media screen and (min-width: breakpoints.$small) {
+        display: none;
+      }
+
+      > .social > div {
+        background-color: colors.$black-pearl-lite;
+        min-height: 48px;
+        display: flex;
+        justify-content: center;
+        color: colors.$white-smoke;
+        width: auto;
+
+        svg {
+          width: 22px;
+          height: auto;
+        }
+      }
+    }
+  }
+}

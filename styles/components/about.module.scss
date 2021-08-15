@@ -1,0 +1,53 @@
+@use '../partials/colors';
+@use '../partials/breakpoints';
+
+.section {
+  min-height: calc(var(--vh, 1vh) * 66);
+
+  > .card {
+    background-color: colors.$black-pearl-lite;
+    max-width: 920px;
+
+    @media screen and (min-width: breakpoints.$medium) {
+      margin: 0 calc(3% + 84px);
+    }
+
+    @media screen and (min-width: breakpoints.$large) {
+      margin: 0 calc(4% + 94px);
+    }
+
+    @media screen and (min-width: breakpoints.$x-large) {
+      flex-direction: row;
+      align-items: normal;
+    }
+
+    .photo_container {
+      padding: 5px;
+      border: solid black 1px;
+      min-width: 212px;
+      height: fit-content;
+      width: fit-content;
+    }
+
+    > .paragraphs {
+      font-size: 0.9375rem;
+
+      @media screen and (min-width: breakpoints.$x-small) {
+        font-size: 1rem;
+      }
+
+      @media screen and (min-width: breakpoints.$x-large) {
+        text-align: start;
+        padding: 0 24px;
+      }
+
+      > p {
+        padding-top: 12px;
+
+        @media screen and (min-width: breakpoints.$x-large) {
+          padding-top: 0;
+        }
+      }
+    }
+  }
+}

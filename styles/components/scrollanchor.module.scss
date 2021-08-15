@@ -1,0 +1,26 @@
+@use '../partials/breakpoints';
+@use '../partials/colors';
+
+.anchor {
+  right: 2%;
+
+  @media screen and (min-width: breakpoints.$large) {
+    right: 3%;
+  }
+
+  > li.link {
+    .activeLink > p {
+      background-color: colors.$white-smoke;
+      color: red;
+    }
+
+    p {
+      background-color: colors.$black-pearl-lite;
+
+      &:hover {
+        background-color: red;
+        color: colors.$white-smoke;
+      }
+    }
+  }
+}
