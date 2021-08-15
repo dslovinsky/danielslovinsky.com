@@ -1,6 +1,6 @@
-@use 'partials/fonts';
-@use 'partials/colors';
 @use 'partials/breakpoints';
+@use 'partials/colors';
+@use 'partials/fonts';
 
 .main {
   background-color: colors.$black-pearl;
@@ -14,7 +14,7 @@
 
     @media screen and (min-width: breakpoints.$medium) and (min-height: breakpoints.$x-small) {
       left: 70px;
-      width: auto;
+      width: fit-content;
     }
 
     .profile {
