@@ -40,7 +40,7 @@ export default async function Email(req: NextApiRequest, res: NextApiResponse) {
     }
   };
 
-  send();
+  await send();
 
   res.status(200).json({status: 'success'});
 }
