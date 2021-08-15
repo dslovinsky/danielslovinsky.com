@@ -21,6 +21,8 @@ interface Props extends CanvasHTMLAttributes<HTMLCanvasElement> {
 
 const mod = (a: number, b: number) => ((a % b) + b) % b;
 
+// runs a simulation of Conway's Game of Life with an initial position that
+//  spreads Gosper gliders evenly over the page's topmost full viewport
 function CanvasGoL({
   height,
   width,
@@ -103,16 +105,25 @@ function CanvasGoL({
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const update = () => {
-      grid = nextFrame(grid, numRows, numCols);
-      render(grid, ctx);
+    let prevTime: number;
+
+    const renderCallback = (timestamp: number) => {
+      if (prevTime === undefined) {
+        prevTime = timestamp;
+      }
+
+      if (Math.round(timestamp - prevTime) >= interval) {
+        prevTime = timestamp;
+        grid = nextFrame(grid, numRows, numCols);
+        render(grid, ctx);
+      }
+
+      raf = requestAnimationFrame(renderCallback);
     };
 
-    const frame = setInterval(() => {
-      requestAnimationFrame(update);
-    }, interval);
+    let raf = requestAnimationFrame(renderCallback);
 
-    return () => clearInterval(frame);
+    return () => cancelAnimationFrame(raf);
   }, []);
 
   return <canvas {...props} ref={canvasRef} />;
