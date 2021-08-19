@@ -10,8 +10,6 @@
   }
 
   .profile_container {
-    height: 100vh;
-
     @media screen and (min-height: breakpoints.$x-small) {
       justify-content: center;
     }

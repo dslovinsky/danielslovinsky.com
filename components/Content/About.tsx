@@ -11,7 +11,8 @@ export default function About({...props}) {
         <div className={`${styles.photo_container} flex rounded-full bg-white`}>
           <Image
             src={selfPhoto}
-            alt="Daniel Slovinsky"
+            alt="Photo of Daniel Slovinsky"
+            title="Photo by Jun Woo Kim"
             className="rounded-full"
             height={200}
             width={200}
