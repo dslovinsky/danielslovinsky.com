@@ -4,10 +4,6 @@
 .section {
   min-height: 40rem;
 
-  @media screen and (min-width: breakpoints.$large) {
-    height: 40rem;
-  }
-
   .card {
     background-color: colors.$black-pearl-lite;
     min-height: 72px;
@@ -22,7 +18,7 @@
 
     &:first-of-type {
       @media screen and (min-width: breakpoints.$large) {
-        height: 55%;
+        height: 350px;
       }
     }
 
