@@ -52,7 +52,7 @@ const skillSet = [
 
 export default function Skills({...props}) {
   return (
-    <div {...props} className={`${styles.section} flex flex-col`}>
+    <div {...props} className={`${styles.section} flex flex-col pt-12`}>
       <h1 className="text-3xl my-8 font-bold self-center">— Skills —</h1>
       <div
         className={`${styles.skills_container} flex flex-wrap justify-evenly md:justify-around`}>

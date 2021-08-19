@@ -5,7 +5,7 @@ import styles from 'styles/components/about.module.scss';
 
 export default function About({...props}) {
   return (
-    <div {...props} className={`${styles.section} flex flex-col items-center`}>
+    <div {...props} className={`${styles.section} flex flex-col items-center pt-12`}>
       <h1 className="text-3xl my-8 font-bold">— About Me —</h1>
       <div className={`${styles.card} flex p-6 items-center flex-col`}>
         <div className={`${styles.photo_container} flex rounded-full bg-white`}>

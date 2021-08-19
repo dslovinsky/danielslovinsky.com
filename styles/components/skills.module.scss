@@ -2,7 +2,7 @@
 @use '../partials/breakpoints.scss';
 
 .section {
-  min-height: calc(var(--vh, 1vh) * 66);
+  min-height: 32rem;
 
   > .skills_container {
     background-color: colors.$black-pearl-lite;

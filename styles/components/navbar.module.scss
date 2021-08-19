@@ -8,23 +8,15 @@ nav.navbar {
     background-color: rgba(black, 0);
   }
 
-  > .home_link {
-    margin: 12px auto 12px 12px;
-
-    @media screen and (min-width: breakpoints.$medium) and (min-height: breakpoints.$x-small) {
-      margin: 24px auto 24px 12px;
-    }
-
-    > div {
+  > .home_link  > div {
       border: solid 2px rgba(red, 0.8);
-    }
   }
 
   > ul {
     > li {
       &.social_item {
         display: none;
-        margin: 12px;
+        margin: 0 12px;
 
         @media screen and (min-width: breakpoints.$small) {
           display: flex;

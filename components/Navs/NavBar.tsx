@@ -65,9 +65,9 @@ export default function NavBar({
   return (
     <nav
       {...props}
-      className={`${styles.navbar} flex fixed w-full z-20 px-3 md:absolute md:px-9`}>
+      className={`${styles.navbar} flex fixed w-full z-20 p-3 md:absolute md:px-9 md:py-6`}>
       <Link href="/">
-        <a className={styles.home_link}>
+        <a className={`${styles.home_link} ml-3 mr-auto`}>
           <div className="h-12">
             <Image
               height={44}
@@ -80,7 +80,7 @@ export default function NavBar({
       </Link>
       <ul className="flex items-center">
         <SocialLinks />
-        <li className="flex m-3">
+        <li className="flex mx-3">
           <Link href="/contact">
             <a>
               <div className={`${styles.contact} px-4 py-2`}>
@@ -90,7 +90,7 @@ export default function NavBar({
           </Link>
         </li>
         {displayMenu && (
-          <li className="flex m-3">
+          <li className="flex mx-3">
             <button
               onClick={handleClick}
               className={`${styles.bars} rounded h-11 w-11`}>
