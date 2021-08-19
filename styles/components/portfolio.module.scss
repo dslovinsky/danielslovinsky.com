@@ -49,10 +49,13 @@
           justify-content: center;
           position: absolute;
           text-decoration: underline;
+          text-decoration-color: white;
+          text-underline-offset: 0.188rem;
           text-shadow: 3px 3px 4px colors.$black-pearl;
           transform: translateY(-100%);
           transition: transform 150ms ease-in-out 0s;
           width: 100.3%;
+          -webkit-text-stroke: 0.02rem rgba(colors.$black-pearl-lite, 0.8);
 
           @media screen and (min-width: breakpoints.$large) {
             padding-right: 13%;
