@@ -43,7 +43,7 @@ export default function Contact({...props}) {
   };
 
   return (
-    <div {...props} className={`${styles.section} flex flex-col`}>
+    <div {...props} className={`${styles.section} flex flex-col min-h-screen`}>
       <h1 className="text-3xl my-8 font-bold self-center">— Contact Me —</h1>
       <form
         className={`${styles.form} flex flex-col self-center m-3 md:px-2`}

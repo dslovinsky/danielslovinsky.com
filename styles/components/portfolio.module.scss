@@ -2,10 +2,10 @@
 @use '../partials/breakpoints';
 
 .section {
-  min-height: calc(var(--vh, 1vh) * 75);
+  min-height: 40rem;
 
   @media screen and (min-width: breakpoints.$large) {
-    height: 646px;
+    height: 40rem;
   }
 
   .card {
@@ -27,7 +27,7 @@
     }
 
     .site_image {
-      height: calc(var(--vh, 1vh) * 25);
+      height: 13.5rem;
       margin: 0 4%;
 
       @media screen and (min-width: breakpoints.$large) {

@@ -6,7 +6,7 @@ import styles from 'styles/components/portfolio.module.scss';
 
 export default function Portfolio({...props}) {
   return (
-    <div {...props} className={`${styles.section} flex flex-col`}>
+    <div {...props} className={`${styles.section} flex flex-col pt-12`}>
       <h1 className="text-3xl my-8 font-bold self-center">— Portfolio —</h1>
       <div className={`${styles.card} my-3`}>
         <div className={`${styles.site_image} relative overflow-hidden lg:w-1/2 lg:float-left`}>
