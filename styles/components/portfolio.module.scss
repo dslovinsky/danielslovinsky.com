@@ -38,6 +38,7 @@
           align-items: center;
           background: url('../../public/photos/verdes2.png') rgba(0, 0, 0, 0.5);
           background-blend-mode: soft-light;
+          background-position-y: 15%;
           background-size: cover;
           color: white;
           content: 'Visit Site ➔';
@@ -54,8 +55,7 @@
           width: 100.3%;
 
           @media screen and (min-width: breakpoints.$large) {
-            padding: 0 25%;
-            justify-content: flex-start;
+            padding-right: 13%;
           }
         }
 
