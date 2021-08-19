@@ -5,6 +5,10 @@
 .main {
   background-color: colors.$black-pearl;
 
+  .gol {
+    max-height: calc(var(--vh, 1vh) * 100);
+  }
+
   .profile_container {
     height: calc(var(--vh, 1vh) * 100);
 
