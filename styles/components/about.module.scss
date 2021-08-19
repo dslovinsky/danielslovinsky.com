@@ -2,7 +2,7 @@
 @use '../partials/breakpoints';
 
 .section {
-  min-height: calc(var(--vh, 1vh) * 66);
+  min-height: 38rem;
 
   > .card {
     background-color: colors.$black-pearl-lite;

@@ -37,10 +37,10 @@ export default function Home() {
             height={calcH}
             resolution={10}
             streak={0.5}
-            className="absolute h-screen"
+            className={`${styles.gol} absolute`}
           />
         )}
-        <Title id="Home" className="h-screen" />
+        <Title id="Home" />
         <About id="About" />
         <Portfolio id="Portfolio" />
         <Skills id="Skills" />
