@@ -1,10 +1,7 @@
 import dom from 'fontawesome/fontawesome';
 import Head from 'next/head';
-import useViewHeight from '@hooks/useViewHeight';
 
 export default function DefaultHead() {
-  useViewHeight();
-
   return (
     <Head>
       <link

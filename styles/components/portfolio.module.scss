@@ -4,10 +4,6 @@
 .section {
   min-height: 40rem;
 
-  @media screen and (min-width: breakpoints.$large) {
-    height: 40rem;
-  }
-
   .card {
     background-color: colors.$black-pearl-lite;
     min-height: 72px;
@@ -22,7 +18,7 @@
 
     &:first-of-type {
       @media screen and (min-width: breakpoints.$large) {
-        height: 55%;
+        height: 350px;
       }
     }
 
@@ -42,6 +38,7 @@
           align-items: center;
           background: url('../../public/photos/verdes2.png') rgba(0, 0, 0, 0.5);
           background-blend-mode: soft-light;
+          background-position-y: 15%;
           background-size: cover;
           color: white;
           content: 'Visit Site ➔';
@@ -52,14 +49,16 @@
           justify-content: center;
           position: absolute;
           text-decoration: underline;
+          text-decoration-color: white;
+          text-underline-offset: 0.188rem;
           text-shadow: 3px 3px 4px colors.$black-pearl;
           transform: translateY(-100%);
           transition: transform 150ms ease-in-out 0s;
           width: 100.3%;
+          -webkit-text-stroke: 0.02rem rgba(colors.$black-pearl-lite, 0.8);
 
           @media screen and (min-width: breakpoints.$large) {
-            padding: 0 25%;
-            justify-content: flex-start;
+            padding-right: 13%;
           }
         }
 
