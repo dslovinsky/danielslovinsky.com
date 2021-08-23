@@ -8,6 +8,8 @@ import {Email} from '@interfaces/email';
 
 import styles from 'styles/components/contact.module.scss';
 
+type Status = 'Send' | 'Sending...' | 'Sent!' | 'Unexpected error';
+
 const notEmpty = (obj: Record<string, unknown>) => {
   // @see https://stackoverflow.com/a/59787784
   for (const _i in obj) return true;
@@ -23,10 +25,10 @@ export default function Contact({...props}) {
   } = useForm<Email>({
     criteriaMode: 'all',
   });
-
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<Status>('Send');
 
   const onSubmit = async (data: Email) => {
+    setStatus('Sending...');
     try {
       const result = await fetch('/api/email', {
         method: 'POST',
@@ -34,11 +36,15 @@ export default function Contact({...props}) {
       });
 
       if (result.status === 200) {
-        setSent(true);
+        setStatus('Sent!');
         reset();
+        return;
       }
+
+      setStatus('Unexpected error');
     } catch (e) {
       console.error('ERROR:', e);
+      setStatus('Unexpected error');
     }
   };
 
@@ -67,7 +73,7 @@ export default function Contact({...props}) {
                 message: 'Name is too long',
               },
             })}
-            onInput={() => setSent(false)}
+            onInput={() => setStatus('Send')}
             placeholder="Name"
             className={errors.name ? styles.error_div : undefined}
           />
@@ -130,11 +136,13 @@ export default function Contact({...props}) {
         </div>
         <Button
           className={`${styles.send} ${
-            notEmpty(errors) || sent ? styles.error_button : undefined
+            notEmpty(errors) || status === 'Sent!'
+              ? styles.error_button
+              : undefined
           }`}
           type="submit"
-          disabled={notEmpty(errors) || sent}>
-          {sent ? 'Message sent!' : 'Send'}
+          disabled={notEmpty(errors) || status === 'Sent!'}>
+          {status}
         </Button>
         <div>
           {Object.keys(errors).map((key) => (

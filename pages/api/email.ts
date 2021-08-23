@@ -14,16 +14,16 @@ export default async function Email(req: NextApiRequest, res: NextApiResponse) {
     res.status(400).end();
   }
 
-  const body = JSON.parse(req.body) as EmailType;
+  const {name, email, subject, message} = JSON.parse(req.body) as EmailType;
 
-  const message = `Name: ${body.name}\n Email: ${body.email}\n Message: ${body.message}`;
+  const content = `Name: ${name}\n Email: ${email}\n Message: ${message}`;
 
   const data = {
     to: process.env.PERSONAL_EMAIL,
     from: 'contact@danielslovinsky.com',
-    subject: body.subject,
-    text: message,
-    html: message.replace(/\n/g, '<br>'),
+    subject: subject ? subject : 'No Subject',
+    text: content,
+    html: content.replace(/\n/g, '<br>'),
   };
 
   const send = async () => {
