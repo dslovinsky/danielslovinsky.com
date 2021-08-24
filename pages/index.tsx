@@ -37,7 +37,7 @@ export default function Home() {
             height={calcH}
             resolution={10}
             streak={0.5}
-            className="max-h-screen absolute"
+            className="max-h-screen absolute w-full"
           />
         )}
         <Title id="Home" />
