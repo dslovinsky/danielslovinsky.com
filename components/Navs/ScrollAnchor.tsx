@@ -7,7 +7,7 @@ const sections = ['Home', 'About', 'Portfolio', 'Skills', 'Contact'];
 export default function Anchor({onClick}: {onClick?: () => void}) {
   return (
     <ul
-      className={`${styles.anchor} static top-24 font-medium z-10 text-sm md:fixed lg:text-base`}>
+      className={`${styles.anchor} static top-24 font-medium z-20 text-sm md:fixed lg:text-base`}>
       {sections.map((sect) => (
         <li key={sect} className={styles.link}>
           <AnchorLink
