@@ -17,7 +17,7 @@ const links = [
   },
   {
     name: 'GitHub',
-    url: 'https://github.com/Quickthorpe',
+    url: 'https://github.com/dslovinsky',
     icon: 'github' as IconName,
   },
 ];
