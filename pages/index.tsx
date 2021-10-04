@@ -27,7 +27,7 @@ export default function Home() {
     <>
       <NextSeo title="Daniel Slovinsky | Front-end Web Developer" />
       <main
-        className={`${styles.main} flex flex-col overflow-x-hidden relative`}>
+        className={`${styles.main} flex flex-col overflow-x-hidden relative items-center`}>
         <NavBar displayMenu={!isDesktop} anchorLinks />
         {isDesktop && <ScrollAnchor />}
         {width && (
@@ -40,12 +40,14 @@ export default function Home() {
             className="absolute"
           />
         )}
-        <Title id="Home" />
-        <About id="About" />
-        <Portfolio id="Portfolio" />
-        <Skills id="Skills" />
-        <Contact id="Contact" />
-        <BackToTop />
+        <div className={styles.sections}>
+          <Title id="Home" />
+          <About id="About" />
+          <Portfolio id="Portfolio" />
+          <Skills id="Skills" />
+          <Contact id="Contact" />
+          <BackToTop />
+        </div>
       </main>
     </>
   );
