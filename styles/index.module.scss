@@ -9,6 +9,12 @@
     max-height: 100vh;
   }
 
+  .sections {
+    @media screen and (min-width: breakpoints.$xx-large) {
+      max-width: 1800px;
+    }
+  }
+
   .profile_container {
     @media screen and (min-height: breakpoints.$x-small) {
       justify-content: center;
@@ -17,6 +23,10 @@
     @media screen and (min-width: breakpoints.$medium) and (min-height: breakpoints.$x-small) {
       left: 70px;
       width: fit-content;
+    }
+
+    @media screen and (min-width: breakpoints.$xx-large) and (min-height: breakpoints.$x-small) {
+      left: 0;
     }
 
     .profile {
