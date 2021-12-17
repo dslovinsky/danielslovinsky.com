@@ -32,7 +32,9 @@ export default async function Email(req: NextApiRequest, res: NextApiResponse) {
     } catch (e) {
       console.error(e);
 
+      // @ts-expect-error: catch err is unknown
       if (e.response) {
+        // @ts-expect-error: catch err is unknown
         console.error(e.response.body);
       }
 
