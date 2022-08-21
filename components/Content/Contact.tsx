@@ -132,7 +132,7 @@ export default function Contact({...props}) {
                 value: /^(\w*?[ ]\w+?)+$/gm,
                 message: 'Messages require more than one word',
               },
-              setValueAs: (message) => message.trim(),
+              setValueAs: (message: string) => message.trim(),
             })}
             placeholder="Message"
             className="text-white block p-2.5 w-full"
