@@ -128,6 +128,11 @@ export default function Contact({...props}) {
                 value: 4400,
                 message: 'That\'s a lot to read! Please keep it more concise',
               },
+              pattern: {
+                value: /^(\w*?[ ]\w+?)+$/gm,
+                message: 'Messages require more than one word',
+              },
+              setValueAs: (message) => message.trim(),
             })}
             placeholder="Message"
             className="text-white block p-2.5 w-full"
