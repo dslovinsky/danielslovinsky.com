@@ -20,6 +20,7 @@
   "dependencies": {
     "@sendgrid/mail": "^7.4.5",
     "contentful": "^9.3.5",
+    "goober": "^2.1.12",
     "next": "^13.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
@@ -30,8 +31,11 @@
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.56.0",
+    "@webref/css": "^6.4.4",
     "contentful-management": "^10.31.2",
     "contentful-typescript-codegen": "^3.4.0",
+    "css-tree": "^2.3.1",
+    "csstype": "^3.1.1",
     "eslint": "^8.36.0",
     "eslint-config-next": "^13.2.4",
     "eslint-config-prettier": "^8.3.0",

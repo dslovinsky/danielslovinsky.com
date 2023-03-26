@@ -1,5 +1,6 @@
 import contentfulClient from 'contentful/client';
 
+import Test from 'components/Test';
 import Layout from 'components/layouts/Layout';
 
 import type { Entry } from 'contentful';
@@ -53,6 +54,7 @@ export const getStaticProps: GetStaticProps<Entry<ITemplatePage>> = async ({ par
 const TemplatePage: NextPage<ITemplatePage> = ({ fields: { internalName, seo, slug } }) => (
   <Layout seo={seo} slug={slug}>
     <h1>{internalName || 'home'}</h1>
+    <Test />
   </Layout>
 );
 
