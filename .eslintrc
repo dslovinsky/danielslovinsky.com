@@ -39,7 +39,7 @@
     "mdx/code-blocks": false,
     "mdx/language-mapper": {}
   },
-  "ignorePatterns": ["next-env.d.ts"],
+  "ignorePatterns": ["next-env.d.ts", "src/contentful/types.ts"],
   "rules": {
     "curly": "error",
     "eqeqeq": ["error", "smart"],
