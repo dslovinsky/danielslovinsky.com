@@ -1,9 +1,9 @@
-import {AppProps} from 'next/app';
+import type {AppType} from 'next/app';
 
-export default function MyApp({Component, pageProps}: AppProps) {
-  return (
-    <>
-      <Component {...pageProps} />
-    </>
-  );
-}
+const MyApp: AppType = ({Component, pageProps}) => (
+  <>
+    <Component {...pageProps} />
+  </>
+);
+
+export default MyApp;
