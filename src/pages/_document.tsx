@@ -1,0 +1,15 @@
+import { Head, Html, Main, NextScript } from 'next/document';
+
+const Document = () => (
+  <Html lang="en">
+    <Head>
+      <link key="favicon" rel="icon" type="image/ico" href="/icons/favicon.ico" />
+    </Head>
+    <body>
+      <Main />
+      <NextScript />
+    </body>
+  </Html>
+);
+
+export default Document;
