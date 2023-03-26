@@ -1,6 +1,6 @@
 import { memo, useEffect, useRef } from 'react';
 
-import type { CanvasHTMLAttributes } from 'react';
+import type { CanvasHTMLAttributes, FC } from 'react';
 
 const operations = [
   [-1, -1],
@@ -13,7 +13,7 @@ const operations = [
   [1, 1],
 ];
 
-interface Props extends CanvasHTMLAttributes<HTMLCanvasElement> {
+interface GameOfLifeProps extends CanvasHTMLAttributes<HTMLCanvasElement> {
   height: number;
   width: number;
   resolution?: number;
@@ -23,9 +23,10 @@ interface Props extends CanvasHTMLAttributes<HTMLCanvasElement> {
 
 const mod = (a: number, b: number) => ((a % b) + b) % b;
 
-// runs a simulation of Conway's Game of Life with an initial position that
-//  spreads Gosper gliders evenly over the page's topmost full viewport
-const GameOfLife = ({ height, width, resolution = 10, fps = 10, streak = 0, ...props }: Props) => {
+/**
+ * Runs a simulation of Conway's Game of Life with an initial position that spreads Gosper gliders evenly over the page's topmost full viewport
+ */
+const GameOfLife: FC<GameOfLifeProps> = ({ height, width, resolution = 10, fps = 10, streak = 0, ...props }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const numRows = Math.ceil((height * (10 / resolution)) / 10) * 10;
