@@ -9,9 +9,6 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 export const getStaticPaths: GetStaticPaths = async () => {
   const { items: allPageSlugs } = await contentfulClient.getEntries<ITemplatePageFields>({
     content_type: 'templatePage',
-    // Contentful only allows up to 1000 entries to be queried at once
-    // see @https://www.contentful.com/developers/docs/javascript/tutorials/using-js-cda-sdk/
-    limit: 1000,
     select: ['fields.slug'],
   });
 
