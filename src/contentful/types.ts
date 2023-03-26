@@ -2,12 +2,43 @@
 
 import { Asset, Entry } from 'contentful';
 
+export interface IMetaSeoFields {
+  /** Meta Title */
+  metaTitle: string;
+
+  /** Meta Description */
+  metaDescription?: string | undefined;
+
+  /** Open Graph Image */
+  openGraphImage?: Asset | undefined;
+}
+
+export interface IMetaSeo extends Entry<IMetaSeoFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'metaSeo';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
 export interface ITemplatePageFields {
   /** Internal Name */
   internalName: string;
 
   /** Slug */
   slug: string;
+
+  /** SEO */
+  seo: IMetaSeo;
 }
 
 export interface ITemplatePage extends Entry<ITemplatePageFields> {
@@ -27,9 +58,9 @@ export interface ITemplatePage extends Entry<ITemplatePageFields> {
   };
 }
 
-export type CONTENT_TYPE = 'templatePage';
+export type CONTENT_TYPE = 'metaSeo' | 'templatePage';
 
-export type IEntry = ITemplatePage;
+export type IEntry = IMetaSeo | ITemplatePage;
 
 export type LOCALE_CODE = 'en-US';
 
