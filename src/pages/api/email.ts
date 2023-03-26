@@ -1,7 +1,7 @@
-import {NextApiRequest, NextApiResponse} from 'next';
 import sgMail from '@sendgrid/mail';
 
-import {Email as EmailType} from '@interfaces/email';
+import type { NextApiRequest, NextApiResponse } from 'next';
+import type { Email as EmailType } from 'types/email';
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
@@ -14,7 +14,7 @@ export default async function Email(req: NextApiRequest, res: NextApiResponse) {
     res.status(400).end();
   }
 
-  const {name, email, subject, message} = JSON.parse(req.body) as EmailType;
+  const { name, email, subject, message } = JSON.parse(req.body) as EmailType;
 
   const content = `Name: ${name}\n Email: ${email}\n Message: ${message}`;
 
@@ -44,5 +44,5 @@ export default async function Email(req: NextApiRequest, res: NextApiResponse) {
 
   await send();
 
-  res.status(200).json({status: 'success'});
+  res.status(200).json({ status: 'success' });
 }
