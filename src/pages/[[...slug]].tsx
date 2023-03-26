@@ -1,5 +1,7 @@
 import contentfulClient from 'contentful/client';
 
+import Layout from 'components/layouts/Layout';
+
 import type { Entry } from 'contentful';
 import type { ITemplatePage, ITemplatePageFields } from 'contentful/types';
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
@@ -31,11 +33,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-interface StaticProps {
-  pageProps: Entry<ITemplatePage>;
-}
-
-export const getStaticProps: GetStaticProps<StaticProps> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<Entry<ITemplatePage>> = async ({ params }) => {
   const pageSlug = (params?.slug as string[])?.join('/') || '/';
 
   const { items } = await contentfulClient.getEntries<ITemplatePage>({
@@ -49,16 +47,16 @@ export const getStaticProps: GetStaticProps<StaticProps> = async ({ params }) =>
 
   return {
     props: {
-      pageProps: items[0],
+      ...items[0],
     },
     revalidate: 600,
   };
 };
 
-interface PageProps {
-  pageProps: ITemplatePage;
-}
-
-const TemplatePage: NextPage<PageProps> = ({ pageProps }) => <h1>{pageProps?.fields?.internalName || 'home'}</h1>;
+const TemplatePage: NextPage<ITemplatePage> = ({ fields: { internalName, seo, slug } }) => (
+  <Layout seo={seo} slug={slug}>
+    <h1>{internalName || 'home'}</h1>
+  </Layout>
+);
 
 export default TemplatePage;

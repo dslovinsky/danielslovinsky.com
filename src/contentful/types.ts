@@ -11,6 +11,9 @@ export interface IMetaSeoFields {
 
   /** Open Graph Image */
   openGraphImage?: Asset | undefined;
+
+  /** Indexable */
+  indexable?: boolean | undefined;
 }
 
 export interface IMetaSeo extends Entry<IMetaSeoFields> {
