@@ -1,6 +1,6 @@
-import {memo, useEffect, useRef} from 'react';
+import { memo, useEffect, useRef } from 'react';
 
-import type {CanvasHTMLAttributes} from 'react';
+import type { CanvasHTMLAttributes } from 'react';
 
 const operations = [
   [-1, -1],
@@ -25,14 +25,7 @@ const mod = (a: number, b: number) => ((a % b) + b) % b;
 
 // runs a simulation of Conway's Game of Life with an initial position that
 //  spreads Gosper gliders evenly over the page's topmost full viewport
-const CanvasGoL = ({
-  height,
-  width,
-  resolution = 10,
-  fps = 10,
-  streak = 0,
-  ...props
-}: Props) => {
+const CanvasGoL = ({ height, width, resolution = 10, fps = 10, streak = 0, ...props }: Props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const numRows = Math.ceil((height * (10 / resolution)) / 10) * 10;
@@ -41,8 +34,8 @@ const CanvasGoL = ({
   const opac = Math.abs(streak - 1);
 
   const buildGrid = (r: number, c: number) => {
-    const initialGrid = Array.from({length: r}).map(() =>
-      Array.from({length: c}).fill(0),
+    const initialGrid = Array.from({ length: r }).map(() =>
+      Array.from({ length: c }).fill(0),
     ) as number[][];
 
     initialGrid.forEach((row, i) => {
@@ -65,7 +58,7 @@ const CanvasGoL = ({
   let grid = buildGrid(numRows, numCols);
 
   const nextFrame = (g: number[][], r: number, c: number) => {
-    const gridCopy = grid.map((arr) => [...arr]);
+    const gridCopy = grid.map(arr => [...arr]);
 
     gridCopy.forEach((row, i) => {
       row.forEach((_col, j) => {
@@ -91,9 +84,7 @@ const CanvasGoL = ({
     g.forEach((row, i) => {
       row.forEach((_col, j) => {
         ctx.beginPath();
-        ctx.fillStyle = g[i][j]
-          ? 'rgba(255, 255, 255, 0.2)'
-          : `rgba(13, 17, 22, ${opac})`;
+        ctx.fillStyle = g[i][j] ? 'rgba(255, 255, 255, 0.2)' : `rgba(13, 17, 22, ${opac})`;
         ctx.fillRect(j * resolution, i * resolution, resolution, resolution);
       });
     });
