@@ -8,7 +8,7 @@ const Document = () => {
     <Html lang="en">
       <Head>
         <link key="favicon" rel="icon" type="image/ico" href="/icons/favicon.ico" />
-        <style id="_goober" dangerouslySetInnerHTML={{ __html: ' ' + css }} />
+        <style id="_goober">{css}</style>
       </Head>
       <body>
         <Main />

@@ -1,5 +1,6 @@
 import { setup, styled } from 'goober';
-import { createElement } from 'react';
+import { shouldForwardProp } from 'goober/should-forward-prop';
+import { createElement, useState } from 'react';
 
 import { camelToKebabCase } from 'utils/functions';
 import { objectEntries } from 'utils/typeUtils';
@@ -9,7 +10,12 @@ import allProperties from '../../allProperties.json';
 
 import type { Properties } from 'csstype';
 
-setup(createElement);
+setup(
+  createElement,
+  undefined,
+  undefined,
+  shouldForwardProp(prop => !allProperties.includes(camelToKebabCase(prop))),
+);
 
 const Div = styled('div')<Properties>(props =>
   objectEntries(props).reduce((prevValue, [propertyKey, value]) => {
@@ -25,10 +31,14 @@ const Div = styled('div')<Properties>(props =>
   }, {}),
 );
 
-const Test = () => (
-  <Div backgroundColor="red" display="flex" onClick={e => console.log(e)}>
-    Test
-  </Div>
-);
+const Test = () => {
+  const [clicked, isClicked] = useState(false);
+
+  return (
+    <Div backgroundColor={clicked ? 'red' : 'blue'} display="flex" onClick={() => isClicked(!clicked)}>
+      Test
+    </Div>
+  );
+};
 
 export default Test;
