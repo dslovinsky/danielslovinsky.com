@@ -25,7 +25,7 @@ const mod = (a: number, b: number) => ((a % b) + b) % b;
 
 // runs a simulation of Conway's Game of Life with an initial position that
 //  spreads Gosper gliders evenly over the page's topmost full viewport
-const CanvasGoL = ({ height, width, resolution = 10, fps = 10, streak = 0, ...props }: Props) => {
+const GameOfLife = ({ height, width, resolution = 10, fps = 10, streak = 0, ...props }: Props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const numRows = Math.ceil((height * (10 / resolution)) / 10) * 10;
@@ -34,19 +34,13 @@ const CanvasGoL = ({ height, width, resolution = 10, fps = 10, streak = 0, ...pr
   const opac = Math.abs(streak - 1);
 
   const buildGrid = (r: number, c: number) => {
-    const initialGrid = Array.from({ length: r }).map(() =>
-      Array.from({ length: c }).fill(0),
-    ) as number[][];
+    const initialGrid = Array.from({ length: r }).map(() => Array.from({ length: c }).fill(0)) as number[][];
 
     initialGrid.forEach((row, i) => {
       row.forEach((_col, j) => {
         const posX = i % 10;
         const posY = j % 10;
-        if (
-          (posX === 0 && posY === 1) ||
-          (posX === 1 && posY === 2) ||
-          (posX === 2 && [0, 1, 2].includes(posY))
-        ) {
+        if ((posX === 0 && posY === 1) || (posX === 1 && posY === 2) || (posX === 2 && [0, 1, 2].includes(posY))) {
           initialGrid[i][j] = 1;
         }
       });
@@ -127,4 +121,4 @@ const CanvasGoL = ({ height, width, resolution = 10, fps = 10, streak = 0, ...pr
   return <canvas {...props} ref={canvasRef} />;
 };
 
-export default memo(CanvasGoL);
+export default memo(GameOfLife);

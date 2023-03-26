@@ -1,10 +1,10 @@
-import GoL from 'components/Animations/GoL';
+import GameOfLife from 'components/Animations/GameOfLife';
 
 const Home = () => (
   <>
     <main>
       <h1>Homepage</h1>
-      <GoL height={10} width={10} />
+      <GameOfLife height={10} width={10} />
     </main>
   </>
 );
