@@ -4,10 +4,6 @@ import type { Entry } from 'contentful';
 import type { ITemplatePage, ITemplatePageFields } from 'contentful/types';
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 
-interface PageProps {
-  pageProps: ITemplatePage;
-}
-
 export const getStaticPaths: GetStaticPaths = async () => {
   const { items: allPageSlugs } = await contentfulClient.getEntries<ITemplatePageFields>({
     content_type: 'templatePage',
@@ -36,13 +32,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 interface StaticProps {
-  pageProps: Entry<ITemplatePageFields>;
+  pageProps: Entry<ITemplatePage>;
 }
 
 export const getStaticProps: GetStaticProps<StaticProps> = async ({ params }) => {
   const pageSlug = (params?.slug as string[])?.join('/') || '/';
 
-  const { items } = await contentfulClient.getEntries<ITemplatePageFields>({
+  const { items } = await contentfulClient.getEntries<ITemplatePage>({
     content_type: 'templatePage',
     limit: 1,
     // Contentful only allows up to a depth of 10 nested entries
@@ -58,6 +54,10 @@ export const getStaticProps: GetStaticProps<StaticProps> = async ({ params }) =>
     revalidate: 600,
   };
 };
+
+interface PageProps {
+  pageProps: ITemplatePage;
+}
 
 const TemplatePage: NextPage<PageProps> = ({ pageProps }) => <h1>{pageProps?.fields?.internalName || 'home'}</h1>;
 

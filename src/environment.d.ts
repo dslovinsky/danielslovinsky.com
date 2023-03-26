@@ -8,5 +8,6 @@ declare namespace NodeJS {
     CONTENTFUL_PREVIEW_TOKEN: string;
     CONTENTFUL_ENV: string;
     CONTENTFUL_HOST: string;
+    CONTENTFUL_MGMT_TOKEN: string;
   }
 }
