@@ -1,4 +1,5 @@
 import { setup, styled } from 'goober';
+import { prefix } from 'goober/prefixer';
 import { shouldForwardProp } from 'goober/should-forward-prop';
 import { createElement, useState } from 'react';
 
@@ -11,12 +12,12 @@ import COLOR from 'theme/colors';
 import type { Properties } from 'csstype';
 import type { OverwriteProperties } from 'utils/typeUtils';
 
-const prefix = '$';
-const validateProp = (key: string) => key.startsWith(prefix);
+const stylePropPrefix = '$';
+const validateProp = (key: string) => key.startsWith(stylePropPrefix);
 
 setup(
   createElement,
-  undefined,
+  prefix,
   undefined,
   shouldForwardProp(prop => !validateProp(prop)),
 );
@@ -29,10 +30,11 @@ const flattenedColors = flattenObject(COLOR);
 
 const themeMap = {
   $backgroundColor: (value: keyof typeof flattenedColors) => flattenedColors[value],
+  $color: (value: keyof typeof flattenedColors) => flattenedColors[value],
 };
 
 type GetThemeValues<T> = {
-  [P in keyof T]: T[P] extends (...args: any) => any ? Parameters<T[P]>[0] : never;
+  [P in keyof T]?: T[P] extends (...args: any) => string ? Parameters<T[P]>[0] : never;
 };
 
 type ThemeValues = GetThemeValues<typeof themeMap>;
@@ -75,6 +77,7 @@ const Test = () => {
         $backgroundColor={clicked ? 'gray-400' : 'primary-200'}
         $display="flex"
         $flexDirection="column"
+        $color="common-white"
         onClick={() => isClicked(!clicked)}
       >
         Test
