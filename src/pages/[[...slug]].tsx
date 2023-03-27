@@ -1,6 +1,7 @@
 import contentfulClient from 'contentful/client';
 
-import Test from 'components/Test';
+import Test from 'quarks/Test';
+
 import Layout from 'components/layouts/Layout';
 
 import type { Entry } from 'contentful';
