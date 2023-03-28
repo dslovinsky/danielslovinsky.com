@@ -29,8 +29,7 @@
     "jsx-a11y",
     "eslint-plugin-no-inline-styles",
     "prefer-arrow",
-    "prettier",
-    "eslint-plugin-absolute-only"
+    "prettier"
   ],
   "settings": {
     "react": {
@@ -148,7 +147,6 @@
     "react/display-name": 0,
     "react/react-in-jsx-scope": 0,
     "react-hooks/exhaustive-deps": "off",
-    "absolute-only/imports": "error",
     "react/destructuring-assignment": "error",
     "react/jsx-filename-extension": [
       2,

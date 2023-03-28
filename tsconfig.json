@@ -20,7 +20,7 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "incremental": true
+    "incremental": true,
   },
   "ts-node": {
     "compilerOptions": {

@@ -1,7 +1,7 @@
 import { setup, styled } from 'goober';
 import { prefix } from 'goober/prefixer';
 import { shouldForwardProp } from 'goober/should-forward-prop';
-import { createElement, useState } from 'react';
+import { createContext, createElement, useContext, useState } from 'react';
 
 import flattenObject from 'utils/flattenObject';
 import { camelToKebabCase } from 'utils/functions';
@@ -10,15 +10,20 @@ import { hasOwnProperty, objectEntries } from 'utils/typeUtils';
 import COLOR from 'theme/colors';
 
 import type { Properties } from 'csstype';
+import type { DefaultTheme, Tagged, Theme } from 'goober';
 import type { OverwriteProperties } from 'utils/typeUtils';
 
 const stylePropPrefix = '$';
 const validateProp = (key: string) => key.startsWith(stylePropPrefix);
 
+const theme = { primary: 'blue' };
+const ThemeContext = createContext(theme);
+const useTheme = () => useContext(ThemeContext);
+
 setup(
   createElement,
   prefix,
-  undefined,
+  useTheme,
   shouldForwardProp(prop => !validateProp(prop)),
 );
 
@@ -41,7 +46,17 @@ type ThemeValues = GetThemeValues<typeof themeMap>;
 
 type StyleProps = OverwriteProperties<MappedProperties<Properties>, ThemeValues>;
 
-const Div = styled('div')<StyleProps>(props =>
+type StyledFunctionReturn = Tagged<
+  JSX.LibraryManagedAttributes<'div', JSX.IntrinsicElements['div']> & StyleProps & Theme<DefaultTheme>
+>;
+
+type CallbackType = Parameters<StyledFunctionReturn>[0];
+
+type ExtractFunctionsFromUnion<T> = T extends (...args: any) => any ? Parameters<T>[0] : never;
+
+type DirectProps = ExtractFunctionsFromUnion<CallbackType>;
+
+const getDirectProps = (props: DirectProps) =>
   objectEntries(props).reduce((prevValue, [propertyKey, value]) => {
     const key = camelToKebabCase(propertyKey.slice(1));
     if (validateProp(propertyKey)) {
@@ -61,8 +76,9 @@ const Div = styled('div')<StyleProps>(props =>
     }
 
     return prevValue;
-  }, {}),
-);
+  }, {});
+
+const Div = styled('div')<StyleProps>(props => getDirectProps(props));
 
 const Control = styled('div')({
   backgroundColor: 'green',
