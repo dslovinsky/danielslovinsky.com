@@ -12,5 +12,12 @@ export const toCamelCase = (string?: string | null) =>
         .replace(/\s+/g, '')
     : '';
 
-export const camelToKebabCase = (string: string) =>
-  string.replace(/[A-Z]+(?![a-z])|[A-Z]/g, ($, ofs) => (ofs ? '-' : '') + $.toLowerCase());
+type CamelToKebabCase<T extends string, A extends string> = T extends `${infer F}${infer R}`
+  ? CamelToKebabCase<R, `${A}${F extends Lowercase<F> ? '' : '-'}${Lowercase<F>}`>
+  : A;
+
+export const camelToKebabCase = <T extends string>(string: T) =>
+  string.replace(/[A-Z]+(?![a-z])|[A-Z]/g, ($, ofs) => (ofs ? '-' : '') + $.toLowerCase()) as CamelToKebabCase<
+    T,
+    string
+  >;

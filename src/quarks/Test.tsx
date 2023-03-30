@@ -1,33 +1,34 @@
-import { setup, styled } from 'goober';
-import { prefix } from 'goober/prefixer';
-import { shouldForwardProp } from 'goober/should-forward-prop';
-import { createContext, createElement, useContext, useState } from 'react';
+import { styled } from 'goober';
+import { useState } from 'react';
+
+import { validateProp } from 'quarks/gooberConfig';
 
 import flattenObject from 'utils/flattenObject';
 import { camelToKebabCase } from 'utils/functions';
 import { hasOwnProperty, objectEntries } from 'utils/typeUtils';
 
+import BREAKPOINTS from 'theme/breakpoints';
 import COLOR from 'theme/colors';
 
 import type { Properties } from 'csstype';
 import type { DefaultTheme, Tagged, Theme } from 'goober';
 import type { OverwriteProperties } from 'utils/typeUtils';
 
-const stylePropPrefix = '$';
-const validateProp = (key: string) => key.startsWith(stylePropPrefix);
+type CreateMedia<T extends typeof BREAKPOINTS> = {
+  [P in keyof T & string as `$${P}`]: T[P] extends string ? `@media screen and (min-width: ${T[P]})` : never;
+};
 
-const theme = { primary: 'blue' };
-const ThemeContext = createContext(theme);
-const useTheme = () => useContext(ThemeContext);
+type Media = CreateMedia<typeof BREAKPOINTS>;
 
-setup(
-  createElement,
-  prefix,
-  useTheme,
-  shouldForwardProp(prop => !validateProp(prop)),
+const media = objectEntries(BREAKPOINTS).reduce(
+  (prevValue, [breakpointKey, breakpointValue]) => ({
+    ...prevValue,
+    [`$${breakpointKey}`]: `@media screen and (min-width: ${breakpointValue})`,
+  }),
+  {} as Media,
 );
 
-type MappedProperties<T> = {
+type PrefixedProperties<T> = {
   [P in keyof T & string as `$${P}`]?: T[P];
 };
 
@@ -36,6 +37,7 @@ const flattenedColors = flattenObject(COLOR);
 const themeMap = {
   $backgroundColor: (value: keyof typeof flattenedColors) => flattenedColors[value],
   $color: (value: keyof typeof flattenedColors) => flattenedColors[value],
+  ...media,
 };
 
 type GetThemeValues<T> = {
@@ -44,7 +46,7 @@ type GetThemeValues<T> = {
 
 type ThemeValues = GetThemeValues<typeof themeMap>;
 
-type StyleProps = OverwriteProperties<MappedProperties<Properties>, ThemeValues>;
+type StyleProps = OverwriteProperties<PrefixedProperties<Properties>, ThemeValues>;
 
 type StyledFunctionReturn = Tagged<
   JSX.LibraryManagedAttributes<'div', JSX.IntrinsicElements['div']> & StyleProps & Theme<DefaultTheme>
@@ -56,16 +58,27 @@ type ExtractFunctionsFromUnion<T> = T extends (...args: any) => any ? Parameters
 
 type DirectProps = ExtractFunctionsFromUnion<CallbackType>;
 
-const getDirectProps = (props: DirectProps) =>
+const createStylesFromProps = (props: DirectProps) =>
   objectEntries(props).reduce((prevValue, [propertyKey, value]) => {
     const key = camelToKebabCase(propertyKey.slice(1));
+    // checks if prop is for styling
     if (validateProp(propertyKey)) {
+      // checks if prop is something from themeMap
       if (hasOwnProperty(themeMap, propertyKey)) {
-        const newValue = themeMap[propertyKey](value);
+        // checks if prop is a media query
+        if (hasOwnProperty(media, propertyKey)) {
+          console.log(propertyKey, value);
+
+          return {
+            ...prevValue,
+            [media[propertyKey]]: createStylesFromProps(value),
+          };
+        }
+        const themeValue = themeMap[propertyKey](value);
 
         return {
           ...prevValue,
-          [key]: newValue,
+          [key]: themeValue,
         };
       }
 
@@ -78,11 +91,15 @@ const getDirectProps = (props: DirectProps) =>
     return prevValue;
   }, {});
 
-const Div = styled('div')<StyleProps>(props => getDirectProps(props));
+const Div = styled('div')<StyleProps>(props => createStylesFromProps(props));
 
 const Control = styled('div')({
   backgroundColor: 'green',
 });
+
+// type Selector = { $selector: { selector: string } & StyleProps };
+
+// const Component: FC<Selector> = props => <div>{console.log(props)}</div>;
 
 const Test = () => {
   const [clicked, isClicked] = useState(false);
@@ -94,10 +111,12 @@ const Test = () => {
         $display="flex"
         $flexDirection="column"
         $color="common-white"
+        $lg={{ $backgroundColor: 'primary-800' }}
         onClick={() => isClicked(!clicked)}
       >
         Test
       </Div>
+      {/* <Component $selector={{ selector: '&:hover', $backgroundColor: 'gray-25' }} /> */}
       <Control>Control</Control>
     </>
   );
