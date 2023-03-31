@@ -11,8 +11,8 @@ import BREAKPOINTS from 'theme/breakpoints';
 import COLOR from 'theme/colors';
 
 import type { Properties } from 'csstype';
-import type { DefaultTheme, Tagged, Theme } from 'goober';
-import type { OverwriteProperties } from 'utils/typeUtils';
+import type { CSSAttribute, DefaultTheme, Tagged, Theme } from 'goober';
+import type { ExtractFunctionsFromUnion, OverwriteProperties } from 'utils/typeUtils';
 
 type CreateMedia<T extends typeof BREAKPOINTS> = {
   [P in keyof T & string as `$${P}`]: T[P] extends string ? `@media screen and (min-width: ${T[P]})` : never;
@@ -34,51 +34,55 @@ type PrefixedProperties<T> = {
 
 const flattenedColors = flattenObject(COLOR);
 
-const themeMap = {
+const customOverwrites = {
   $backgroundColor: (value: keyof typeof flattenedColors) => flattenedColors[value],
   $color: (value: keyof typeof flattenedColors) => flattenedColors[value],
-  ...media,
 };
 
 type GetThemeValues<T> = {
   [P in keyof T]?: T[P] extends (...args: any) => string ? Parameters<T[P]>[0] : never;
 };
 
-type ThemeValues = GetThemeValues<typeof themeMap>;
+type ThemeValues = GetThemeValues<typeof customOverwrites>;
 
 type StyleProps = OverwriteProperties<PrefixedProperties<Properties>, ThemeValues>;
 
-type StyledFunctionReturn = Tagged<
+type StylingFunction = Tagged<
   JSX.LibraryManagedAttributes<'div', JSX.IntrinsicElements['div']> & StyleProps & Theme<DefaultTheme>
 >;
 
-type CallbackType = Parameters<StyledFunctionReturn>[0];
+type CallbackArg = ExtractFunctionsFromUnion<Parameters<StylingFunction>[number]>;
 
-type ExtractFunctionsFromUnion<T> = T extends (...args: any) => any ? Parameters<T>[0] : never;
-
-type DirectProps = ExtractFunctionsFromUnion<CallbackType>;
-
-const createStylesFromProps = (props: DirectProps) =>
+const createStylesFromProps = (props: CallbackArg): CSSAttribute =>
   objectEntries(props).reduce((prevValue, [propertyKey, value]) => {
-    const key = camelToKebabCase(propertyKey.slice(1));
+    const key = camelToKebabCase(propertyKey.replaceAll('$', ''));
     // checks if prop is for styling
     if (validateProp(propertyKey)) {
-      // checks if prop is something from themeMap
-      if (hasOwnProperty(themeMap, propertyKey)) {
-        // checks if prop is a media query
-        if (hasOwnProperty(media, propertyKey)) {
-          console.log(propertyKey, value);
-
-          return {
-            ...prevValue,
-            [media[propertyKey]]: createStylesFromProps(value),
-          };
-        }
-        const themeValue = themeMap[propertyKey](value);
+      // checks if prop is something from customOverwrites
+      if (hasOwnProperty(customOverwrites, propertyKey)) {
+        const themeValue = customOverwrites[propertyKey](value);
 
         return {
           ...prevValue,
           [key]: themeValue,
+        };
+      }
+
+      // checks if prop is a media query
+      if (hasOwnProperty(media, propertyKey)) {
+        return {
+          ...prevValue,
+          [media[propertyKey]]: createStylesFromProps(value),
+        };
+      }
+
+      // checks if prop is pseudo-class or pseudo-element
+      if (typeof value === 'object') {
+        const extraColon = propertyKey.split('$').length > 2 ? ':' : '';
+
+        return {
+          ...prevValue,
+          [`&:${extraColon}${key}`]: createStylesFromProps(value),
         };
       }
 
@@ -93,16 +97,16 @@ const createStylesFromProps = (props: DirectProps) =>
 
 const Div = styled('div')<StyleProps>(props => createStylesFromProps(props));
 
-const Control = styled('div')({
-  backgroundColor: 'green',
-});
-
-// type Selector = { $selector: { selector: string } & StyleProps };
-
-// const Component: FC<Selector> = props => <div>{console.log(props)}</div>;
+const Control = styled('div')<{ clicked: boolean }>(({ clicked }) => ({
+  backgroundColor: clicked ? 'purple' : 'green',
+  '&::after': {
+    content: "'asdasd'",
+    backgroundColor: 'blue',
+  },
+}));
 
 const Test = () => {
-  const [clicked, isClicked] = useState(false);
+  const [clicked, setClicked] = useState(false);
 
   return (
     <>
@@ -111,13 +115,15 @@ const Test = () => {
         $display="flex"
         $flexDirection="column"
         $color="common-white"
-        $lg={{ $backgroundColor: 'primary-800' }}
-        onClick={() => isClicked(!clicked)}
+        // $lg={{ $backgroundColor: 'primary-800' }}
+        $$after={{ $content: "'after'" }}
+        $hover={{ $backgroundColor: 'primary-800' }}
+        onClick={() => setClicked(!clicked)}
       >
         Test
       </Div>
       {/* <Component $selector={{ selector: '&:hover', $backgroundColor: 'gray-25' }} /> */}
-      <Control>Control</Control>
+      <Control clicked={clicked}>Control</Control>
     </>
   );
 };

@@ -2,6 +2,8 @@ export type valueof<T> = T[keyof T];
 
 export type OverwriteProperties<T, R> = Omit<T, keyof R> & R;
 
+export type ExtractFunctionsFromUnion<T> = T extends (...args: any) => any ? Parameters<T>[0] : never;
+
 type ObjectEntriesReturn<T> = [keyof T, valueof<T>][];
 type ObjectEntries = <T extends object>(object: T) => ObjectEntriesReturn<T>;
 type ObjectKeys = <T extends object>(object: T) => (keyof T)[];
