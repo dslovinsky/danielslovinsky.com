@@ -43,6 +43,16 @@ type GetThemeValues<T> = {
   [P in keyof T]?: T[P] extends (...args: any) => string ? Parameters<T[P]>[0] : never;
 };
 
+// type CreatePseudoProps<T extends string> = {
+//   [P in T extends `::${infer PseudoEleName}`
+//     ? `$$${PseudoEleName}`
+//     : T extends `:${infer PseudoClassName}`
+//     ? `$${PseudoClassName}`
+//     : never]: string;
+// };
+
+// type PseudoProps = CreatePseudoProps<Pseudos>;
+
 type ThemeValues = GetThemeValues<typeof customOverwrites>;
 
 type StyleProps = OverwriteProperties<PrefixedProperties<Properties>, ThemeValues>;
@@ -116,7 +126,7 @@ const Test = () => {
         $flexDirection="column"
         $color="common-white"
         // $lg={{ $backgroundColor: 'primary-800' }}
-        $$after={{ $content: "'after'" }}
+        // $$after={{ $content: "'after'" }}
         $hover={{ $backgroundColor: 'primary-800' }}
         onClick={() => setClicked(!clicked)}
       >
