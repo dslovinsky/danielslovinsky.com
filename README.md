@@ -3,11 +3,11 @@
 ### Development
 
 ```
-npm run dev
+pnpm run dev
 ```
 
 ### Production
 
 ```
-npm run build && npm run prod
+pnpm run build && npm run prod
 ```
