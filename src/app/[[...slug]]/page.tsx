@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation';
 
 import { getAllPageSlugs, getPageData } from 'utils/fetchPageData';
 
+import type { Metadata } from 'next';
+
 export const generateStaticParams = async () => {
   const allPageSlugs = await getAllPageSlugs();
 
@@ -19,6 +21,40 @@ interface PageProps {
     slug: string[];
   };
 }
+
+export const generateMetadata = async ({ params }: PageProps): Promise<Metadata> => {
+  const pageSlug = params?.slug?.join('/') || '/';
+
+  const {
+    fields: {
+      seo: {
+        fields: { metaTitle, metaDescription, openGraphImage, indexable },
+      },
+    },
+  } = await getPageData(pageSlug);
+
+  return {
+    title: {
+      absolute: metaTitle,
+    },
+    description: metaDescription,
+    robots: {
+      index: indexable,
+      follow: indexable,
+    },
+    openGraph: {
+      title: openGraphImage?.fields.title,
+      description: openGraphImage?.fields.description,
+      images: [
+        {
+          url: openGraphImage?.fields.file.url || '',
+          width: openGraphImage?.fields.file.details.image?.width,
+          height: openGraphImage?.fields.file.details.image?.height,
+        },
+      ],
+    },
+  };
+};
 
 const Page = async ({ params }: PageProps) => {
   const pageSlug = params?.slug?.join('/') || '/';
