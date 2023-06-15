@@ -1,5 +1,7 @@
 import { notFound } from 'next/navigation';
 
+import Swapi from 'components/Swapi';
+
 import { getAllPageSlugs, getPageData } from 'utils/fetchPageData';
 
 import type { Metadata } from 'next';
@@ -65,7 +67,12 @@ const Page = async ({ params }: PageProps) => {
     notFound();
   }
 
-  return <div>{pageData.fields.internalName}</div>;
+  return (
+    <div>
+      {pageData.fields.internalName}
+      <Swapi />
+    </div>
+  );
 };
 
 export default Page;
