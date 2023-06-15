@@ -1,8 +1,5 @@
 import { notFound } from 'next/navigation';
 
-// import Swapi from 'components/Swapi';
-// import GameOfLife from 'components/animations/GameOfLife';
-
 import { getAllPageSlugs, getPageData } from 'utils/fetchPageData';
 
 import type { Metadata } from 'next';
@@ -68,13 +65,7 @@ const Page = async ({ params }: PageProps) => {
     notFound();
   }
 
-  return (
-    <div>
-      {pageData.fields.internalName}
-      {/* <GameOfLife width={50} height={50} /> */}
-      {/* <Swapi /> */}
-    </div>
-  );
+  return <div>{pageData.fields.internalName}</div>;
 };
 
 export default Page;
