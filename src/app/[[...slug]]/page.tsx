@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 
-import Swapi from 'components/Swapi';
+// import Swapi from 'components/Swapi';
+// import GameOfLife from 'components/animations/GameOfLife';
 
 import { getAllPageSlugs, getPageData } from 'utils/fetchPageData';
 
@@ -70,7 +71,8 @@ const Page = async ({ params }: PageProps) => {
   return (
     <div>
       {pageData.fields.internalName}
-      <Swapi />
+      {/* <GameOfLife width={50} height={50} /> */}
+      {/* <Swapi /> */}
     </div>
   );
 };
