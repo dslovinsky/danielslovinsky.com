@@ -20,13 +20,18 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "incremental": true
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "ts-node": {
     "compilerOptions": {
       "module": "commonjs"
     }
   },
-  "include": ["**/*.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["**/*.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }
