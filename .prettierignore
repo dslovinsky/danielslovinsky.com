@@ -5,4 +5,4 @@ bin
 docker
 public
 .next
-src/contentful/types.ts
+src/graphql/types.ts

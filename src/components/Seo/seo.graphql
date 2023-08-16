@@ -1,0 +1,12 @@
+fragment seo on SeoRecord {
+  id
+  indexable
+  metaTags {
+    title
+    description
+    image {
+      ...file
+    }
+  }
+  canonicalUrl
+}

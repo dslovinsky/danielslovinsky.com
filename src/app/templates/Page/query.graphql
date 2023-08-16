@@ -1,0 +1,19 @@
+fragment templatePage on TemplatePageRecord {
+  id
+  slug
+  seo {
+    ...seo
+  }
+}
+
+query TemplatePage($slug: String) {
+  templatePage(filter: { slug: { eq: $slug } }) {
+    ...templatePage
+  }
+}
+
+query AllTemplatePageSlugs {
+  allTemplatePages {
+    slug
+  }
+}

@@ -39,7 +39,7 @@
     "mdx/code-blocks": false,
     "mdx/language-mapper": {}
   },
-  "ignorePatterns": ["next-env.d.ts", "src/contentful/types.ts"],
+  "ignorePatterns": ["next-env.d.ts", "src/graphql/types.ts"],
   "rules": {
     "array-callback-return": ["error", { "allowImplicit": true, "checkForEach": true }],
     "arrow-body-style": ["error", "as-needed"],

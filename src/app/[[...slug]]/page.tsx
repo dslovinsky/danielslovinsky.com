@@ -1,16 +1,17 @@
 import { notFound } from 'next/navigation';
 
-import { getAllPageSlugs, getPageData } from 'utils/fetchPageData';
+import graphqlQuery from 'graphql/apolloClient';
+import { AllTemplatePageSlugsDocument, TemplatePageDocument } from 'graphql/sdk';
 
-import type { Metadata } from 'next';
+// import type { Metadata } from 'next';
 
 export const generateStaticParams = async () => {
-  const allPageSlugs = await getAllPageSlugs();
+  const { allTemplatePages } = await graphqlQuery<AllTemplatePageSlugsQuery>(AllTemplatePageSlugsDocument);
 
-  const paths = allPageSlugs.map(slug => ({
+  const paths = allTemplatePages.map(({ slug }) => ({
     // since this file uses catch-all routes, returning an empty array generates the homepage
     // see @https://nextjs.org/docs/routing/dynamic-routes#optional-catch-all-routes
-    slug: slug === '/' ? undefined : slug.split('/'),
+    slug: slug === 'home' ? undefined : slug?.split('/'),
   }));
 
   return paths;
@@ -22,50 +23,50 @@ interface PageProps {
   };
 }
 
-export const generateMetadata = async ({ params }: PageProps): Promise<Metadata> => {
-  const pageSlug = params?.slug?.join('/') || '/';
+// export const generateMetadata = async ({ params }: PageProps): Promise<Metadata> => {
+//   const pageSlug = params?.slug?.join('/') || '/';
 
-  const {
-    fields: {
-      seo: {
-        fields: { metaTitle, metaDescription, openGraphImage, indexable },
-      },
-    },
-  } = await getPageData(pageSlug);
+//   const {
+//     fields: {
+//       seo: {
+//         fields: { metaTitle, metaDescription, openGraphImage, indexable },
+//       },
+//     },
+//   } = await getPageData(pageSlug);
 
-  return {
-    title: {
-      absolute: metaTitle,
-    },
-    description: metaDescription,
-    robots: {
-      index: indexable,
-      follow: indexable,
-    },
-    openGraph: {
-      title: openGraphImage?.fields.title,
-      description: openGraphImage?.fields.description,
-      images: [
-        {
-          url: openGraphImage?.fields.file.url || '',
-          width: openGraphImage?.fields.file.details.image?.width,
-          height: openGraphImage?.fields.file.details.image?.height,
-        },
-      ],
-    },
-  };
-};
+//   return {
+//     title: {
+//       absolute: metaTitle,
+//     },
+//     description: metaDescription,
+//     robots: {
+//       index: indexable,
+//       follow: indexable,
+//     },
+//     openGraph: {
+//       title: openGraphImage?.fields.title,
+//       description: openGraphImage?.fields.description,
+//       images: [
+//         {
+//           url: openGraphImage?.fields.file.url || '',
+//           width: openGraphImage?.fields.file.details.image?.width,
+//           height: openGraphImage?.fields.file.details.image?.height,
+//         },
+//       ],
+//     },
+//   };
+// };
 
 const Page = async ({ params }: PageProps) => {
-  const pageSlug = params?.slug?.join('/') || '/';
+  const slug = params?.slug?.join('/') || 'home';
 
-  const pageData = await getPageData(pageSlug);
+  const { templatePage } = await graphqlQuery<TemplatePageQuery>(TemplatePageDocument, { slug });
 
-  if (!pageData) {
+  if (!templatePage) {
     notFound();
   }
 
-  return <div>{pageData.fields.internalName}</div>;
+  return <div>{templatePage?.seo[0].canonicalUrl}</div>;
 };
 
 export default Page;
