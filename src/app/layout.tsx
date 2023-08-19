@@ -1,3 +1,4 @@
+import 'styles/global.css';
 import { name } from 'utils/constants';
 
 import type { Metadata } from 'next';
