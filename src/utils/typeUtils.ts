@@ -7,7 +7,7 @@ type ObjectKeys = <T extends object>(object: T) => (keyof T)[];
 export const objectEntries: ObjectEntries = object => Object.entries(object) as ObjectEntriesReturn<typeof object>;
 export const objectKeys: ObjectKeys = object => Object.keys(object) as (keyof typeof object)[];
 
-export const keyExistsOnObject = <T extends Record<string, unknown>>(
+export const objectHas = <T extends Record<string, unknown>>(
   object: T,
   potentialKey: string | number | symbol,
 ): potentialKey is keyof T => object[potentialKey as keyof object] !== undefined;
