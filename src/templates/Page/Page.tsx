@@ -1,4 +1,4 @@
-import SkillBar from 'components/SkillBar/SkillBar';
+import SkillBar from 'components/SkillBar';
 
 import type { FC } from 'react';
 
