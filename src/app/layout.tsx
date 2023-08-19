@@ -1,6 +1,7 @@
 import { name } from 'utils/constants';
 
 import type { Metadata } from 'next';
+import type { ReactNode } from 'react';
 
 export const metadata: Metadata = {
   title: {
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
   },
 };
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => (
+const RootLayout = ({ children }: { children: ReactNode }) => (
   <html lang="en">
     <body>{children}</body>
   </html>
