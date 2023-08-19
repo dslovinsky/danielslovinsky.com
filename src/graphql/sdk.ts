@@ -27,6 +27,24 @@ export const SeoFragmentDoc = gql`
   }
   ${FileFragmentDoc}
 `;
+export const SkillFragmentDoc = gql`
+  fragment skill on SkillRecord {
+    __typename
+    id
+    name
+    logo
+  }
+`;
+export const ComponentSkillBarFragmentDoc = gql`
+  fragment componentSkillBar on ComponentSkillBarRecord {
+    __typename
+    id
+    skills {
+      ...skill
+    }
+  }
+  ${SkillFragmentDoc}
+`;
 export const TemplatePageFragmentDoc = gql`
   fragment templatePage on TemplatePageRecord {
     id
@@ -34,8 +52,12 @@ export const TemplatePageFragmentDoc = gql`
     seo {
       ...seo
     }
+    components {
+      ...componentSkillBar
+    }
   }
   ${SeoFragmentDoc}
+  ${ComponentSkillBarFragmentDoc}
 `;
 export const AllTemplatePageSlugsDocument = gql`
   query AllTemplatePageSlugs {

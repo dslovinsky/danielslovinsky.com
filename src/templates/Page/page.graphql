@@ -4,6 +4,9 @@ fragment templatePage on TemplatePageRecord {
   seo {
     ...seo
   }
+  components {
+    ...componentSkillBar
+  }
 }
 
 query AllTemplatePageSlugs {

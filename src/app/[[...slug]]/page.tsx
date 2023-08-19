@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 
 import graphqlQuery from 'graphql/apolloClient';
 import { AllTemplatePageSlugsDocument, TemplatePageDocument } from 'graphql/sdk';
+import TemplatePage from 'templates/Page';
 
 import getMetadata from 'utils/getMetadata';
 
@@ -48,7 +49,7 @@ const Page = async ({ params }: PageProps) => {
     notFound();
   }
 
-  return <div>{templatePage?.slug}</div>;
+  return <TemplatePage {...templatePage} />;
 };
 
 export default Page;

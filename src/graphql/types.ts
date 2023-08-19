@@ -1466,7 +1466,14 @@ export interface FocalPoint {
 
 
     declare global {
-      export type FileFragment = { __typename?: 'FileField', id: string, alt?: string | null, blurhash?: string | null, height?: number | null, width?: number | null, url: string };
+      export type SkillFragment = { __typename: 'SkillRecord', id: string, name?: string | null, logo?: string | null };
+
+export type ComponentSkillBarFragment = { __typename: 'ComponentSkillBarRecord', id: string, skills: Array<(
+    { __typename?: 'SkillRecord' }
+    & SkillFragment
+  )> };
+
+export type FileFragment = { __typename?: 'FileField', id: string, alt?: string | null, blurhash?: string | null, height?: number | null, width?: number | null, url: string };
 
 export type SeoFragment = { __typename?: 'SeoRecord', id: string, indexable?: boolean | null, canonicalUrl?: string | null, metaTags?: { __typename?: 'SeoField', title?: string | null, description?: string | null, image?: (
       { __typename?: 'FileField' }
@@ -1476,6 +1483,9 @@ export type SeoFragment = { __typename?: 'SeoRecord', id: string, indexable?: bo
 export type TemplatePageFragment = { __typename?: 'TemplatePageRecord', id: string, slug?: string | null, seo: Array<(
     { __typename?: 'SeoRecord' }
     & SeoFragment
+  )>, components: Array<{ __typename?: 'ComponentHeroRecord' } | (
+    { __typename?: 'ComponentSkillBarRecord' }
+    & ComponentSkillBarFragment
   )> };
 
 export type AllTemplatePageSlugsQueryVariables = Exact<{ [key: string]: never; }>;
