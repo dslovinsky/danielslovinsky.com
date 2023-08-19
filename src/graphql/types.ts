@@ -12,15 +12,15 @@ export interface Scalars {
   Boolean: { input: boolean; output: boolean; }
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
-  BooleanType: { input: any; output: any; }
-  CustomData: { input: any; output: any; }
-  DateTime: { input: any; output: any; }
-  FloatType: { input: any; output: any; }
-  IntType: { input: any; output: any; }
-  ItemId: { input: any; output: any; }
-  JsonField: { input: any; output: any; }
-  MetaTagAttributes: { input: any; output: any; }
-  UploadId: { input: any; output: any; }
+  BooleanType: { input: boolean; output: boolean; }
+  CustomData: { input: Record<string, unknown>; output: Record<string, unknown>; }
+  DateTime: { input: string; output: string; }
+  FloatType: { input: number; output: number; }
+  IntType: { input: number; output: number; }
+  ItemId: { input: string; output: string; }
+  JsonField: { input: unknown; output: unknown; }
+  MetaTagAttributes: { input: Record<string, string>; output: Record<string, string>; }
+  UploadId: { input: string; output: string; }
 }
 
 export interface BooleanFilter {
@@ -1466,10 +1466,22 @@ export interface FocalPoint {
 
 
     declare global {
-      export type TemplatePageFragment = { __typename?: 'TemplatePageRecord', id: any, slug?: string | null, seo: Array<(
+      export type FileFragment = { __typename?: 'FileField', id: string, alt?: string | null, blurhash?: string | null, height?: number | null, width?: number | null, url: string };
+
+export type SeoFragment = { __typename?: 'SeoRecord', id: string, indexable?: boolean | null, canonicalUrl?: string | null, metaTags?: { __typename?: 'SeoField', title?: string | null, description?: string | null, image?: (
+      { __typename?: 'FileField' }
+      & FileFragment
+    ) | null } | null };
+
+export type TemplatePageFragment = { __typename?: 'TemplatePageRecord', id: string, slug?: string | null, seo: Array<(
     { __typename?: 'SeoRecord' }
     & SeoFragment
   )> };
+
+export type AllTemplatePageSlugsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type AllTemplatePageSlugsQuery = { __typename?: 'Query', allTemplatePages: Array<{ __typename?: 'TemplatePageRecord', slug?: string | null }> };
 
 export type TemplatePageQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']['input']>;
@@ -1480,17 +1492,5 @@ export type TemplatePageQuery = { __typename?: 'Query', templatePage?: (
     { __typename?: 'TemplatePageRecord' }
     & TemplatePageFragment
   ) | null };
-
-export type AllTemplatePageSlugsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type AllTemplatePageSlugsQuery = { __typename?: 'Query', allTemplatePages: Array<{ __typename?: 'TemplatePageRecord', slug?: string | null }> };
-
-export type SeoFragment = { __typename?: 'SeoRecord', id: any, indexable?: any | null, canonicalUrl?: string | null, metaTags?: { __typename?: 'SeoField', title?: string | null, description?: string | null, image?: (
-      { __typename?: 'FileField' }
-      & FileFragment
-    ) | null } | null };
-
-export type FileFragment = { __typename?: 'FileField', id: any, alt?: string | null, blurhash?: string | null, height?: any | null, width?: any | null, url: string };
 
     }

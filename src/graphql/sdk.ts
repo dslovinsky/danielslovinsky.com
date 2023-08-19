@@ -37,15 +37,6 @@ export const TemplatePageFragmentDoc = gql`
   }
   ${SeoFragmentDoc}
 `;
-export const TemplatePageDocument = gql`
-  query TemplatePage($slug: String) {
-    templatePage(filter: { slug: { eq: $slug } }) {
-      ...templatePage
-    }
-  }
-  ${TemplatePageFragmentDoc}
-`;
-export type TemplatePageQueryResult = Apollo.QueryResult<TemplatePageQuery, TemplatePageQueryVariables>;
 export const AllTemplatePageSlugsDocument = gql`
   query AllTemplatePageSlugs {
     allTemplatePages {
@@ -57,3 +48,12 @@ export type AllTemplatePageSlugsQueryResult = Apollo.QueryResult<
   AllTemplatePageSlugsQuery,
   AllTemplatePageSlugsQueryVariables
 >;
+export const TemplatePageDocument = gql`
+  query TemplatePage($slug: String) {
+    templatePage(filter: { slug: { eq: $slug } }) {
+      ...templatePage
+    }
+  }
+  ${TemplatePageFragmentDoc}
+`;
+export type TemplatePageQueryResult = Apollo.QueryResult<TemplatePageQuery, TemplatePageQueryVariables>;

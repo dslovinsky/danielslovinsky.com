@@ -3,7 +3,9 @@ import { notFound } from 'next/navigation';
 import graphqlQuery from 'graphql/apolloClient';
 import { AllTemplatePageSlugsDocument, TemplatePageDocument } from 'graphql/sdk';
 
-// import type { Metadata } from 'next';
+import getMetadata from 'utils/getMetadata';
+
+import type { Metadata } from 'next';
 
 export const generateStaticParams = async () => {
   const { allTemplatePages } = await graphqlQuery<AllTemplatePageSlugsQuery>(AllTemplatePageSlugsDocument);
@@ -23,39 +25,19 @@ interface PageProps {
   };
 }
 
-// export const generateMetadata = async ({ params }: PageProps): Promise<Metadata> => {
-//   const pageSlug = params?.slug?.join('/') || '/';
+export const generateMetadata = async ({ params }: PageProps): Promise<Metadata> => {
+  const slug = params?.slug?.join('/') || 'home';
 
-//   const {
-//     fields: {
-//       seo: {
-//         fields: { metaTitle, metaDescription, openGraphImage, indexable },
-//       },
-//     },
-//   } = await getPageData(pageSlug);
+  const { templatePage } = await graphqlQuery<TemplatePageQuery>(TemplatePageDocument, { slug });
 
-//   return {
-//     title: {
-//       absolute: metaTitle,
-//     },
-//     description: metaDescription,
-//     robots: {
-//       index: indexable,
-//       follow: indexable,
-//     },
-//     openGraph: {
-//       title: openGraphImage?.fields.title,
-//       description: openGraphImage?.fields.description,
-//       images: [
-//         {
-//           url: openGraphImage?.fields.file.url || '',
-//           width: openGraphImage?.fields.file.details.image?.width,
-//           height: openGraphImage?.fields.file.details.image?.height,
-//         },
-//       ],
-//     },
-//   };
-// };
+  if (!templatePage) {
+    notFound();
+  }
+
+  const [seo] = templatePage?.seo || [];
+
+  return getMetadata(seo, slug);
+};
 
 const Page = async ({ params }: PageProps) => {
   const slug = params?.slug?.join('/') || 'home';
@@ -66,7 +48,7 @@ const Page = async ({ params }: PageProps) => {
     notFound();
   }
 
-  return <div>{templatePage?.seo[0].canonicalUrl}</div>;
+  return <div>{templatePage?.slug}</div>;
 };
 
 export default Page;

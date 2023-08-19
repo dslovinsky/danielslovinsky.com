@@ -20,6 +20,18 @@ const config: CodegenConfig = {
       config: {
         declarationKind: 'interface',
         inlineFragmentTypes: 'combine',
+        scalars: {
+          BooleanType: 'boolean',
+          CustomData: 'Record<string, unknown>',
+          Date: 'string',
+          DateTime: 'string',
+          FloatType: 'number',
+          IntType: 'number',
+          ItemId: 'string',
+          JsonField: 'unknown',
+          MetaTagAttributes: 'Record<string, string>',
+          UploadId: 'string',
+        },
       },
       plugins: [
         {
