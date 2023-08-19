@@ -1,9 +1,11 @@
+import { name } from 'utils/constants';
+
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Daniel Slovinsky',
-    default: 'Daniel Slovinsky',
+    template: `%s | ${name}`,
+    default: name,
   },
 };
 

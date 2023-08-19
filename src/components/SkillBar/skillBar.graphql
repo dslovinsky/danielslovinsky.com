@@ -1,0 +1,14 @@
+fragment skill on SkillRecord {
+  __typename
+  id
+  name
+  logo
+}
+
+fragment componentSkillBar on ComponentSkillBarRecord {
+  __typename
+  id
+  skills {
+    ...skill
+  }
+}
