@@ -10,6 +10,17 @@ const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
+  // referencing a fallback variable breaks it - must be hard-coded
+  fallback: [
+    '-apple-system',
+    'system-ui',
+    'BlinkMacSystemFont',
+    '"Segoe UI"',
+    'Roboto',
+    '"Helvetica Neue"',
+    'Arial',
+    'sans-serif',
+  ],
 });
 
 const titilliumWeb = Titillium_Web({
@@ -17,6 +28,16 @@ const titilliumWeb = Titillium_Web({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-titillium',
+  fallback: [
+    '-apple-system',
+    'system-ui',
+    'BlinkMacSystemFont',
+    '"Segoe UI"',
+    'Roboto',
+    '"Helvetica Neue"',
+    'Arial',
+    'sans-serif',
+  ],
 });
 
 export const metadata: Metadata = {
