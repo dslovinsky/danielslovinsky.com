@@ -4,4 +4,6 @@
 
 body {
   @apply font-inter;
+  @apply bg-blackPearl;
+  @apply text-white;
 }
