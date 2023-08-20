@@ -1,6 +1,4 @@
-import { memo, useEffect, useRef } from 'react';
-
-import type { CanvasHTMLAttributes, FC } from 'react';
+import { type CanvasHTMLAttributes, type FC, memo, useEffect, useRef } from 'react';
 
 const operations = [
   [-1, -1],

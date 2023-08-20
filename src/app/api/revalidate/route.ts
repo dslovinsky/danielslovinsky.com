@@ -1,8 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { revalidatePath } from 'next/cache';
-import { NextResponse } from 'next/server';
-
-import type { NextRequest } from 'next/server';
+import { type NextRequest, NextResponse } from 'next/server';
 
 // @see https://nextjs.org/docs/app/api-reference/functions/revalidatePath#examples
 export const GET = async (request: NextRequest) => {

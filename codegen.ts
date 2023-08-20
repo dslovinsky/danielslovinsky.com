@@ -16,7 +16,7 @@ const config: CodegenConfig = {
   ],
   documents: 'src/**/*.graphql',
   generates: {
-    'src/graphql/types.ts': {
+    'src/types/graphql.ts': {
       config: {
         declarationKind: 'interface',
         inlineFragmentTypes: 'combine',

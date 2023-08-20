@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 
 import graphqlQuery from 'graphql/apolloClient';
 import { AllTemplatePageSlugsDocument, TemplatePageDocument } from 'graphql/sdk';
+
 import TemplatePage from 'templates/Page';
 
 import getMetadata from 'utils/getMetadata';
