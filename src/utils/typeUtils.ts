@@ -9,7 +9,7 @@ export const objectKeys: ObjectKeys = object => Object.keys(object) as (keyof ty
 
 export const objectHas = <T extends Record<string, unknown>>(
   object: T,
-  potentialKey: string | number | symbol,
+  potentialKey?: string | number | symbol | null,
 ): potentialKey is keyof T => object[potentialKey as keyof object] !== undefined;
 
 export const typedFetch = async <T>(url: string, config: RequestInit): Promise<T> => {
