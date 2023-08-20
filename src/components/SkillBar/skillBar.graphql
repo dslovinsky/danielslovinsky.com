@@ -2,7 +2,9 @@ fragment skill on SkillRecord {
   __typename
   id
   name
-  logo
+  logo {
+    ...file
+  }
 }
 
 fragment componentSkillBar on ComponentSkillBarRecord {

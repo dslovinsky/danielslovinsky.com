@@ -3,7 +3,14 @@
  */
 const nextConfig = {
   images: {
-    domains: ['datocms-assets.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'www.datocms-assets.com',
+        port: '',
+        pathname: '/105128/**',
+      },
+    ],
   },
 };
 

@@ -6,7 +6,6 @@ export const FileFragmentDoc = gql`
   fragment file on FileField {
     id
     alt
-    blurhash
     height
     width
     url
@@ -32,8 +31,11 @@ export const SkillFragmentDoc = gql`
     __typename
     id
     name
-    logo
+    logo {
+      ...file
+    }
   }
+  ${FileFragmentDoc}
 `;
 export const ComponentSkillBarFragmentDoc = gql`
   fragment componentSkillBar on ComponentSkillBarRecord {

@@ -1,7 +1,6 @@
 fragment file on FileField {
   id
   alt
-  blurhash
   height
   width
   url

@@ -1085,7 +1085,7 @@ export interface SkillRecord extends RecordInterface {
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   id: Scalars['ItemId']['output'];
-  logo?: Maybe<Scalars['String']['output']>;
+  logo?: Maybe<FileField>;
   name?: Maybe<Scalars['String']['output']>;
 }
 
@@ -1466,14 +1466,17 @@ export interface FocalPoint {
 
 
     declare global {
-      export type SkillFragment = { __typename: 'SkillRecord', id: string, name?: string | null, logo?: string | null };
+      export type SkillFragment = { __typename: 'SkillRecord', id: string, name?: string | null, logo?: (
+    { __typename?: 'FileField' }
+    & FileFragment
+  ) | null };
 
 export type ComponentSkillBarFragment = { __typename: 'ComponentSkillBarRecord', id: string, skills: Array<(
     { __typename?: 'SkillRecord' }
     & SkillFragment
   )> };
 
-export type FileFragment = { __typename?: 'FileField', id: string, alt?: string | null, blurhash?: string | null, height?: number | null, width?: number | null, url: string };
+export type FileFragment = { __typename?: 'FileField', id: string, alt?: string | null, height?: number | null, width?: number | null, url: string };
 
 export type SeoFragment = { __typename?: 'SeoRecord', id: string, indexable?: boolean | null, canonicalUrl?: string | null, metaTags?: { __typename?: 'SeoField', title?: string | null, description?: string | null, image?: (
       { __typename?: 'FileField' }
