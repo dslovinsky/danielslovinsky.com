@@ -41,6 +41,7 @@ const titilliumWeb = Titillium_Web({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(`https://${process.env.VERCEL_URL}`),
   title: {
     template: `%s | ${name}`,
     default: name,
