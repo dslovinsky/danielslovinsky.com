@@ -1,10 +1,8 @@
-import { HttpLink } from '@apollo/client';
+import { HttpLink, type QueryOptions } from '@apollo/client';
 import { registerApolloClient } from '@apollo/experimental-nextjs-app-support/rsc';
 import { NextSSRApolloClient, NextSSRInMemoryCache } from '@apollo/experimental-nextjs-app-support/ssr';
 
 import { DATO_GRAPHQL_URI } from 'utils/constants';
-
-import type { QueryOptions } from '@apollo/client';
 
 const link = new HttpLink({
   uri: DATO_GRAPHQL_URI,

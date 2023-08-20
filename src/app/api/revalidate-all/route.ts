@@ -1,11 +1,9 @@
 /* eslint-disable import/prefer-default-export */
 import { revalidatePath } from 'next/cache';
-import { NextResponse } from 'next/server';
+import { type NextRequest, NextResponse } from 'next/server';
 
 import graphqlQuery from 'graphql/apolloClient';
 import { AllTemplatePageSlugsDocument } from 'graphql/sdk';
-
-import type { NextRequest } from 'next/server';
 
 const delayedLoop = async <T>(array: T[], callback: (item: T) => void, delay = 10) => {
   for (const item of array) {
