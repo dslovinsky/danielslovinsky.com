@@ -61,7 +61,7 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx,mdx}": [
       "eslint --fix",
-      "prettier --write --loglevel silent"
+      "prettier --write --log-level silent"
     ]
   }
 }
