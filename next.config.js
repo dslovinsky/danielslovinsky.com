@@ -3,7 +3,7 @@
  */
 const nextConfig = {
   images: {
-    domains: ['images.ctfassets.net'],
+    domains: ['datocms-assets.com'],
   },
 };
 
