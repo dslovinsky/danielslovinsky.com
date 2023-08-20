@@ -1,0 +1,12 @@
+<svg width="0" height="0" class="hidden">
+    <symbol id="ds-logo" viewBox="0 0 26 24" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M12 6.038 0 0v24l12-6.038V6.038ZM8 8 4 6v12l4-2V8Zm18-8L14 6.038V10l8 4v4l-8-4v3.962L26 24V12.688l-9.02-4.433L26 3.822V0Z"
+            fill="#fff" />
+        <path
+            d="M17.776 7.553 16.882 8l.894.447L25.5 12.31v2.882l-11-5.5V6.346l11-5.535v2.88l-7.724 3.862Z"
+            fill="#6ADBFF" stroke="#6ADBFF" />
+        <path d="m26 16-4-2v2l4 2v-2Z" fill="#0D1115" />
+    </symbol>
+</svg>
