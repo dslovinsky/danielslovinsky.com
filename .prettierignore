@@ -5,4 +5,4 @@ bin
 docker
 public
 .next
-src/graphql/types.ts
+src/types/graphql.ts

@@ -39,7 +39,7 @@
     "mdx/code-blocks": false,
     "mdx/language-mapper": {}
   },
-  "ignorePatterns": ["next-env.d.ts", "src/graphql/types.ts"],
+  "ignorePatterns": ["next-env.d.ts", "src/types/graphql.ts"],
   "rules": {
     "array-callback-return": ["error", { "allowImplicit": true, "checkForEach": true }],
     "arrow-body-style": ["error", "as-needed"],
@@ -90,12 +90,7 @@
             "position": "after"
           },
           {
-            "pattern": "atoms/**",
-            "group": "internal",
-            "position": "after"
-          },
-          {
-            "pattern": "quarks/**",
+            "pattern": "graphql/**",
             "group": "internal",
             "position": "after"
           },
@@ -110,12 +105,22 @@
             "position": "after"
           },
           {
+            "pattern": "templates/**",
+            "group": "internal",
+            "position": "after"
+          },
+          {
             "pattern": "utils/**",
             "group": "internal",
             "position": "after"
           },
           {
             "pattern": "theme/**",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "types/**",
             "group": "internal",
             "position": "after"
           }
