@@ -37,15 +37,42 @@ export const SkillFragmentDoc = gql`
   }
   ${FileFragmentDoc}
 `;
+export const SectionFragmentDoc = gql`
+  fragment section on SectionRecord {
+    id
+    idLink
+    topPadding
+    bottomPadding
+  }
+`;
 export const ComponentSkillBarFragmentDoc = gql`
   fragment componentSkillBar on ComponentSkillBarRecord {
     __typename
     id
+    heading
     skills {
       ...skill
     }
+    sectionOptions {
+      ...section
+    }
   }
   ${SkillFragmentDoc}
+  ${SectionFragmentDoc}
+`;
+export const ComponentHeroFragmentDoc = gql`
+  fragment componentHero on ComponentHeroRecord {
+    id
+    sectionOptions {
+      ...section
+    }
+    eyebrow
+    heading
+    body {
+      value
+    }
+  }
+  ${SectionFragmentDoc}
 `;
 export const TemplatePageFragmentDoc = gql`
   fragment templatePage on TemplatePageRecord {
@@ -56,10 +83,12 @@ export const TemplatePageFragmentDoc = gql`
     }
     components {
       ...componentSkillBar
+      ...componentHero
     }
   }
   ${SeoFragmentDoc}
   ${ComponentSkillBarFragmentDoc}
+  ${ComponentHeroFragmentDoc}
 `;
 export const AllTemplatePageSlugsDocument = gql`
   query AllTemplatePageSlugs {

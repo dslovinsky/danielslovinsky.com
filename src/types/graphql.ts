@@ -80,7 +80,7 @@ export interface ComponentHeroModelFilter {
   heading?: InputMaybe<StringFilter>;
   id?: InputMaybe<ItemIdFilter>;
   internalName?: InputMaybe<StringFilter>;
-  mediaReference?: InputMaybe<LinkFilter>;
+  mediaReference?: InputMaybe<FileFilter>;
 }
 
 export enum ComponentHeroModelOrderBy {
@@ -128,7 +128,8 @@ export interface ComponentHeroRecord extends RecordInterface {
   heading?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
   internalName?: Maybe<Scalars['String']['output']>;
-  mediaReference?: Maybe<MoleculeImageRecord>;
+  mediaReference?: Maybe<FileField>;
+  sectionOptions: Array<SectionRecord>;
 }
 
 
@@ -147,6 +148,7 @@ export interface ComponentSkillBarModelFilter {
   _status?: InputMaybe<StatusFilter>;
   _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
   _updatedAt?: InputMaybe<UpdatedAtFilter>;
+  heading?: InputMaybe<StringFilter>;
   id?: InputMaybe<ItemIdFilter>;
   internalName?: InputMaybe<StringFilter>;
 }
@@ -168,6 +170,8 @@ export enum ComponentSkillBarModelOrderBy {
   UnpublishingScheduledAtDesc = '_unpublishingScheduledAt_DESC',
   UpdatedAtAsc = '_updatedAt_ASC',
   UpdatedAtDesc = '_updatedAt_DESC',
+  HeadingAsc = 'heading_ASC',
+  HeadingDesc = 'heading_DESC',
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
   InternalNameAsc = 'internalName_ASC',
@@ -187,8 +191,10 @@ export interface ComponentSkillBarRecord extends RecordInterface {
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
+  heading?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
   internalName?: Maybe<Scalars['String']['output']>;
+  sectionOptions: Array<SectionRecord>;
   skills: Array<SkillRecord>;
 }
 
@@ -722,14 +728,6 @@ export enum ItemStatus {
   Updated = 'updated'
 }
 
-export interface LinkFilter {
-  eq?: InputMaybe<Scalars['ItemId']['input']>;
-  exists?: InputMaybe<Scalars['BooleanType']['input']>;
-  in?: InputMaybe<Array<InputMaybe<Scalars['ItemId']['input']>>>;
-  neq?: InputMaybe<Scalars['ItemId']['input']>;
-  notIn?: InputMaybe<Array<InputMaybe<Scalars['ItemId']['input']>>>;
-}
-
 export interface LinksFilter {
   allIn?: InputMaybe<Array<InputMaybe<Scalars['ItemId']['input']>>>;
   anyIn?: InputMaybe<Array<InputMaybe<Scalars['ItemId']['input']>>>;
@@ -1014,6 +1012,30 @@ export interface ResponsiveImage {
   title?: Maybe<Scalars['String']['output']>;
   webpSrcSet: Scalars['String']['output'];
   width: Scalars['IntType']['output'];
+}
+
+export interface SectionRecord extends RecordInterface {
+  __typename?: 'SectionRecord';
+  _createdAt: Scalars['DateTime']['output'];
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _isValid: Scalars['BooleanType']['output'];
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  bottomPadding?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ItemId']['output'];
+  idLink?: Maybe<Scalars['String']['output']>;
+  topPadding?: Maybe<Scalars['String']['output']>;
+}
+
+
+export interface SectionRecord_SeoMetaTagsArgs {
+  locale?: InputMaybe<SiteLocale>;
 }
 
 export interface SeoField {
@@ -1466,14 +1488,22 @@ export interface FocalPoint {
 
 
     declare global {
-      export type SkillFragment = { __typename: 'SkillRecord', id: string, name?: string | null, logo?: (
+      export type ComponentHeroFragment = { __typename?: 'ComponentHeroRecord', id: string, eyebrow?: string | null, heading?: string | null, sectionOptions: Array<(
+    { __typename?: 'SectionRecord' }
+    & SectionFragment
+  )>, body?: { __typename?: 'ComponentHeroModelBodyField', value: unknown } | null };
+
+export type SkillFragment = { __typename: 'SkillRecord', id: string, name?: string | null, logo?: (
     { __typename?: 'FileField' }
     & FileFragment
   ) | null };
 
-export type ComponentSkillBarFragment = { __typename: 'ComponentSkillBarRecord', id: string, skills: Array<(
+export type ComponentSkillBarFragment = { __typename: 'ComponentSkillBarRecord', id: string, heading?: string | null, skills: Array<(
     { __typename?: 'SkillRecord' }
     & SkillFragment
+  )>, sectionOptions: Array<(
+    { __typename?: 'SectionRecord' }
+    & SectionFragment
   )> };
 
 export type FileFragment = { __typename?: 'FileField', id: string, alt?: string | null, height?: number | null, width?: number | null, url: string };
@@ -1483,10 +1513,15 @@ export type SeoFragment = { __typename?: 'SeoRecord', id: string, indexable?: bo
       & FileFragment
     ) | null } | null };
 
+export type SectionFragment = { __typename?: 'SectionRecord', id: string, idLink?: string | null, topPadding?: string | null, bottomPadding?: string | null };
+
 export type TemplatePageFragment = { __typename?: 'TemplatePageRecord', id: string, slug?: string | null, seo: Array<(
     { __typename?: 'SeoRecord' }
     & SeoFragment
-  )>, components: Array<{ __typename?: 'ComponentHeroRecord' } | (
+  )>, components: Array<(
+    { __typename?: 'ComponentHeroRecord' }
+    & ComponentHeroFragment
+  ) | (
     { __typename?: 'ComponentSkillBarRecord' }
     & ComponentSkillBarFragment
   )> };

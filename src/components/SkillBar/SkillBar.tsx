@@ -2,8 +2,9 @@ import Image from 'next/image';
 
 import type { FC } from 'react';
 
-const SkillBar: FC<ComponentSkillBarFragment> = ({ skills }) => (
+const SkillBar: FC<ComponentSkillBarFragment> = ({ heading, skills }) => (
   <div>
+    <h2>{heading}</h2>
     {skills.map(({ id, name, logo }) => (
       <div key={id}>
         <div>{name}</div>

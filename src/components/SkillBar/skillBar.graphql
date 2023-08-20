@@ -10,7 +10,11 @@ fragment skill on SkillRecord {
 fragment componentSkillBar on ComponentSkillBarRecord {
   __typename
   id
+  heading
   skills {
     ...skill
+  }
+  sectionOptions {
+    ...section
   }
 }
