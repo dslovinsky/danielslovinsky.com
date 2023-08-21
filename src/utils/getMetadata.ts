@@ -39,7 +39,7 @@ const getMetadata = ({ metaTags, indexable, canonicalUrl }: SeoFragment, slug: s
     },
     authors: [{ name }],
     colorScheme: 'dark',
-    themeColor: colors.blackPearl,
+    themeColor: colors['black-pearl'],
   };
 };
 

@@ -3,8 +3,8 @@ const colors = {
   transparent: 'transparent',
   black: '#000000',
   white: '#FFFFFF',
-  blackPearl: '#0D1115',
-  mayaBlue: '#6ADBFF',
+  'black-pearl': '#0D1115',
+  'maya-blue': '#6ADBFF',
 };
 
 export default colors;

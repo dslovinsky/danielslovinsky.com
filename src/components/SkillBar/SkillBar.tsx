@@ -5,7 +5,7 @@ import SectionHeading from 'molecules/SectionHeading';
 import type { FC } from 'react';
 
 const SkillBar: FC<ComponentSkillBarFragment> = ({ heading, skills }) => (
-  <div className="bg-mayaBlue">
+  <div className="flex flex-col items-center">
     {heading && <SectionHeading heading={heading} />}
     <div className="flex flex-wrap justify-center">
       {skills.map(({ id, name, logo }) => (
