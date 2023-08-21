@@ -7,10 +7,14 @@ import type { FC } from 'react';
 const SkillBar: FC<ComponentSkillBarFragment> = ({ heading, skills }) => (
   <div className="flex flex-col items-center gap-6 md:gap-10">
     {heading && <SectionHeading heading={heading} />}
-    <div className="flex flex-wrap justify-center">
+    <div className="flex flex-wrap justify-center gap-x-12 gap-y-6 md:gap-x-24 md:gap-y-10">
       {skills.map(({ id, name, logo }) => (
-        <div key={id}>
-          {logo?.url && <Image src={logo.url} alt={logo.alt || name || ''} width={64} height={64} />}
+        <div key={id} className="flex flex-col items-center gap-y-2">
+          {logo?.url && (
+            <div className="relative h-16 w-16">
+              <Image src={logo.url} alt={logo.alt || name || ''} fill />
+            </div>
+          )}
           <div>{name}</div>
         </div>
       ))}
