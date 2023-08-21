@@ -6,6 +6,7 @@ fragment templatePage on TemplatePageRecord {
   }
   components {
     ...componentSkillBar
+    ...componentHero
   }
 }
 

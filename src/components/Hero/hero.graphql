@@ -1,0 +1,11 @@
+fragment componentHero on ComponentHeroRecord {
+  id
+  sectionOptions {
+    ...section
+  }
+  eyebrow
+  heading
+  body {
+    value
+  }
+}

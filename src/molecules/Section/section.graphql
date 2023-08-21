@@ -1,0 +1,6 @@
+fragment section on SectionRecord {
+  id
+  idLink
+  topPadding
+  bottomPadding
+}

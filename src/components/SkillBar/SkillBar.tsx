@@ -1,11 +1,25 @@
+import Image from 'next/image';
+
+import SectionHeading from 'molecules/SectionHeading';
+
 import type { FC } from 'react';
 
-const SkillBar: FC<ComponentSkillBarFragment> = ({ skills }) =>
-  skills.map(skill => (
-    <div key={skill.id}>
-      <div>{skill.name}</div>
-      <div>{skill.logo}</div>
+const SkillBar: FC<ComponentSkillBarFragment> = ({ heading, skills }) => (
+  <div className="flex flex-col items-center gap-6 md:gap-10">
+    {heading && <SectionHeading heading={heading} />}
+    <div className="flex flex-wrap justify-center gap-x-12 gap-y-6 md:gap-x-24 md:gap-y-10">
+      {skills.map(({ id, name, logo }) => (
+        <div key={id} className="flex flex-col items-center gap-y-2">
+          {logo?.url && (
+            <div className="relative h-16 w-16">
+              <Image src={logo.url} alt={logo.alt || `${name || ''} logo`} fill />
+            </div>
+          )}
+          <div>{name}</div>
+        </div>
+      ))}
     </div>
-  ));
+  </div>
+);
 
 export default SkillBar;
