@@ -14,7 +14,7 @@ export const topPaddingVariants = {
 };
 
 const bottomPaddingVariants = {
-  0: ['p'],
+  0: ['pb-0'],
   8: ['pb-2'],
   16: ['pb-2 lg:pb-4'],
   24: ['pb-2 md:pb-4 lg:pb-6'],
@@ -26,7 +26,7 @@ const bottomPaddingVariants = {
   96: ['pb-10 md:pb-14 lg:pb-24'],
 };
 
-const sectionStyles = cva([], {
+const sectionStyles = cva(['flex justify-center'], {
   variants: {
     topPadding: topPaddingVariants,
     bottomPadding: bottomPaddingVariants,

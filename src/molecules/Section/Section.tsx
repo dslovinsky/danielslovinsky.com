@@ -24,7 +24,7 @@ const Section: FC<SectionProps> = ({ children, id, idLink, topPadding, bottomPad
       id={idLink || id}
       className={sectionStyles({ topPadding: topPaddingVariant, bottomPadding: bottomPaddingVariant })}
     >
-      {children}
+      <div className="w-full max-w-column px-4 md:px-14 lg:px-24">{children}</div>
     </section>
   );
 };
