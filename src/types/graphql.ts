@@ -27,6 +27,31 @@ export interface BooleanFilter {
   eq?: InputMaybe<Scalars['BooleanType']['input']>;
 }
 
+export interface ButtonRecord extends RecordInterface {
+  __typename?: 'ButtonRecord';
+  _createdAt: Scalars['DateTime']['output'];
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _isValid: Scalars['BooleanType']['output'];
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  endIcon?: Maybe<Scalars['String']['output']>;
+  iconLabel?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ItemId']['output'];
+  label?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+}
+
+
+export interface ButtonRecord_SeoMetaTagsArgs {
+  locale?: InputMaybe<SiteLocale>;
+}
+
 export interface CollectionMetadata {
   __typename?: 'CollectionMetadata';
   count: Scalars['IntType']['output'];
@@ -57,9 +82,33 @@ export interface ColorField {
   red: Scalars['IntType']['output'];
 }
 
+export interface ComponentHeaderRecord extends RecordInterface {
+  __typename?: 'ComponentHeaderRecord';
+  _createdAt: Scalars['DateTime']['output'];
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _isValid: Scalars['BooleanType']['output'];
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  id: Scalars['ItemId']['output'];
+  internalName?: Maybe<Scalars['String']['output']>;
+  links: Array<ButtonRecord>;
+  mobileBottomLinks: Array<ButtonRecord>;
+}
+
+
+export interface ComponentHeaderRecord_SeoMetaTagsArgs {
+  locale?: InputMaybe<SiteLocale>;
+}
+
 export interface ComponentHeroModelBodyField {
   __typename?: 'ComponentHeroModelBodyField';
-  blocks: Array<Scalars['String']['output']>;
+  blocks: Array<ButtonRecord>;
   links: Array<Scalars['String']['output']>;
   value: Scalars['JsonField']['output'];
 }
@@ -736,68 +785,6 @@ export interface LinksFilter {
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ItemId']['input']>>>;
 }
 
-export interface MoleculeImageModelFilter {
-  AND?: InputMaybe<Array<InputMaybe<MoleculeImageModelFilter>>>;
-  OR?: InputMaybe<Array<InputMaybe<MoleculeImageModelFilter>>>;
-  _createdAt?: InputMaybe<CreatedAtFilter>;
-  _firstPublishedAt?: InputMaybe<PublishedAtFilter>;
-  _isValid?: InputMaybe<BooleanFilter>;
-  _publicationScheduledAt?: InputMaybe<PublishedAtFilter>;
-  _publishedAt?: InputMaybe<PublishedAtFilter>;
-  _status?: InputMaybe<StatusFilter>;
-  _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
-  _updatedAt?: InputMaybe<UpdatedAtFilter>;
-  id?: InputMaybe<ItemIdFilter>;
-  image?: InputMaybe<FileFilter>;
-  internalName?: InputMaybe<StringFilter>;
-}
-
-export enum MoleculeImageModelOrderBy {
-  CreatedAtAsc = '_createdAt_ASC',
-  CreatedAtDesc = '_createdAt_DESC',
-  FirstPublishedAtAsc = '_firstPublishedAt_ASC',
-  FirstPublishedAtDesc = '_firstPublishedAt_DESC',
-  IsValidAsc = '_isValid_ASC',
-  IsValidDesc = '_isValid_DESC',
-  PublicationScheduledAtAsc = '_publicationScheduledAt_ASC',
-  PublicationScheduledAtDesc = '_publicationScheduledAt_DESC',
-  PublishedAtAsc = '_publishedAt_ASC',
-  PublishedAtDesc = '_publishedAt_DESC',
-  StatusAsc = '_status_ASC',
-  StatusDesc = '_status_DESC',
-  UnpublishingScheduledAtAsc = '_unpublishingScheduledAt_ASC',
-  UnpublishingScheduledAtDesc = '_unpublishingScheduledAt_DESC',
-  UpdatedAtAsc = '_updatedAt_ASC',
-  UpdatedAtDesc = '_updatedAt_DESC',
-  IdAsc = 'id_ASC',
-  IdDesc = 'id_DESC',
-  InternalNameAsc = 'internalName_ASC',
-  InternalNameDesc = 'internalName_DESC'
-}
-
-export interface MoleculeImageRecord extends RecordInterface {
-  __typename?: 'MoleculeImageRecord';
-  _createdAt: Scalars['DateTime']['output'];
-  _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
-  _isValid: Scalars['BooleanType']['output'];
-  _modelApiKey: Scalars['String']['output'];
-  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
-  _seoMetaTags: Array<Tag>;
-  _status: ItemStatus;
-  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _updatedAt: Scalars['DateTime']['output'];
-  id: Scalars['ItemId']['output'];
-  image?: Maybe<FileField>;
-  internalName?: Maybe<Scalars['String']['output']>;
-}
-
-
-export interface MoleculeImageRecord_SeoMetaTagsArgs {
-  locale?: InputMaybe<SiteLocale>;
-}
-
 export enum MuxThumbnailFormatType {
   Gif = 'gif',
   Jpg = 'jpg',
@@ -823,18 +810,16 @@ export interface Query {
   __typename?: 'Query';
   _allComponentHerosMeta: CollectionMetadata;
   _allComponentSkillBarsMeta: CollectionMetadata;
-  _allMoleculeImagesMeta: CollectionMetadata;
   _allTemplatePagesMeta: CollectionMetadata;
   _allUploadsMeta: CollectionMetadata;
   _site: Site;
   allComponentHeros: Array<ComponentHeroRecord>;
   allComponentSkillBars: Array<ComponentSkillBarRecord>;
-  allMoleculeImages: Array<MoleculeImageRecord>;
   allTemplatePages: Array<TemplatePageRecord>;
   allUploads: Array<FileField>;
+  componentHeader?: Maybe<ComponentHeaderRecord>;
   componentHero?: Maybe<ComponentHeroRecord>;
   componentSkillBar?: Maybe<ComponentSkillBarRecord>;
-  moleculeImage?: Maybe<MoleculeImageRecord>;
   templatePage?: Maybe<TemplatePageRecord>;
   upload?: Maybe<FileField>;
 }
@@ -848,12 +833,6 @@ export interface Query_AllComponentHerosMetaArgs {
 
 export interface Query_AllComponentSkillBarsMetaArgs {
   filter?: InputMaybe<ComponentSkillBarModelFilter>;
-  locale?: InputMaybe<SiteLocale>;
-}
-
-
-export interface Query_AllMoleculeImagesMetaArgs {
-  filter?: InputMaybe<MoleculeImageModelFilter>;
   locale?: InputMaybe<SiteLocale>;
 }
 
@@ -896,16 +875,6 @@ export interface QueryAllComponentSkillBarsArgs {
 }
 
 
-export interface QueryAllMoleculeImagesArgs {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  filter?: InputMaybe<MoleculeImageModelFilter>;
-  first?: InputMaybe<Scalars['IntType']['input']>;
-  locale?: InputMaybe<SiteLocale>;
-  orderBy?: InputMaybe<Array<InputMaybe<MoleculeImageModelOrderBy>>>;
-  skip?: InputMaybe<Scalars['IntType']['input']>;
-}
-
-
 export interface QueryAllTemplatePagesArgs {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   filter?: InputMaybe<TemplatePageModelFilter>;
@@ -926,6 +895,12 @@ export interface QueryAllUploadsArgs {
 }
 
 
+export interface QueryComponentHeaderArgs {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+}
+
+
 export interface QueryComponentHeroArgs {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   filter?: InputMaybe<ComponentHeroModelFilter>;
@@ -939,14 +914,6 @@ export interface QueryComponentSkillBarArgs {
   filter?: InputMaybe<ComponentSkillBarModelFilter>;
   locale?: InputMaybe<SiteLocale>;
   orderBy?: InputMaybe<Array<InputMaybe<ComponentSkillBarModelOrderBy>>>;
-}
-
-
-export interface QueryMoleculeImageArgs {
-  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
-  filter?: InputMaybe<MoleculeImageModelFilter>;
-  locale?: InputMaybe<SiteLocale>;
-  orderBy?: InputMaybe<Array<InputMaybe<MoleculeImageModelOrderBy>>>;
 }
 
 
@@ -1488,7 +1455,23 @@ export interface FocalPoint {
 
 
     declare global {
-      export type ComponentHeroFragment = { __typename?: 'ComponentHeroRecord', id: string, eyebrow?: string | null, heading?: string | null, sectionOptions: Array<(
+      export type HeaderFragment = { __typename?: 'ComponentHeaderRecord', id: string, links: Array<(
+    { __typename?: 'ButtonRecord' }
+    & ButtonFragment
+  )>, mobileBottomLinks: Array<(
+    { __typename?: 'ButtonRecord' }
+    & ButtonFragment
+  )> };
+
+export type GlobalHeaderQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GlobalHeaderQuery = { __typename?: 'Query', componentHeader?: (
+    { __typename?: 'ComponentHeaderRecord' }
+    & HeaderFragment
+  ) | null };
+
+export type ComponentHeroFragment = { __typename?: 'ComponentHeroRecord', id: string, eyebrow?: string | null, heading?: string | null, sectionOptions: Array<(
     { __typename?: 'SectionRecord' }
     & SectionFragment
   )>, body?: { __typename?: 'ComponentHeroModelBodyField', value: unknown } | null };
@@ -1512,6 +1495,8 @@ export type SeoFragment = { __typename?: 'SeoRecord', id: string, indexable?: bo
       { __typename?: 'FileField' }
       & FileFragment
     ) | null } | null };
+
+export type ButtonFragment = { __typename?: 'ButtonRecord', id: string, url?: string | null, label?: string | null, iconLabel?: string | null, endIcon?: string | null };
 
 export type SectionFragment = { __typename?: 'SectionRecord', id: string, idLink?: string | null, topPadding?: string | null, bottomPadding?: string | null };
 

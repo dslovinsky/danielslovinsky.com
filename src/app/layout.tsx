@@ -1,6 +1,8 @@
 import 'styles/global.css';
 import { Inter, Titillium_Web } from 'next/font/google';
 
+import Header from 'components/Header';
+
 import { name } from 'utils/constants';
 
 import type { Metadata } from 'next';
@@ -50,7 +52,10 @@ export const metadata: Metadata = {
 
 const RootLayout = ({ children }: { children: ReactNode }) => (
   <html lang="en" className={`${inter.variable} ${titilliumWeb.variable}`}>
-    <body>{children}</body>
+    <body>
+      <Header />
+      {children}
+    </body>
   </html>
 );
 
