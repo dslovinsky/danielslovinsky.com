@@ -8,6 +8,12 @@ body {
   @apply text-white;
 }
 
+@supports (height: 1dvh) {
+  :root {
+    --dvh: 1dvh;
+  }
+}
+
 @layer utilities {
   .text-stroke-none {
     -webkit-text-stroke-width: 0;
