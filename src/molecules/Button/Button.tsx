@@ -12,12 +12,12 @@ interface ButtonsProps extends ButtonFragment, Omit<NativeButtonProps, 'id'> {
   iconSize?: number;
 }
 
-const Button: FC<ButtonsProps> = ({ url, label, iconLabel, endIcon, iconSize = 24 }) => {
+const Button: FC<ButtonsProps> = ({ url, label, iconLabel, endIcon, iconSize = 24, id: _id, __typename, ...props }) => {
   const { Component: as, href, ...urlProps } = parseUrl(url || '');
   const Component = as === 'div' ? 'button' : as;
 
   return (
-    <Component href={href} {...urlProps}>
+    <Component href={href} {...urlProps} {...props}>
       {(isValidId(iconLabel) && <Icon icon={iconLabel} size={iconSize} />) || label}
       {isValidId(endIcon) && <Icon icon={endIcon} size={iconSize} />}
     </Component>

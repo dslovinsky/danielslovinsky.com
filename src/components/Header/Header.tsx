@@ -18,9 +18,14 @@ const Header: FC = async () => {
           <Icon icon="ds-logo" size={24} className="md:h-8 md:w-8" />
         </Link>
         {componentHeader?.links && (
-          <div className="flex">
+          <div className="flex gap-y-10">
             {componentHeader.links.map(({ id, ...rest }) => (
-              <Button key={id} id={id} {...rest} />
+              <Button
+                key={id}
+                id={id}
+                {...rest}
+                className="relative flex items-center pb-1 font-titillium text-md font-semibold uppercase tracking-lg after:absolute after:bottom-0 after:left-1/2 after:h-0.5 after:w-0 after:-translate-x-1/2 after:bg-maya-blue after:transition-[width] after:duration-100 after:ease-in-out hover:after:w-full"
+              />
             ))}
           </div>
         )}
