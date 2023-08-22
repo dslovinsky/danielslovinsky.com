@@ -6,6 +6,8 @@ import { GlobalHeaderDocument } from 'graphql/sdk';
 import Button from 'molecules/Button';
 import Icon from 'molecules/Icon';
 
+import Hamburger from 'components/Header/Hamburger';
+
 import type { FC } from 'react';
 
 const Header: FC = async () => {
@@ -18,7 +20,7 @@ const Header: FC = async () => {
           <Icon icon="ds-logo" size={24} className="md:h-8 md:w-8" />
         </Link>
         {componentHeader?.links && (
-          <div className="flex gap-y-10">
+          <div className="hidden gap-y-10 sm:flex">
             {componentHeader.links.map(({ id, ...rest }) => (
               <Button
                 key={id}
@@ -29,6 +31,7 @@ const Header: FC = async () => {
             ))}
           </div>
         )}
+        <Hamburger className="flex sm:hidden" />
       </div>
     </nav>
   );
