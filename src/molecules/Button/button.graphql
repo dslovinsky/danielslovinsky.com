@@ -1,0 +1,7 @@
+fragment button on ButtonRecord {
+  id
+  url
+  label
+  iconLabel
+  endIcon
+}

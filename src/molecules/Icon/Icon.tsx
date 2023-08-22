@@ -1,6 +1,6 @@
 import type { FC, SVGProps } from 'react';
 
-export const iconIds = ['ds-logo'] as const;
+export const iconIds = ['ds-logo', 'linkedin', 'github'] as const;
 export type IconIds = (typeof iconIds)[number];
 
 interface IconProps extends SVGProps<SVGSVGElement> {

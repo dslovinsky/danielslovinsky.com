@@ -2,6 +2,27 @@ import { gql } from '@apollo/client';
 
 import type * as Apollo from '@apollo/client';
 
+export const ButtonFragmentDoc = gql`
+  fragment button on ButtonRecord {
+    id
+    url
+    label
+    iconLabel
+    endIcon
+  }
+`;
+export const HeaderFragmentDoc = gql`
+  fragment header on ComponentHeaderRecord {
+    id
+    links {
+      ...button
+    }
+    mobileBottomLinks {
+      ...button
+    }
+  }
+  ${ButtonFragmentDoc}
+`;
 export const FileFragmentDoc = gql`
   fragment file on FileField {
     id
@@ -90,6 +111,15 @@ export const TemplatePageFragmentDoc = gql`
   ${ComponentSkillBarFragmentDoc}
   ${ComponentHeroFragmentDoc}
 `;
+export const GlobalHeaderDocument = gql`
+  query globalHeader {
+    componentHeader {
+      ...header
+    }
+  }
+  ${HeaderFragmentDoc}
+`;
+export type GlobalHeaderQueryResult = Apollo.QueryResult<GlobalHeaderQuery, GlobalHeaderQueryVariables>;
 export const AllTemplatePageSlugsDocument = gql`
   query AllTemplatePageSlugs {
     allTemplatePages {
