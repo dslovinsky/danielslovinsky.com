@@ -7,7 +7,7 @@ import outlineText from 'utils/outlineText';
 import type { FC } from 'react';
 
 const Hero: FC<ComponentHeroFragment> = ({ eyebrow, heading, body, mediaReference }) => (
-  <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-[2fr_1fr]">
+  <div className="grid grid-cols-1 gap-x-8 md:grid-cols-2 xl:grid-cols-[5fr_3fr]">
     <div className="flex flex-col">
       {eyebrow && <span className="font-titillium text-xl lowercase xl:text-2xl">{eyebrow}</span>}
       {heading && (
@@ -17,15 +17,27 @@ const Hero: FC<ComponentHeroFragment> = ({ eyebrow, heading, body, mediaReferenc
       )}
       <hr className="w-full border-t-2 text-maya-blue-10" />
       {mediaReference && (
-        <div className="relative h-52 w-full lg:hidden">
-          <Image src={mediaReference.url} alt={mediaReference.alt || ''} fill />
+        <div className="relative h-full w-full max-w-md md:hidden">
+          <Image
+            src={mediaReference.url}
+            alt={mediaReference.alt || ''}
+            height={mediaReference.height || 426}
+            width={mediaReference.width || 426}
+            className="h-full w-full object-contain"
+          />
         </div>
       )}
       {body && <StructuredText data={body} />}
     </div>
     {mediaReference && (
-      <div className="relative hidden lg:flex">
-        <Image src={mediaReference.url} alt={mediaReference.alt || ''} fill />
+      <div className="relative hidden md:flex">
+        <Image
+          src={mediaReference.url}
+          alt={mediaReference.alt || ''}
+          height={mediaReference.height || 426}
+          width={mediaReference.width || 426}
+          className="h-full w-full object-contain"
+        />
       </div>
     )}
   </div>

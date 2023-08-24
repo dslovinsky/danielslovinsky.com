@@ -12,7 +12,7 @@ const SkillBar: FC<ComponentSkillBarFragment> = ({ heading, skills }) => (
         <div key={id} className="flex flex-col items-center gap-y-2">
           {logo?.url && (
             <div className="relative h-16 w-16">
-              <Image src={logo.url} alt={logo.alt || `${name || ''} logo`} fill />
+              <Image src={logo.url} alt={logo.alt || `${name || ''} logo`} height={64} width={64} />
             </div>
           )}
           <div>{name}</div>
