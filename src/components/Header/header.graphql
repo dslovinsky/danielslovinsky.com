@@ -1,4 +1,5 @@
 fragment header on ComponentHeaderRecord {
+  __typename
   id
   links {
     ...button

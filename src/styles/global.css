@@ -6,6 +6,7 @@ body {
   @apply font-inter;
   @apply bg-black-pearl;
   @apply text-white;
+  @apply leading-xl;
 }
 
 @supports (height: 1dvh) {
@@ -20,6 +21,9 @@ body {
   }
   .text-stroke-1 {
     -webkit-text-stroke-width: 1px;
+  }
+  .text-stroke-2 {
+    -webkit-text-stroke-width: 2px;
   }
 
   .text-stroke-white {
