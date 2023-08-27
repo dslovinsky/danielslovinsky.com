@@ -186,6 +186,72 @@ export interface ComponentHeroRecord_SeoMetaTagsArgs {
   locale?: InputMaybe<SiteLocale>;
 }
 
+export interface ComponentProjectSliderModelFilter {
+  AND?: InputMaybe<Array<InputMaybe<ComponentProjectSliderModelFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<ComponentProjectSliderModelFilter>>>;
+  _createdAt?: InputMaybe<CreatedAtFilter>;
+  _firstPublishedAt?: InputMaybe<PublishedAtFilter>;
+  _isValid?: InputMaybe<BooleanFilter>;
+  _publicationScheduledAt?: InputMaybe<PublishedAtFilter>;
+  _publishedAt?: InputMaybe<PublishedAtFilter>;
+  _status?: InputMaybe<StatusFilter>;
+  _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
+  _updatedAt?: InputMaybe<UpdatedAtFilter>;
+  heading?: InputMaybe<StringFilter>;
+  id?: InputMaybe<ItemIdFilter>;
+  internalName?: InputMaybe<StringFilter>;
+}
+
+export enum ComponentProjectSliderModelOrderBy {
+  CreatedAtAsc = '_createdAt_ASC',
+  CreatedAtDesc = '_createdAt_DESC',
+  FirstPublishedAtAsc = '_firstPublishedAt_ASC',
+  FirstPublishedAtDesc = '_firstPublishedAt_DESC',
+  IsValidAsc = '_isValid_ASC',
+  IsValidDesc = '_isValid_DESC',
+  PublicationScheduledAtAsc = '_publicationScheduledAt_ASC',
+  PublicationScheduledAtDesc = '_publicationScheduledAt_DESC',
+  PublishedAtAsc = '_publishedAt_ASC',
+  PublishedAtDesc = '_publishedAt_DESC',
+  StatusAsc = '_status_ASC',
+  StatusDesc = '_status_DESC',
+  UnpublishingScheduledAtAsc = '_unpublishingScheduledAt_ASC',
+  UnpublishingScheduledAtDesc = '_unpublishingScheduledAt_DESC',
+  UpdatedAtAsc = '_updatedAt_ASC',
+  UpdatedAtDesc = '_updatedAt_DESC',
+  HeadingAsc = 'heading_ASC',
+  HeadingDesc = 'heading_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC'
+}
+
+export interface ComponentProjectSliderRecord extends RecordInterface {
+  __typename?: 'ComponentProjectSliderRecord';
+  _createdAt: Scalars['DateTime']['output'];
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _isValid: Scalars['BooleanType']['output'];
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  heading?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ItemId']['output'];
+  internalName?: Maybe<Scalars['String']['output']>;
+  projects: Array<ProjectRecord>;
+  sectionOptions: Array<SectionRecord>;
+}
+
+
+export interface ComponentProjectSliderRecord_SeoMetaTagsArgs {
+  locale?: InputMaybe<SiteLocale>;
+}
+
 export interface ComponentSkillBarModelFilter {
   AND?: InputMaybe<Array<InputMaybe<ComponentSkillBarModelFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<ComponentSkillBarModelFilter>>>;
@@ -796,6 +862,39 @@ export interface OrientationFilter {
   neq?: InputMaybe<UploadOrientation>;
 }
 
+export interface ProjectModelSummaryField {
+  __typename?: 'ProjectModelSummaryField';
+  blocks: Array<Scalars['String']['output']>;
+  links: Array<Scalars['String']['output']>;
+  value: Scalars['JsonField']['output'];
+}
+
+export interface ProjectRecord extends RecordInterface {
+  __typename?: 'ProjectRecord';
+  _createdAt: Scalars['DateTime']['output'];
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _isValid: Scalars['BooleanType']['output'];
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  featuredImage?: Maybe<FileField>;
+  id: Scalars['ItemId']['output'];
+  link?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  skills: Array<SkillRecord>;
+  summary?: Maybe<ProjectModelSummaryField>;
+}
+
+
+export interface ProjectRecord_SeoMetaTagsArgs {
+  locale?: InputMaybe<SiteLocale>;
+}
+
 export interface PublishedAtFilter {
   eq?: InputMaybe<Scalars['DateTime']['input']>;
   exists?: InputMaybe<Scalars['BooleanType']['input']>;
@@ -809,16 +908,19 @@ export interface PublishedAtFilter {
 export interface Query {
   __typename?: 'Query';
   _allComponentHerosMeta: CollectionMetadata;
+  _allComponentProjectSlidersMeta: CollectionMetadata;
   _allComponentSkillBarsMeta: CollectionMetadata;
   _allTemplatePagesMeta: CollectionMetadata;
   _allUploadsMeta: CollectionMetadata;
   _site: Site;
   allComponentHeros: Array<ComponentHeroRecord>;
+  allComponentProjectSliders: Array<ComponentProjectSliderRecord>;
   allComponentSkillBars: Array<ComponentSkillBarRecord>;
   allTemplatePages: Array<TemplatePageRecord>;
   allUploads: Array<FileField>;
   componentHeader?: Maybe<ComponentHeaderRecord>;
   componentHero?: Maybe<ComponentHeroRecord>;
+  componentProjectSlider?: Maybe<ComponentProjectSliderRecord>;
   componentSkillBar?: Maybe<ComponentSkillBarRecord>;
   templatePage?: Maybe<TemplatePageRecord>;
   upload?: Maybe<FileField>;
@@ -827,6 +929,12 @@ export interface Query {
 
 export interface Query_AllComponentHerosMetaArgs {
   filter?: InputMaybe<ComponentHeroModelFilter>;
+  locale?: InputMaybe<SiteLocale>;
+}
+
+
+export interface Query_AllComponentProjectSlidersMetaArgs {
+  filter?: InputMaybe<ComponentProjectSliderModelFilter>;
   locale?: InputMaybe<SiteLocale>;
 }
 
@@ -861,6 +969,16 @@ export interface QueryAllComponentHerosArgs {
   first?: InputMaybe<Scalars['IntType']['input']>;
   locale?: InputMaybe<SiteLocale>;
   orderBy?: InputMaybe<Array<InputMaybe<ComponentHeroModelOrderBy>>>;
+  skip?: InputMaybe<Scalars['IntType']['input']>;
+}
+
+
+export interface QueryAllComponentProjectSlidersArgs {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  filter?: InputMaybe<ComponentProjectSliderModelFilter>;
+  first?: InputMaybe<Scalars['IntType']['input']>;
+  locale?: InputMaybe<SiteLocale>;
+  orderBy?: InputMaybe<Array<InputMaybe<ComponentProjectSliderModelOrderBy>>>;
   skip?: InputMaybe<Scalars['IntType']['input']>;
 }
 
@@ -906,6 +1024,14 @@ export interface QueryComponentHeroArgs {
   filter?: InputMaybe<ComponentHeroModelFilter>;
   locale?: InputMaybe<SiteLocale>;
   orderBy?: InputMaybe<Array<InputMaybe<ComponentHeroModelOrderBy>>>;
+}
+
+
+export interface QueryComponentProjectSliderArgs {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  filter?: InputMaybe<ComponentProjectSliderModelFilter>;
+  locale?: InputMaybe<SiteLocale>;
+  orderBy?: InputMaybe<Array<InputMaybe<ComponentProjectSliderModelOrderBy>>>;
 }
 
 
@@ -1130,7 +1256,7 @@ export interface Tag {
   tag: Scalars['String']['output'];
 }
 
-export type TemplatePageModelComponentsField = ComponentHeroRecord | ComponentSkillBarRecord;
+export type TemplatePageModelComponentsField = ComponentHeroRecord | ComponentProjectSliderRecord | ComponentSkillBarRecord;
 
 export interface TemplatePageModelFilter {
   AND?: InputMaybe<Array<InputMaybe<TemplatePageModelFilter>>>;
@@ -1482,6 +1608,22 @@ export type ComponentHeroFragment = { __typename: 'ComponentHeroRecord', id: str
     & FileFragment
   ) | null };
 
+export type ProjectFragment = { __typename: 'ProjectRecord', id: string, name?: string | null, link?: string | null, featuredImage?: (
+    { __typename?: 'FileField' }
+    & FileFragment
+  ) | null, skills: Array<(
+    { __typename?: 'SkillRecord' }
+    & SkillFragment
+  )>, summary?: { __typename?: 'ProjectModelSummaryField', value: unknown } | null };
+
+export type ComponentProjectSliderFragment = { __typename: 'ComponentProjectSliderRecord', id: string, heading?: string | null, sectionOptions: Array<(
+    { __typename?: 'SectionRecord' }
+    & SectionFragment
+  )>, projects: Array<(
+    { __typename?: 'ProjectRecord' }
+    & ProjectFragment
+  )> };
+
 export type SkillFragment = { __typename: 'SkillRecord', id: string, name?: string | null, logo?: (
     { __typename?: 'FileField' }
     & FileFragment
@@ -1512,6 +1654,9 @@ export type TemplatePageFragment = { __typename: 'TemplatePageRecord', id: strin
   )>, components: Array<(
     { __typename?: 'ComponentHeroRecord' }
     & ComponentHeroFragment
+  ) | (
+    { __typename?: 'ComponentProjectSliderRecord' }
+    & ComponentProjectSliderFragment
   ) | (
     { __typename?: 'ComponentSkillBarRecord' }
     & ComponentSkillBarFragment

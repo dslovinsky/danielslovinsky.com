@@ -51,17 +51,6 @@ export const SeoFragmentDoc = gql`
   }
   ${FileFragmentDoc}
 `;
-export const SkillFragmentDoc = gql`
-  fragment skill on SkillRecord {
-    __typename
-    id
-    name
-    logo {
-      ...file
-    }
-  }
-  ${FileFragmentDoc}
-`;
 export const SectionFragmentDoc = gql`
   fragment section on SectionRecord {
     __typename
@@ -70,21 +59,6 @@ export const SectionFragmentDoc = gql`
     topPadding
     bottomPadding
   }
-`;
-export const ComponentSkillBarFragmentDoc = gql`
-  fragment componentSkillBar on ComponentSkillBarRecord {
-    __typename
-    id
-    heading
-    skills {
-      ...skill
-    }
-    sectionOptions {
-      ...section
-    }
-  }
-  ${SkillFragmentDoc}
-  ${SectionFragmentDoc}
 `;
 export const ComponentHeroFragmentDoc = gql`
   fragment componentHero on ComponentHeroRecord {
@@ -109,6 +83,66 @@ export const ComponentHeroFragmentDoc = gql`
   ${ButtonFragmentDoc}
   ${FileFragmentDoc}
 `;
+export const SkillFragmentDoc = gql`
+  fragment skill on SkillRecord {
+    __typename
+    id
+    name
+    logo {
+      ...file
+    }
+  }
+  ${FileFragmentDoc}
+`;
+export const ComponentSkillBarFragmentDoc = gql`
+  fragment componentSkillBar on ComponentSkillBarRecord {
+    __typename
+    id
+    heading
+    skills {
+      ...skill
+    }
+    sectionOptions {
+      ...section
+    }
+  }
+  ${SkillFragmentDoc}
+  ${SectionFragmentDoc}
+`;
+export const ProjectFragmentDoc = gql`
+  fragment project on ProjectRecord {
+    __typename
+    id
+    name
+    featuredImage {
+      ...file
+    }
+    skills {
+      ...skill
+    }
+    summary {
+      value
+    }
+    link
+  }
+  ${FileFragmentDoc}
+  ${SkillFragmentDoc}
+`;
+export const ComponentProjectSliderFragmentDoc = gql`
+  fragment componentProjectSlider on ComponentProjectSliderRecord {
+    __typename
+    id
+    sectionOptions {
+      ...section
+    }
+    heading
+    projects {
+      ...project
+    }
+  }
+  ${SectionFragmentDoc}
+  ${ProjectFragmentDoc}
+`;
 export const TemplatePageFragmentDoc = gql`
   fragment templatePage on TemplatePageRecord {
     __typename
@@ -118,13 +152,15 @@ export const TemplatePageFragmentDoc = gql`
       ...seo
     }
     components {
-      ...componentSkillBar
       ...componentHero
+      ...componentSkillBar
+      ...componentProjectSlider
     }
   }
   ${SeoFragmentDoc}
-  ${ComponentSkillBarFragmentDoc}
   ${ComponentHeroFragmentDoc}
+  ${ComponentSkillBarFragmentDoc}
+  ${ComponentProjectSliderFragmentDoc}
 `;
 export const GlobalHeaderDocument = gql`
   query globalHeader {
