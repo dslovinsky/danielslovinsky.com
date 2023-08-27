@@ -24,7 +24,13 @@ const StructuredText: FC<StructuredTextProps> = ({ data, className, ...props }) 
   <div className={className} {...props}>
     <StructuredTextParser
       data={data as StructuredTextGraphQlResponse}
-      customNodeRules={[renderNodeRule(isParagraph, ({ children }) => <p className="mb-4">{children}</p>)]}
+      customNodeRules={[
+        renderNodeRule(isParagraph, ({ children, key }) => (
+          <p key={key} className="mb-4">
+            {children}
+          </p>
+        )),
+      ]}
       renderBlock={({ record }) => {
         switch (record.__typename) {
           case 'ButtonRecord':

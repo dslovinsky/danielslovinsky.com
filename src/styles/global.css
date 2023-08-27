@@ -38,4 +38,8 @@ body {
   .text-stroke-black-pearl {
     -webkit-text-stroke-color: rgb(13 17 21 / var(--tw-text-opacity));
   }
+
+  .fade-from-top {
+    mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, transparent 100%);
+  }
 }
