@@ -10,7 +10,7 @@ import type { FC } from 'react';
 
 const Hero: FC<ComponentHeroFragment> = ({ eyebrow, heading, body, mediaReference }) => (
   <>
-    <div className="relative grid grid-cols-1 gap-x-8 md:grid-cols-[5fr_4fr] xl:grid-cols-[5fr_3fr]">
+    <div className="relative mb-10 grid grid-cols-1 gap-x-8 pb-12 md:mb-0 md:grid-cols-[5fr_4fr] md:pb-0 xl:grid-cols-[5fr_3fr]">
       <div className="relative z-20 flex flex-col">
         {eyebrow && <span className="pb-4 font-titillium text-xl lowercase xl:text-2xl">{eyebrow}</span>}
         {heading && (
@@ -42,7 +42,7 @@ const Hero: FC<ComponentHeroFragment> = ({ eyebrow, heading, body, mediaReferenc
         />
       )}
       {/* Empty div for background that blocks animation from touching rest of hero */}
-      <div className="absolute z-10 -ml-6 h-full w-[calc(100%+48px)] bg-black-pearl" />
+      <div className="absolute z-10 -ml-6 hidden h-full w-[calc(100%+48px)] bg-black-pearl md:block" />
     </div>
     <HeroAnimation />
   </>
