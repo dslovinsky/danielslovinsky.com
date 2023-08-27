@@ -1,4 +1,5 @@
 fragment button on ButtonRecord {
+  __typename
   id
   url
   label

@@ -1,4 +1,5 @@
 fragment templatePage on TemplatePageRecord {
+  __typename
   id
   slug
   seo {

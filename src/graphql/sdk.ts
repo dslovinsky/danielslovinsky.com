@@ -4,6 +4,7 @@ import type * as Apollo from '@apollo/client';
 
 export const ButtonFragmentDoc = gql`
   fragment button on ButtonRecord {
+    __typename
     id
     url
     label
@@ -13,6 +14,7 @@ export const ButtonFragmentDoc = gql`
 `;
 export const HeaderFragmentDoc = gql`
   fragment header on ComponentHeaderRecord {
+    __typename
     id
     links {
       ...button
@@ -25,6 +27,7 @@ export const HeaderFragmentDoc = gql`
 `;
 export const FileFragmentDoc = gql`
   fragment file on FileField {
+    __typename
     id
     alt
     height
@@ -34,6 +37,7 @@ export const FileFragmentDoc = gql`
 `;
 export const SeoFragmentDoc = gql`
   fragment seo on SeoRecord {
+    __typename
     id
     indexable
     metaTags {
@@ -60,6 +64,7 @@ export const SkillFragmentDoc = gql`
 `;
 export const SectionFragmentDoc = gql`
   fragment section on SectionRecord {
+    __typename
     id
     idLink
     topPadding
@@ -83,6 +88,7 @@ export const ComponentSkillBarFragmentDoc = gql`
 `;
 export const ComponentHeroFragmentDoc = gql`
   fragment componentHero on ComponentHeroRecord {
+    __typename
     id
     sectionOptions {
       ...section
@@ -91,12 +97,21 @@ export const ComponentHeroFragmentDoc = gql`
     heading
     body {
       value
+      blocks {
+        ...button
+      }
+    }
+    mediaReference {
+      ...file
     }
   }
   ${SectionFragmentDoc}
+  ${ButtonFragmentDoc}
+  ${FileFragmentDoc}
 `;
 export const TemplatePageFragmentDoc = gql`
   fragment templatePage on TemplatePageRecord {
+    __typename
     id
     slug
     seo {

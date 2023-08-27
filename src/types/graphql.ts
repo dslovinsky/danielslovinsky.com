@@ -1455,7 +1455,7 @@ export interface FocalPoint {
 
 
     declare global {
-      export type HeaderFragment = { __typename?: 'ComponentHeaderRecord', id: string, links: Array<(
+      export type HeaderFragment = { __typename: 'ComponentHeaderRecord', id: string, links: Array<(
     { __typename?: 'ButtonRecord' }
     & ButtonFragment
   )>, mobileBottomLinks: Array<(
@@ -1471,10 +1471,16 @@ export type GlobalHeaderQuery = { __typename?: 'Query', componentHeader?: (
     & HeaderFragment
   ) | null };
 
-export type ComponentHeroFragment = { __typename?: 'ComponentHeroRecord', id: string, eyebrow?: string | null, heading?: string | null, sectionOptions: Array<(
+export type ComponentHeroFragment = { __typename: 'ComponentHeroRecord', id: string, eyebrow?: string | null, heading?: string | null, sectionOptions: Array<(
     { __typename?: 'SectionRecord' }
     & SectionFragment
-  )>, body?: { __typename?: 'ComponentHeroModelBodyField', value: unknown } | null };
+  )>, body?: { __typename?: 'ComponentHeroModelBodyField', value: unknown, blocks: Array<(
+      { __typename?: 'ButtonRecord' }
+      & ButtonFragment
+    )> } | null, mediaReference?: (
+    { __typename?: 'FileField' }
+    & FileFragment
+  ) | null };
 
 export type SkillFragment = { __typename: 'SkillRecord', id: string, name?: string | null, logo?: (
     { __typename?: 'FileField' }
@@ -1489,18 +1495,18 @@ export type ComponentSkillBarFragment = { __typename: 'ComponentSkillBarRecord',
     & SectionFragment
   )> };
 
-export type FileFragment = { __typename?: 'FileField', id: string, alt?: string | null, height?: number | null, width?: number | null, url: string };
+export type FileFragment = { __typename: 'FileField', id: string, alt?: string | null, height?: number | null, width?: number | null, url: string };
 
-export type SeoFragment = { __typename?: 'SeoRecord', id: string, indexable?: boolean | null, canonicalUrl?: string | null, metaTags?: { __typename?: 'SeoField', title?: string | null, description?: string | null, image?: (
+export type SeoFragment = { __typename: 'SeoRecord', id: string, indexable?: boolean | null, canonicalUrl?: string | null, metaTags?: { __typename?: 'SeoField', title?: string | null, description?: string | null, image?: (
       { __typename?: 'FileField' }
       & FileFragment
     ) | null } | null };
 
-export type ButtonFragment = { __typename?: 'ButtonRecord', id: string, url?: string | null, label?: string | null, iconLabel?: string | null, endIcon?: string | null };
+export type ButtonFragment = { __typename: 'ButtonRecord', id: string, url?: string | null, label?: string | null, iconLabel?: string | null, endIcon?: string | null };
 
-export type SectionFragment = { __typename?: 'SectionRecord', id: string, idLink?: string | null, topPadding?: string | null, bottomPadding?: string | null };
+export type SectionFragment = { __typename: 'SectionRecord', id: string, idLink?: string | null, topPadding?: string | null, bottomPadding?: string | null };
 
-export type TemplatePageFragment = { __typename?: 'TemplatePageRecord', id: string, slug?: string | null, seo: Array<(
+export type TemplatePageFragment = { __typename: 'TemplatePageRecord', id: string, slug?: string | null, seo: Array<(
     { __typename?: 'SeoRecord' }
     & SeoFragment
   )>, components: Array<(
