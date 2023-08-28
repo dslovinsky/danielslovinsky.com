@@ -61,4 +61,5 @@ const config: CodegenConfig = {
     afterAllFileWrite: ['eslint --fix', 'prettier --write'],
   },
 };
+
 export default config;
