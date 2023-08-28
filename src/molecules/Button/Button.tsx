@@ -12,8 +12,6 @@ type NativeButtonProps = ComponentPropsWithoutRef<'button'> & ComponentPropsWith
 
 interface ButtonsProps extends Partial<ButtonFragment>, Omit<NativeButtonProps, 'id'> {
   iconSize?: number;
-  iconLabel?: IconIds;
-  endIcon?: IconIds;
 }
 
 const Button: FC<ButtonsProps> = ({
