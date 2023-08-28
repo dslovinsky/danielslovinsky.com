@@ -109,6 +109,24 @@ export const ComponentHeroFragmentDoc = gql`
   ${ButtonFragmentDoc}
   ${FileFragmentDoc}
 `;
+export const ComponentContactFragmentDoc = gql`
+  fragment componentContact on ComponentContactRecord {
+    __typename
+    id
+    sectionOptions {
+      ...section
+    }
+    heading
+    body {
+      value
+      blocks {
+        ...button
+      }
+    }
+  }
+  ${SectionFragmentDoc}
+  ${ButtonFragmentDoc}
+`;
 export const TemplatePageFragmentDoc = gql`
   fragment templatePage on TemplatePageRecord {
     __typename
@@ -120,11 +138,13 @@ export const TemplatePageFragmentDoc = gql`
     components {
       ...componentSkillBar
       ...componentHero
+      ...componentContact
     }
   }
   ${SeoFragmentDoc}
   ${ComponentSkillBarFragmentDoc}
   ${ComponentHeroFragmentDoc}
+  ${ComponentContactFragmentDoc}
 `;
 export const GlobalHeaderDocument = gql`
   query globalHeader {
