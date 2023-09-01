@@ -1,5 +1,5 @@
 'use client';
-import { type FC, useRef } from 'react';
+import { type FC, useEffect, useRef } from 'react';
 
 import Slide from 'components/ProjectSlider/Slide';
 
@@ -10,10 +10,15 @@ interface MobileSliderProps {
 }
 
 const MobileSlider: FC<MobileSliderProps> = ({ projects, activeSlide, setActiveSlide }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const slideContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const activeProjectButton = document.getElementById(`project-${activeSlide}`);
+    activeProjectButton?.scrollIntoView({ block: 'nearest', inline: 'center' });
+  }, [activeSlide]);
 
   const handleScroll = () => {
-    const container = containerRef.current;
+    const container = slideContainerRef.current;
     if (!container) {
       return;
     }
@@ -34,9 +39,10 @@ const MobileSlider: FC<MobileSliderProps> = ({ projects, activeSlide, setActiveS
 
   return (
     <>
-      <div className="flex snap-x snap-mandatory overflow-x-scroll">
+      <div className="flex snap-x snap-mandatory overflow-x-scroll md:hidden">
         {projects.map(({ id, name: projectName }, i) => (
           <button
+            id={`project-${i}`}
             key={id}
             onClick={() => setActiveSlide(i)}
             className={`flex min-w-max snap-center justify-start border-b-4 p-4 hover:bg-white-5 ${
@@ -47,7 +53,11 @@ const MobileSlider: FC<MobileSliderProps> = ({ projects, activeSlide, setActiveS
           </button>
         ))}
       </div>
-      <div className="flex snap-x snap-mandatory gap-x-8 overflow-x-scroll" ref={containerRef} onScroll={handleScroll}>
+      <div
+        className="flex snap-x snap-mandatory gap-x-8 overflow-x-scroll"
+        ref={slideContainerRef}
+        onScroll={handleScroll}
+      >
         {projects.map((project, i) => (
           <Slide
             key={project.id}
