@@ -39,7 +39,7 @@ const MobileSlider: FC<MobileSliderProps> = ({ projects, activeSlide, setActiveS
 
   return (
     <>
-      <div className="flex snap-x snap-mandatory overflow-x-scroll md:hidden">
+      <div className="mb-8 flex snap-x snap-mandatory overflow-x-scroll md:hidden">
         {projects.map(({ id, name: projectName }, i) => (
           <button
             id={`project-${i}`}
