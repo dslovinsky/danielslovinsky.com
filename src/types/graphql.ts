@@ -942,12 +942,14 @@ export interface Query {
   _allComponentHerosMeta: CollectionMetadata;
   _allComponentProjectSlidersMeta: CollectionMetadata;
   _allComponentSkillBarsMeta: CollectionMetadata;
+  _allTemplateCaseStudiesMeta: CollectionMetadata;
   _allTemplatePagesMeta: CollectionMetadata;
   _allUploadsMeta: CollectionMetadata;
   _site: Site;
   allComponentHeros: Array<ComponentHeroRecord>;
   allComponentProjectSliders: Array<ComponentProjectSliderRecord>;
   allComponentSkillBars: Array<ComponentSkillBarRecord>;
+  allTemplateCaseStudies: Array<TemplateCaseStudyRecord>;
   allTemplatePages: Array<TemplatePageRecord>;
   allUploads: Array<FileField>;
   componentContact?: Maybe<ComponentContactRecord>;
@@ -955,6 +957,7 @@ export interface Query {
   componentHero?: Maybe<ComponentHeroRecord>;
   componentProjectSlider?: Maybe<ComponentProjectSliderRecord>;
   componentSkillBar?: Maybe<ComponentSkillBarRecord>;
+  templateCaseStudy?: Maybe<TemplateCaseStudyRecord>;
   templatePage?: Maybe<TemplatePageRecord>;
   upload?: Maybe<FileField>;
 }
@@ -974,6 +977,12 @@ export interface Query_AllComponentProjectSlidersMetaArgs {
 
 export interface Query_AllComponentSkillBarsMetaArgs {
   filter?: InputMaybe<ComponentSkillBarModelFilter>;
+  locale?: InputMaybe<SiteLocale>;
+}
+
+
+export interface Query_AllTemplateCaseStudiesMetaArgs {
+  filter?: InputMaybe<TemplateCaseStudyModelFilter>;
   locale?: InputMaybe<SiteLocale>;
 }
 
@@ -1022,6 +1031,16 @@ export interface QueryAllComponentSkillBarsArgs {
   first?: InputMaybe<Scalars['IntType']['input']>;
   locale?: InputMaybe<SiteLocale>;
   orderBy?: InputMaybe<Array<InputMaybe<ComponentSkillBarModelOrderBy>>>;
+  skip?: InputMaybe<Scalars['IntType']['input']>;
+}
+
+
+export interface QueryAllTemplateCaseStudiesArgs {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  filter?: InputMaybe<TemplateCaseStudyModelFilter>;
+  first?: InputMaybe<Scalars['IntType']['input']>;
+  locale?: InputMaybe<SiteLocale>;
+  orderBy?: InputMaybe<Array<InputMaybe<TemplateCaseStudyModelOrderBy>>>;
   skip?: InputMaybe<Scalars['IntType']['input']>;
 }
 
@@ -1079,6 +1098,14 @@ export interface QueryComponentSkillBarArgs {
   filter?: InputMaybe<ComponentSkillBarModelFilter>;
   locale?: InputMaybe<SiteLocale>;
   orderBy?: InputMaybe<Array<InputMaybe<ComponentSkillBarModelOrderBy>>>;
+}
+
+
+export interface QueryTemplateCaseStudyArgs {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  filter?: InputMaybe<TemplateCaseStudyModelFilter>;
+  locale?: InputMaybe<SiteLocale>;
+  orderBy?: InputMaybe<Array<InputMaybe<TemplateCaseStudyModelOrderBy>>>;
 }
 
 
@@ -1293,6 +1320,88 @@ export interface Tag {
   attributes?: Maybe<Scalars['MetaTagAttributes']['output']>;
   content?: Maybe<Scalars['String']['output']>;
   tag: Scalars['String']['output'];
+}
+
+export interface TemplateCaseStudyModelBodyField {
+  __typename?: 'TemplateCaseStudyModelBodyField';
+  blocks: Array<Scalars['String']['output']>;
+  links: Array<Scalars['String']['output']>;
+  value: Scalars['JsonField']['output'];
+}
+
+export interface TemplateCaseStudyModelFilter {
+  AND?: InputMaybe<Array<InputMaybe<TemplateCaseStudyModelFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<TemplateCaseStudyModelFilter>>>;
+  _createdAt?: InputMaybe<CreatedAtFilter>;
+  _firstPublishedAt?: InputMaybe<PublishedAtFilter>;
+  _isValid?: InputMaybe<BooleanFilter>;
+  _publicationScheduledAt?: InputMaybe<PublishedAtFilter>;
+  _publishedAt?: InputMaybe<PublishedAtFilter>;
+  _status?: InputMaybe<StatusFilter>;
+  _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
+  _updatedAt?: InputMaybe<UpdatedAtFilter>;
+  body?: InputMaybe<StructuredTextFilter>;
+  id?: InputMaybe<ItemIdFilter>;
+  slug?: InputMaybe<SlugFilter>;
+  summary?: InputMaybe<StructuredTextFilter>;
+  title?: InputMaybe<StringFilter>;
+}
+
+export enum TemplateCaseStudyModelOrderBy {
+  CreatedAtAsc = '_createdAt_ASC',
+  CreatedAtDesc = '_createdAt_DESC',
+  FirstPublishedAtAsc = '_firstPublishedAt_ASC',
+  FirstPublishedAtDesc = '_firstPublishedAt_DESC',
+  IsValidAsc = '_isValid_ASC',
+  IsValidDesc = '_isValid_DESC',
+  PublicationScheduledAtAsc = '_publicationScheduledAt_ASC',
+  PublicationScheduledAtDesc = '_publicationScheduledAt_DESC',
+  PublishedAtAsc = '_publishedAt_ASC',
+  PublishedAtDesc = '_publishedAt_DESC',
+  StatusAsc = '_status_ASC',
+  StatusDesc = '_status_DESC',
+  UnpublishingScheduledAtAsc = '_unpublishingScheduledAt_ASC',
+  UnpublishingScheduledAtDesc = '_unpublishingScheduledAt_DESC',
+  UpdatedAtAsc = '_updatedAt_ASC',
+  UpdatedAtDesc = '_updatedAt_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
+
+export interface TemplateCaseStudyModelSummaryField {
+  __typename?: 'TemplateCaseStudyModelSummaryField';
+  blocks: Array<Scalars['String']['output']>;
+  links: Array<Scalars['String']['output']>;
+  value: Scalars['JsonField']['output'];
+}
+
+export interface TemplateCaseStudyRecord extends RecordInterface {
+  __typename?: 'TemplateCaseStudyRecord';
+  _createdAt: Scalars['DateTime']['output'];
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _isValid: Scalars['BooleanType']['output'];
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  body?: Maybe<TemplateCaseStudyModelBodyField>;
+  id: Scalars['ItemId']['output'];
+  seo: Array<SeoRecord>;
+  skills: Array<SkillRecord>;
+  slug?: Maybe<Scalars['String']['output']>;
+  summary?: Maybe<TemplateCaseStudyModelSummaryField>;
+  title?: Maybe<Scalars['String']['output']>;
+}
+
+
+export interface TemplateCaseStudyRecord_SeoMetaTagsArgs {
+  locale?: InputMaybe<SiteLocale>;
 }
 
 export type TemplatePageModelComponentsField = ComponentContactRecord | ComponentHeroRecord | ComponentProjectSliderRecord | ComponentSkillBarRecord;
@@ -1655,6 +1764,22 @@ export type ComponentHeroFragment = { __typename: 'ComponentHeroRecord', id: str
     & FileFragment
   ) | null };
 
+export type ProjectFragment = { __typename: 'ProjectRecord', id: string, name?: string | null, link?: string | null, featuredImage?: (
+    { __typename?: 'FileField' }
+    & FileFragment
+  ) | null, skills: Array<(
+    { __typename?: 'SkillRecord' }
+    & SkillFragment
+  )>, summary?: { __typename?: 'ProjectModelSummaryField', value: unknown } | null };
+
+export type ComponentProjectSliderFragment = { __typename: 'ComponentProjectSliderRecord', id: string, heading?: string | null, sectionOptions: Array<(
+    { __typename?: 'SectionRecord' }
+    & SectionFragment
+  )>, projects: Array<(
+    { __typename?: 'ProjectRecord' }
+    & ProjectFragment
+  )> };
+
 export type SkillFragment = { __typename: 'SkillRecord', id: string, name?: string | null, logo?: (
     { __typename?: 'FileField' }
     & FileFragment
@@ -1688,7 +1813,10 @@ export type TemplatePageFragment = { __typename: 'TemplatePageRecord', id: strin
   ) | (
     { __typename?: 'ComponentHeroRecord' }
     & ComponentHeroFragment
-  ) | { __typename?: 'ComponentProjectSliderRecord' } | (
+  ) | (
+    { __typename?: 'ComponentProjectSliderRecord' }
+    & ComponentProjectSliderFragment
+  ) | (
     { __typename?: 'ComponentSkillBarRecord' }
     & ComponentSkillBarFragment
   )> };

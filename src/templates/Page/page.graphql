@@ -6,8 +6,9 @@ fragment templatePage on TemplatePageRecord {
     ...seo
   }
   components {
-    ...componentSkillBar
     ...componentHero
+    ...componentSkillBar
+    ...componentProjectSlider
     ...componentContact
   }
 }

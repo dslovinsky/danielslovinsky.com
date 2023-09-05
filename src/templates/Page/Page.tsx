@@ -7,7 +7,7 @@ import type { FC } from 'react';
 const Page: FC<TemplatePageFragment> = ({ components }) => (
   <main>
     {components.map(component => (
-      <Section key={component.id} {...component.sectionOptions[0]}>
+      <Section key={component.id} {...component.sectionOptions?.[0]}>
         {componentGenerator(component)}
       </Section>
     ))}

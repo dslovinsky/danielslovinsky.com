@@ -1,0 +1,27 @@
+fragment project on ProjectRecord {
+  __typename
+  id
+  name
+  featuredImage {
+    ...file
+  }
+  skills {
+    ...skill
+  }
+  summary {
+    value
+  }
+  link
+}
+
+fragment componentProjectSlider on ComponentProjectSliderRecord {
+  __typename
+  id
+  sectionOptions {
+    ...section
+  }
+  heading
+  projects {
+    ...project
+  }
+}
