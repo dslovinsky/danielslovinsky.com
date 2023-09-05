@@ -60,6 +60,16 @@ export const SectionFragmentDoc = gql`
     bottomPadding
   }
 `;
+export const ButtonGroupFragmentDoc = gql`
+  fragment buttonGroup on ButtonGroupRecord {
+    __typename
+    id
+    buttons {
+      ...button
+    }
+  }
+  ${ButtonFragmentDoc}
+`;
 export const ComponentHeroFragmentDoc = gql`
   fragment componentHero on ComponentHeroRecord {
     __typename
@@ -72,7 +82,7 @@ export const ComponentHeroFragmentDoc = gql`
     body {
       value
       blocks {
-        ...button
+        ...buttonGroup
       }
     }
     mediaReference {
@@ -80,7 +90,7 @@ export const ComponentHeroFragmentDoc = gql`
     }
   }
   ${SectionFragmentDoc}
-  ${ButtonFragmentDoc}
+  ${ButtonGroupFragmentDoc}
   ${FileFragmentDoc}
 `;
 export const SkillFragmentDoc = gql`
@@ -154,12 +164,12 @@ export const ComponentContactFragmentDoc = gql`
     body {
       value
       blocks {
-        ...button
+        ...buttonGroup
       }
     }
   }
   ${SectionFragmentDoc}
-  ${ButtonFragmentDoc}
+  ${ButtonGroupFragmentDoc}
 `;
 export const TemplatePageFragmentDoc = gql`
   fragment templatePage on TemplatePageRecord {

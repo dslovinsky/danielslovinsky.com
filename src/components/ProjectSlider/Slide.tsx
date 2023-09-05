@@ -42,7 +42,7 @@ const Slide: FC<SlideProps> = ({ project: { name, skills, featuredImage, summary
           {skills.map(({ name: skillName }) => skillName).join(', ')}, and more
         </span>
       )}
-      {summary && <StructuredText data={summary} />}
+      {summary && <StructuredText data={summary} className="mb-4" />}
       {link && <Button url={link} label="Visit site" endIcon="arrow-up-right" />}
     </div>
   );

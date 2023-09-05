@@ -6,3 +6,11 @@ fragment button on ButtonRecord {
   iconLabel
   endIcon
 }
+
+fragment buttonGroup on ButtonGroupRecord {
+  __typename
+  id
+  buttons {
+    ...button
+  }
+}

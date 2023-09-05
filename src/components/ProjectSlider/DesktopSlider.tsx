@@ -18,7 +18,7 @@ const DesktopSlider: FC<DesktopSliderProps> = ({ projects, activeSlide, setActiv
   const { height: activeButtonHeight, top: activeButtonTop } = buttonContainerRef.current?.children[
     activeSlide
   ].getBoundingClientRect() || {
-    height: 96,
+    height: 112,
     top: 0,
   };
 

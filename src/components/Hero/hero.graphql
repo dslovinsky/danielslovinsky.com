@@ -9,7 +9,7 @@ fragment componentHero on ComponentHeroRecord {
   body {
     value
     blocks {
-      ...button
+      ...buttonGroup
     }
   }
   mediaReference {

@@ -27,6 +27,28 @@ export interface BooleanFilter {
   eq?: InputMaybe<Scalars['BooleanType']['input']>;
 }
 
+export interface ButtonGroupRecord extends RecordInterface {
+  __typename?: 'ButtonGroupRecord';
+  _createdAt: Scalars['DateTime']['output'];
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _isValid: Scalars['BooleanType']['output'];
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  buttons: Array<ButtonRecord>;
+  id: Scalars['ItemId']['output'];
+}
+
+
+export interface ButtonGroupRecord_SeoMetaTagsArgs {
+  locale?: InputMaybe<SiteLocale>;
+}
+
 export interface ButtonRecord extends RecordInterface {
   __typename?: 'ButtonRecord';
   _createdAt: Scalars['DateTime']['output'];
@@ -84,7 +106,7 @@ export interface ColorField {
 
 export interface ComponentContactModelBodyField {
   __typename?: 'ComponentContactModelBodyField';
-  blocks: Array<ButtonRecord>;
+  blocks: Array<ButtonGroupRecord>;
   links: Array<Scalars['String']['output']>;
   value: Scalars['JsonField']['output'];
 }
@@ -140,7 +162,7 @@ export interface ComponentHeaderRecord_SeoMetaTagsArgs {
 
 export interface ComponentHeroModelBodyField {
   __typename?: 'ComponentHeroModelBodyField';
-  blocks: Array<ButtonRecord>;
+  blocks: Array<ButtonGroupRecord>;
   links: Array<Scalars['String']['output']>;
   value: Scalars['JsonField']['output'];
 }
@@ -1733,8 +1755,8 @@ export interface FocalPoint {
     { __typename?: 'SectionRecord' }
     & SectionFragment
   )>, body?: { __typename?: 'ComponentContactModelBodyField', value: unknown, blocks: Array<(
-      { __typename?: 'ButtonRecord' }
-      & ButtonFragment
+      { __typename?: 'ButtonGroupRecord' }
+      & ButtonGroupFragment
     )> } | null };
 
 export type HeaderFragment = { __typename: 'ComponentHeaderRecord', id: string, links: Array<(
@@ -1757,8 +1779,8 @@ export type ComponentHeroFragment = { __typename: 'ComponentHeroRecord', id: str
     { __typename?: 'SectionRecord' }
     & SectionFragment
   )>, body?: { __typename?: 'ComponentHeroModelBodyField', value: unknown, blocks: Array<(
-      { __typename?: 'ButtonRecord' }
-      & ButtonFragment
+      { __typename?: 'ButtonGroupRecord' }
+      & ButtonGroupFragment
     )> } | null, mediaReference?: (
     { __typename?: 'FileField' }
     & FileFragment
@@ -1801,6 +1823,11 @@ export type SeoFragment = { __typename: 'SeoRecord', id: string, indexable?: boo
     ) | null } | null };
 
 export type ButtonFragment = { __typename: 'ButtonRecord', id: string, url?: string | null, label?: string | null, iconLabel?: string | null, endIcon?: string | null };
+
+export type ButtonGroupFragment = { __typename: 'ButtonGroupRecord', id: string, buttons: Array<(
+    { __typename?: 'ButtonRecord' }
+    & ButtonFragment
+  )> };
 
 export type SectionFragment = { __typename: 'SectionRecord', id: string, idLink?: string | null, topPadding?: string | null, bottomPadding?: string | null };
 
