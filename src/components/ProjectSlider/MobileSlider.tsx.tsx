@@ -54,7 +54,7 @@ const MobileSlider: FC<MobileSliderProps> = ({ projects, activeSlide, setActiveS
         ))}
       </div>
       <div
-        className="flex snap-x snap-mandatory gap-x-8 overflow-x-scroll"
+        className="flex snap-x snap-mandatory gap-x-8 overflow-x-scroll md:hidden"
         ref={slideContainerRef}
         onScroll={handleScroll}
       >
@@ -63,7 +63,7 @@ const MobileSlider: FC<MobileSliderProps> = ({ projects, activeSlide, setActiveS
             key={project.id}
             project={project}
             isActive={i === activeSlide}
-            className="flex min-w-full snap-center flex-col md:hidden"
+            className="flex min-w-full snap-center flex-col"
           />
         ))}
       </div>
