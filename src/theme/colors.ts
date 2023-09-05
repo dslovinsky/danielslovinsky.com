@@ -6,6 +6,8 @@ const colors = {
   'black-pearl': '#0D1115',
   'maya-blue': '#6ADBFF',
   'maya-blue-10': '#6ADBFF1A',
+  'white-5': '#FFFFFF0D',
+  'white-10': '#FFFFFF1A',
 };
 
 export default colors;
