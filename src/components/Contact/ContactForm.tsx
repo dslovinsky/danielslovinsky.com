@@ -1,11 +1,12 @@
 'use client';
 import { type ChangeEvent, type FC, type FormEventHandler, useState } from 'react';
 
+import Icon from 'molecules/Icon';
+
+import inputStyles from 'components/Contact/contact.styles';
+
 import { objectEntries } from 'utils/typeUtils';
 import { type ValidatorFunction, required, validateEmail, validationGenerator } from 'utils/validators';
-
-const inputClasses =
-  'border-white-25 border-2 border-solid bg-transparent p-4 focus-within:border-white focus-visible:outline-none';
 
 const defaultFormData = {
   name: '',
@@ -70,13 +71,13 @@ const ContactForm: FC = () => {
 
   return (
     <div className="w-full">
-      <form onSubmit={onSubmit} className="grid grid-cols-2 gap-4" noValidate>
+      <form onSubmit={onSubmit} className="grid grid-cols-1 gap-4 md:grid-cols-2" noValidate>
         <input
           type="text"
           name="name"
           value={formData.name}
           placeholder="Name"
-          className={inputClasses}
+          className={inputStyles({ state: errors.name?.length ? 'error' : 'normal' })}
           onChange={e => handleChange(e, [required])}
         />
         <input
@@ -84,7 +85,7 @@ const ContactForm: FC = () => {
           name="email"
           value={formData.email}
           placeholder="Email"
-          className={inputClasses}
+          className={inputStyles({ state: errors.email?.length ? 'error' : 'normal' })}
           onChange={e => handleChange(e, [required, validateEmail])}
         />
         <input
@@ -92,32 +93,37 @@ const ContactForm: FC = () => {
           name="subject"
           value={formData.subject}
           placeholder="Subject"
-          className={`col-span-2 ${inputClasses}`}
+          className={`md:col-span-2 ${inputStyles({ state: errors.subject?.length ? 'error' : 'normal' })}`}
           onChange={e => handleChange(e, [required])}
         />
         <textarea
           name="message"
           value={formData.message}
           placeholder="Message"
-          className={`col-span-2 min-h-[180px] ${inputClasses}`}
+          className={`min-h-[180px] md:col-span-2 ${inputStyles({
+            state: errors.message?.length ? 'error' : 'normal',
+          })}`}
           onChange={e => handleChange(e, [required])}
         />
         <button
           type="submit"
-          className="col-span-2 border-2 border-solid border-maya-blue px-10 py-4 uppercase disabled:cursor-not-allowed disabled:opacity-50"
+          className="border-2 border-solid border-maya-blue px-10 py-4 font-bold uppercase hover:bg-white-5 focus-visible:bg-white-5 disabled:cursor-not-allowed disabled:opacity-50 md:col-span-2"
           disabled={submitDisabled}
         >
           {status}
         </button>
       </form>
-      <div className="flex flex-col">
+      <div className="mt-3 flex flex-col gap-y-2">
         {objectEntries(errors).map(
           ([key, value]) =>
             value?.map(error => (
-              <span key={`${key}-${error}`}>
-                <span className="capitalize">{key} </span>
-                {error}
-              </span>
+              <div key={`${key}-${error}`} className="flex gap-x-2">
+                <Icon icon="exclamation-triangle" size={18} className="text-red" />
+                <span className="text-red">
+                  <span className="capitalize">{key} </span>
+                  {error}
+                </span>
+              </div>
             )),
         )}
       </div>

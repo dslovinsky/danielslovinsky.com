@@ -14,7 +14,7 @@ export const required = (value: string) => (value ? undefined : 'is required');
  * @param value Any string
  * @returns Error message or undefined
  */
-export const validateEmail = (value: string) => (value === '' || isEmail(value) ? undefined : 'is not a valid');
+export const validateEmail = (value: string) => (value === '' || isEmail(value) ? undefined : 'is not valid address');
 
 /**
  * A validator collector that takes a given value and checks it against a series of validator function to return a single error message
