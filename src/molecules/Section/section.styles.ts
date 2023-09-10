@@ -11,6 +11,8 @@ export const topPaddingVariants = {
   56: ['pt-6 md:pt-9 xl:pt-14'],
   72: ['pt-8 md:pt-10 xl:pt-18'],
   96: ['pt-10 md:pt-14 xl:pt-24'],
+  144: ['pt-20 md:pt-24 xl:pt-36'],
+  192: ['pt-28 md:pt-32 xl:pt-48'],
 };
 
 const bottomPaddingVariants = {
@@ -24,6 +26,8 @@ const bottomPaddingVariants = {
   56: ['pb-6 md:pb-9 xl:pb-14'],
   72: ['pb-8 md:pb-10 xl:pb-18'],
   96: ['pb-10 md:pb-14 xl:pb-24'],
+  144: ['pb-20 md:pb-24 xl:pb-36'],
+  192: ['pb-28 md:pb-32 xl:pb-48'],
 };
 
 const sectionStyles = cva(['flex justify-center relative'], {
