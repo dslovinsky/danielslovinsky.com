@@ -43,7 +43,15 @@ const Slide: FC<SlideProps> = ({ project: { name, skills, featuredImage, summary
         </span>
       )}
       {summary && <StructuredText data={summary} className="mb-4" />}
-      {link && <Button url={link} label="Visit site" endIcon="arrow-up-right" />}
+      {link && (
+        <Button
+          url={link}
+          label="Visit site"
+          endIcon="arrow-up-right"
+          iconSize={12}
+          className="-m-2 p-2 hover:bg-white-5"
+        />
+      )}
     </div>
   );
 };

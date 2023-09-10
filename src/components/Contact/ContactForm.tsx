@@ -107,7 +107,7 @@ const ContactForm: FC = () => {
         />
         <button
           type="submit"
-          className="border-2 border-solid border-maya-blue px-10 py-4 font-bold uppercase hover:bg-white-5 focus-visible:bg-white-5 disabled:cursor-not-allowed disabled:opacity-50 md:col-span-2"
+          className="border-2 border-solid border-maya-blue px-10 py-4 font-bold uppercase hover:bg-white-5 focus-visible:bg-white-5 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-transparent md:col-span-2"
           disabled={submitDisabled}
         >
           {status}
