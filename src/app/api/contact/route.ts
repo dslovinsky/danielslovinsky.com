@@ -2,15 +2,12 @@
 import sgMail, { type ResponseError } from '@sendgrid/mail';
 import { type NextRequest, NextResponse } from 'next/server';
 
+import type { ContactFormData } from 'components/Contact/ContactForm';
+
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-export const POST = async (request: NextRequest) => {
-  const formData = await request.formData();
-
-  const name = `${formData.get('name') || 'No name'}`;
-  const email = `${formData.get('email') || 'No email'}`;
-  const subject = `${formData.get('subject') || 'No subject'}`;
-  const message = `${formData.get('message') || 'No message'}`;
+export const POST = async (req: NextRequest) => {
+  const { name, email, subject, message } = (await req.json()) as ContactFormData;
 
   const content = `Name: ${name}\n Email: ${email}\n Message: ${message}`;
 
