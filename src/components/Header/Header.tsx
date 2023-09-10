@@ -21,21 +21,23 @@ const Header: FC = async () => {
   const { links, mobileBottomLinks } = componentHeader;
 
   return (
-    <nav className="relative flex justify-center border-b-2 border-b-maya-blue-10 py-4">
-      <div className="flex w-full max-w-column justify-between px-4 md:px-14 xl:px-24">
-        <Link href="/">
-          <Icon icon="ds-logo" size={24} className="md:h-8 md:w-8" />
-        </Link>
-        {links && (
-          <div className="hidden gap-x-10 sm:flex">
-            {links.map(link => (
-              <MenuItem key={link.id} {...link} />
-            ))}
-          </div>
-        )}
-        <Hamburger className="flex sm:hidden">
-          <MobileMenu links={links} mobileBottomLinks={mobileBottomLinks} />
-        </Hamburger>
+    <nav className="sticky top-0 z-50 bg-black-pearl shadow-md shadow-black-pearl">
+      <div className="relative flex justify-center border-b-2 border-b-maya-blue-10 py-4">
+        <div className="flex w-full max-w-column justify-between px-4 md:px-14 xl:px-24">
+          <Link href="/">
+            <Icon icon="ds-logo" size={24} className="md:h-8 md:w-8" />
+          </Link>
+          {links && (
+            <div className="hidden gap-x-10 sm:flex">
+              {links.map(link => (
+                <MenuItem key={link.id} {...link} />
+              ))}
+            </div>
+          )}
+          <Hamburger className="flex sm:hidden">
+            <MobileMenu links={links} mobileBottomLinks={mobileBottomLinks} />
+          </Hamburger>
+        </div>
       </div>
     </nav>
   );
