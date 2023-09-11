@@ -12,7 +12,7 @@ interface DesktopSliderProps {
 
 const DesktopSlider: FC<DesktopSliderProps> = ({ projects, activeSlide, setActiveSlide }) => {
   const buttonContainerRef = useRef<HTMLDivElement>(null);
-  const [activeButtonRect, setActiveButtonRect] = useState<Pick<DOMRect, 'top' | 'height'>>({ top: 0, height: 112 });
+  const [activeButtonRect, setActiveButtonRect] = useState<Pick<DOMRect, 'top' | 'height'>>({ top: 0, height: 110 });
 
   const containerTop = buttonContainerRef.current?.getBoundingClientRect().top || 0;
 
@@ -36,7 +36,7 @@ const DesktopSlider: FC<DesktopSliderProps> = ({ projects, activeSlide, setActiv
             className="flex flex-col justify-start gap-y-4 border-l-4 border-l-white-10 py-4 pl-4 transition-colors hover:bg-white-5 xl:py-6 xl:pl-10"
           >
             <span className="text-start text-lg font-bold">{projectName}</span>
-            <div className="flex gap-4">
+            <div className="flex h-6 gap-4">
               {skills.map(
                 ({ id: skillId, name: skillName, logo }) =>
                   logo && (
