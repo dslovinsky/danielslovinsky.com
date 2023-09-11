@@ -1,0 +1,16 @@
+fragment header on ComponentHeaderRecord {
+  __typename
+  id
+  links {
+    ...button
+  }
+  mobileBottomLinks {
+    ...button
+  }
+}
+
+query globalHeader {
+  componentHeader {
+    ...header
+  }
+}

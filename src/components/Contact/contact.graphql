@@ -1,0 +1,14 @@
+fragment componentContact on ComponentContactRecord {
+  __typename
+  id
+  sectionOptions {
+    ...section
+  }
+  heading
+  body {
+    value
+    blocks {
+      ...buttonGroup
+    }
+  }
+}

@@ -1,0 +1,18 @@
+fragment componentHero on ComponentHeroRecord {
+  __typename
+  id
+  sectionOptions {
+    ...section
+  }
+  eyebrow
+  heading
+  body {
+    value
+    blocks {
+      ...buttonGroup
+    }
+  }
+  mediaReference {
+    ...file
+  }
+}

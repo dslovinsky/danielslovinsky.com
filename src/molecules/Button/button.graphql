@@ -1,0 +1,16 @@
+fragment button on ButtonRecord {
+  __typename
+  id
+  url
+  label
+  iconLabel
+  endIcon
+}
+
+fragment buttonGroup on ButtonGroupRecord {
+  __typename
+  id
+  buttons {
+    ...button
+  }
+}
