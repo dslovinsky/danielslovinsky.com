@@ -1,4 +1,5 @@
 import 'styles/global.css';
+import { Analytics } from '@vercel/analytics/react';
 import { Inter, Titillium_Web } from 'next/font/google';
 
 import Header from 'components/Header';
@@ -55,6 +56,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => (
     <body>
       <Header />
       {children}
+      <Analytics />
     </body>
   </html>
 );
