@@ -11,10 +11,13 @@ interface MobileSliderProps {
 
 const MobileSlider: FC<MobileSliderProps> = ({ projects, activeSlide, setActiveSlide }) => {
   const slideContainerRef = useRef<HTMLDivElement>(null);
+  const hasHydrated = !!slideContainerRef?.current;
 
   useEffect(() => {
-    const activeProjectButton = document.getElementById(`project-${activeSlide}`);
-    activeProjectButton?.scrollIntoView({ block: 'nearest', inline: 'center' });
+    if (hasHydrated) {
+      const activeProjectButton = document.getElementById(`project-${activeSlide}`);
+      activeProjectButton?.scrollIntoView({ block: 'nearest', inline: 'center' });
+    }
   }, [activeSlide]);
 
   const handleScroll = () => {
