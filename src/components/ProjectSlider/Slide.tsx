@@ -34,7 +34,7 @@ const Slide: FC<SlideProps> = ({ project: { name, skills, featuredImage, summary
               src={featuredImage.url}
               alt={featuredImage.alt || name || 'Project image'}
               width={670}
-              height={380}
+              height={396}
             />
           </Link>
         ) : (
@@ -42,7 +42,7 @@ const Slide: FC<SlideProps> = ({ project: { name, skills, featuredImage, summary
             src={featuredImage.url}
             alt={featuredImage.alt || name || 'Project image'}
             width={670}
-            height={380}
+            height={396}
             className="mb-4 md:mb-8"
           />
         ))}
