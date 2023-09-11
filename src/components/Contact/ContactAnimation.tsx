@@ -23,7 +23,7 @@ const ContactAnimation: FC = () => {
   const { height, resolution } = responsiveSize(width);
 
   return (
-    <div className="fade-from-top absolute left-0 right-0 top-0 z-0 overflow-hidden">
+    <div className="fade-from-top-bottom absolute left-0 right-0 top-0 z-0 overflow-hidden">
       {/* if key changes, component rerenders - that way screen resizes are accounted for */}
       {width && (
         <GameOfLife

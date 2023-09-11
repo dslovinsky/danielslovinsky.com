@@ -23,7 +23,7 @@ const HeroAnimation: FC = () => {
   const { height, resolution } = responsiveSize(width);
 
   return (
-    <div className="fade-from-top absolute bottom-0 left-0 right-0 z-0 overflow-hidden md:bottom-auto md:top-14 xl:top-24">
+    <div className="fade-from-top-bottom absolute bottom-0 left-0 right-0 z-0 overflow-hidden md:bottom-auto md:top-14 xl:top-24">
       {/* if key changes, component rerenders - that way screen resizes are accounted for */}
       {width && (
         <GameOfLife

@@ -49,7 +49,7 @@ const Slide: FC<SlideProps> = ({ project: { name, skills, featuredImage, summary
           label="Visit site"
           endIcon="arrow-up-right"
           iconSize={12}
-          className="-m-2 p-2 hover:bg-white-5"
+          className="-m-2 p-2 hover:bg-white-5 [&:hover>svg]:animate-[bounce-up_0.6s_ease-in-out_infinite_alternate]"
         />
       )}
     </div>
