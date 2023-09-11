@@ -29,7 +29,7 @@ const Hero: FC<ComponentHeroFragment> = ({ eyebrow, heading, body, mediaReferenc
             priority
           />
         )}
-        {body && <StructuredText data={body} />}
+        {body && <StructuredText data={body} className="flex flex-col gap-4" />}
       </div>
       {mediaReference && (
         <Image

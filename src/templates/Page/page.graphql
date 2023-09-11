@@ -9,6 +9,7 @@ fragment templatePage on TemplatePageRecord {
     ...componentHero
     ...componentSkillBar
     ...componentProjectSlider
+    ...componentContact
   }
 }
 

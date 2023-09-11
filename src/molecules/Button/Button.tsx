@@ -31,11 +31,11 @@ const Button: FC<ButtonsProps> = ({
   return (
     <Component
       href={href}
-      className={twMerge(`inline-flex items-center gap-x-2 font-bold ${className}`)}
+      className={twMerge(`inline-flex w-fit items-center gap-x-2 font-bold ${className}`)}
       {...urlProps}
       {...props}
     >
-      {isValidId(iconLabel) ? <Icon icon={iconLabel} size={iconSize} /> : label}
+      {isValidId(iconLabel) ? <Icon icon={iconLabel} size={iconSize} className="hover:text-maya-blue" /> : label}
       {isValidId(endIcon) && <Icon icon={endIcon} size={iconSize} />}
     </Component>
   );

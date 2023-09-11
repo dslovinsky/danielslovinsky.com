@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { type ComponentPropsWithRef, type FC, useEffect, useRef } from 'react';
 
 import Button from 'molecules/Button';
@@ -26,15 +27,25 @@ const Slide: FC<SlideProps> = ({ project: { name, skills, featuredImage, summary
 
   return (
     <div ref={slideRef} {...props}>
-      {featuredImage?.url && (
-        <Image
-          src={featuredImage.url}
-          alt={featuredImage.alt || name || 'Project image'}
-          width={670}
-          height={380}
-          className="mb-4 md:mb-8"
-        />
-      )}
+      {featuredImage?.url &&
+        (link ? (
+          <Link href={link} target="_blank" className="mb-4 md:mb-8">
+            <Image
+              src={featuredImage.url}
+              alt={featuredImage.alt || name || 'Project image'}
+              width={670}
+              height={380}
+            />
+          </Link>
+        ) : (
+          <Image
+            src={featuredImage.url}
+            alt={featuredImage.alt || name || 'Project image'}
+            width={670}
+            height={380}
+            className="mb-4 md:mb-8"
+          />
+        ))}
       <h2 className="mb-4 text-xl font-bold md:text-2xl">{name}</h2>
       {skills && (
         <span className="mb-4">
@@ -42,8 +53,16 @@ const Slide: FC<SlideProps> = ({ project: { name, skills, featuredImage, summary
           {skills.map(({ name: skillName }) => skillName).join(', ')}, and more
         </span>
       )}
-      {summary && <StructuredText data={summary} />}
-      {link && <Button url={link} label="Visit site" endIcon="arrow-up-right" />}
+      {summary && <StructuredText data={summary} className="mb-4" />}
+      {link && (
+        <Button
+          url={link}
+          label="Visit site"
+          endIcon="arrow-up-right"
+          iconSize={12}
+          className="-m-2 p-2 hover:bg-white-5 [&:hover>svg]:animate-[bounce-up_0.6s_ease-in-out_infinite_alternate]"
+        />
+      )}
     </div>
   );
 };
