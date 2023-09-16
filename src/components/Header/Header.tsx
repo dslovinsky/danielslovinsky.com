@@ -5,7 +5,6 @@ import { GlobalHeaderDocument } from 'graphql/sdk';
 
 import Icon from 'molecules/Icon';
 
-import Hamburger from 'components/Header/Hamburger';
 import MenuItem from 'components/Header/MenuItem';
 import MobileMenu from 'components/Header/MobileMenu';
 
@@ -34,9 +33,7 @@ const Header: FC = async () => {
               ))}
             </div>
           )}
-          <Hamburger className="flex sm:hidden">
-            <MobileMenu links={links} mobileBottomLinks={mobileBottomLinks} />
-          </Hamburger>
+          <MobileMenu links={links} mobileBottomLinks={mobileBottomLinks} />
         </div>
       </div>
     </nav>
