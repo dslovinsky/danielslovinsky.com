@@ -10,7 +10,7 @@ const isValidId = (id?: string | null): id is IconIds => !!id && iconIds.include
 
 type NativeButtonProps = ComponentPropsWithoutRef<'button'> & ComponentPropsWithoutRef<'a'>;
 
-interface ButtonsProps extends Partial<ButtonFragment>, Omit<NativeButtonProps, 'id'> {
+export interface ButtonsProps extends Partial<ButtonFragment>, Omit<NativeButtonProps, 'id'> {
   iconSize?: number;
 }
 
