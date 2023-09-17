@@ -1,12 +1,12 @@
 'use client';
 import Image from 'next/image';
-import { type FC, type MouseEvent, useState } from 'react';
+import { type FC, type MouseEvent, useEffect, useRef, useState } from 'react';
 
 import Slide from 'components/ProjectSlider/Slide';
 
 import colors from 'theme/colors';
 
-const generateDynamicGradient = (height: number) => `linear-gradient(
+const getDynamicGradient = (height: number) => `linear-gradient(
   to bottom,
   transparent 0px,
   ${colors['maya-blue']} 0px,
@@ -22,13 +22,20 @@ interface DesktopSliderProps {
 }
 
 const DesktopSlider: FC<DesktopSliderProps> = ({ projects, activeSlide, setActiveSlide }) => {
-  const [gradient, setGradient] = useState(generateDynamicGradient(94));
+  const [activeButtonHeight, setActiveButtonHeight] = useState(110);
   const [backgroundPositionY, setBackgroundPositionY] = useState('0px');
+
+  const firstButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const offsetHeight = firstButtonRef.current?.offsetHeight;
+    offsetHeight && setActiveButtonHeight(offsetHeight);
+  }, []);
 
   const handleClick = ({ currentTarget }: MouseEvent<HTMLButtonElement>, index: number) => {
     setActiveSlide(index);
     const { offsetTop, offsetHeight } = currentTarget;
-    setGradient(generateDynamicGradient(offsetHeight));
+    setActiveButtonHeight(offsetHeight);
     setBackgroundPositionY(`${offsetTop}px`);
   };
 
@@ -37,12 +44,13 @@ const DesktopSlider: FC<DesktopSliderProps> = ({ projects, activeSlide, setActiv
       <div className="hidden h-fit md:flex">
         <div
           className="w-1 bg-white-10 transition-[background-position]"
-          style={{ backgroundImage: gradient, backgroundPositionY }}
+          style={{ backgroundImage: getDynamicGradient(activeButtonHeight), backgroundPositionY }}
         />
-        <div className="relative flex flex-col">
+        <div className="relative flex w-full flex-col">
           {projects.map(({ id, name: projectName, skills }, i) => (
             <button
               key={id}
+              ref={i === 0 ? firstButtonRef : null}
               onClick={e => handleClick(e, i)}
               className="flex flex-col justify-start gap-y-4 py-4 pl-4 transition-colors hover:bg-white-5 xl:py-6 xl:pl-10"
             >
