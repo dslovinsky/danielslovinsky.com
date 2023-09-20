@@ -15,7 +15,8 @@ const testStrings = [
 describe('camelCase', () => {
   it('should return a camelCased string', () => {
     testStrings.forEach(string => {
-      expect(camelCase(string)).toBe('testString');
+      const result = camelCase(string);
+      expect(result).toBe('testString');
     });
   });
 });
@@ -23,7 +24,8 @@ describe('camelCase', () => {
 describe('kebabCase', () => {
   it('should return a kebab-cased string', () => {
     testStrings.forEach(string => {
-      expect(kebabCase(string)).toBe('test-string');
+      const result = kebabCase(string);
+      expect(result).toBe('test-string');
     });
   });
 });

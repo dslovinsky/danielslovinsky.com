@@ -9,6 +9,7 @@ const config = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   testEnvironment: 'jest-environment-jsdom',
   modulePaths: ['<rootDir>/src'],
+  verbose: true,
 };
 
 export default createJestConfig(config);

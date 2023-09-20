@@ -2,7 +2,7 @@
   "name": "danielslovinsky.com",
   "description": "Daniel Slovinsky's personal site",
   "license": "MIT",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "author": {
     "name": "Daniel Slovinsky",
     "url": "https://danielslovinsky.com/"
@@ -17,7 +17,8 @@
     "types:check": "tsc --noEmit",
     "codegen": "DOTENV_CONFIG_PATH=.env graphql-codegen -r dotenv/config",
     "refresh": "curl -X GET 'http://localhost:3000/api/revalidate-all'",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@apollo/client": "^3.8.1",
