@@ -4,6 +4,7 @@
 # next.js
 /.next/
 /out/
+.swc/
 
 # production
 /build
@@ -33,3 +34,6 @@ pnpm-debug.log*
 
 # vscode
 .vscode
+
+# jest
+coverage/

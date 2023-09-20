@@ -23,6 +23,11 @@ describe('parseUrl', () => {
     });
   });
 
+  it('should throw an error', () => {
+    const fn = () => parseUrl('test');
+    expect(fn).toThrowError('Invalid URL: test');
+  });
+
   it("should return as 'div'", () => {
     const result = parseUrl('');
     expect(result).toStrictEqual({ Component: 'div', href: '' });
