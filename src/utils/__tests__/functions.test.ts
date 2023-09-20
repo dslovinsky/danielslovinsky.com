@@ -1,6 +1,6 @@
 import { camelCase, kebabCase } from 'utils/functions';
 
-const testStrings = [
+const testInputs = [
   'test string',
   'test-string',
   'Test_String',
@@ -13,19 +13,17 @@ const testStrings = [
 ];
 
 describe('camelCase', () => {
-  it('should return a camelCased string', () => {
-    testStrings.forEach(string => {
-      const result = camelCase(string);
-      expect(result).toBe('testString');
-    });
+  const table = testInputs.map(input => [input, 'testString']);
+  it.each(table)('should return a camelCased string', (input, expected) => {
+    const result = camelCase(input);
+    expect(result).toBe(expected);
   });
 });
 
 describe('kebabCase', () => {
-  it('should return a kebab-cased string', () => {
-    testStrings.forEach(string => {
-      const result = kebabCase(string);
-      expect(result).toBe('test-string');
-    });
+  const table = testInputs.map(input => [input, 'test-string']);
+  it.each(table)('should return a kebab-cased string', (input, expected) => {
+    const result = kebabCase(input);
+    expect(result).toBe(expected);
   });
 });

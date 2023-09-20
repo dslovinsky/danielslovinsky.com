@@ -13,20 +13,17 @@ describe('required', () => {
 });
 
 describe('validateEmail', () => {
-  it('should return an error message if the value is not a valid email', () => {
-    const invalidEmails = ['test', '@', '@test', 'test@', 'test@test.'];
-    invalidEmails.forEach(invalidEmail => {
-      const result = validateEmail(invalidEmail);
-      expect(result).toBe('is not valid address');
-    });
+  const invalidEmails = ['test', '@', '@test', 'test@', 'test@test.'];
+  const invalidTable = invalidEmails.map(input => [input, 'is not valid address']);
+  it.each(invalidTable)('should return an error message if the value is not a valid email', (input, expected) => {
+    const result = validateEmail(input);
+    expect(result).toBe(expected);
   });
 
-  it('should return undefined if the value is a valid email or empty', () => {
-    const validEmails = ['test@danielslovinsky.com', 'dslovinsky@test.com', ''];
-    validEmails.forEach(validEmail => {
-      const result = validateEmail(validEmail);
-      expect(result).toBeUndefined();
-    });
+  const validEmails = ['test@danielslovinsky.com', 'dslovinsky@test.com', ''];
+  it.each(validEmails)('should return undefined if the value is a valid email or empty', input => {
+    const result = validateEmail(input);
+    expect(result).toBeUndefined();
   });
 });
 
