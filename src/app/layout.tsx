@@ -1,5 +1,6 @@
 import 'styles/global.css';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Inter, Titillium_Web } from 'next/font/google';
 
 import Header from 'components/Header';
@@ -53,10 +54,13 @@ export const metadata: Metadata = {
 
 const RootLayout = ({ children }: { children: ReactNode }) => (
   <html lang="en" className={`${inter.variable} ${titilliumWeb.variable}`}>
+    <head>
+      <SpeedInsights />
+      <Analytics />
+    </head>
     <body>
       <Header />
       {children}
-      <Analytics />
     </body>
   </html>
 );
