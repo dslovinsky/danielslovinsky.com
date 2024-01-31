@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.8.1",
-    "@apollo/experimental-nextjs-app-support": "^0.5.1",
+    "@apollo/experimental-nextjs-app-support": "^0.7.0",
     "@sendgrid/mail": "^8.1.0",
     "@vercel/analytics": "^1.1.2",
     "@vercel/speed-insights": "^1.0.7",
