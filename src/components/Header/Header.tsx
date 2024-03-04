@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import graphqlQuery from 'graphql/apolloClient';
-import { GlobalHeaderDocument } from 'graphql/sdk';
+import { GlobalHeaderDocument } from 'graphql/documents';
 
 import Icon from 'molecules/Icon';
 

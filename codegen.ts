@@ -46,7 +46,7 @@ const config: CodegenConfig = {
         },
       ],
     },
-    'src/graphql/sdk.ts': {
+    'src/graphql/documents.ts': {
       plugins: [
         {
           'typescript-react-apollo': {

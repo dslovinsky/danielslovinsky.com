@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 
 import graphqlQuery from 'graphql/apolloClient';
-import { AllTemplatePageSlugsDocument, TemplatePageDocument } from 'graphql/sdk';
+import { AllTemplatePageSlugsDocument, TemplatePageDocument } from 'graphql/documents';
 
 import TemplatePage from 'templates/Page';
 
