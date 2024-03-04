@@ -8,6 +8,7 @@
     "url": "https://danielslovinsky.com/"
   },
   "scripts": {
+    "prepare": "husky install",
     "dev": "next",
     "build": "next build",
     "serve": "next start -p 5000",
