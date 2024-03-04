@@ -51,7 +51,6 @@
     "no-console": ["warn", { "allow": ["warn", "error"] }],
     "no-lonely-if": "error",
     "no-nested-ternary": "error",
-    "no-shadow": ["error", { "builtinGlobals": false }],
     "no-undef": "off",
     "no-use-before-define": "off",
     "no-var": "error",
@@ -68,6 +67,7 @@
         "argsIgnorePattern": "^_"
       }
     ],
+    "@typescript-eslint/no-shadow": ["error", { "builtinGlobals": false }],
     "@typescript-eslint/no-use-before-define": ["error"],
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/member-delimiter-style": "warn",
