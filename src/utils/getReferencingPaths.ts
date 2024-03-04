@@ -49,7 +49,8 @@ const getReferencingPaths = async ({ recordType, recordId, slug }: Args): Promis
 
   // base case
   if (recordIsPage) {
-    const path = `${getSubdirectory(recordTypeData.attributes.api_key)}${slug}`;
+    const pageSlug = slug === 'home' ? '' : slug;
+    const path = `${getSubdirectory(recordTypeData.attributes.api_key)}${pageSlug}`;
 
     return [path];
   }
