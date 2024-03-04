@@ -1,8 +1,8 @@
+import type { FC } from 'react';
+
 import Section from 'molecules/Section';
 
 import componentGenerator from 'utils/componentGenerator';
-
-import type { FC } from 'react';
 
 const Page: FC<TemplatePageFragment> = ({ components }) => (
   <main>

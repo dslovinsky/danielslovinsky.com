@@ -1,10 +1,10 @@
+import type { FC } from 'react';
+
 import SectionHeading from 'molecules/SectionHeading';
 import StructuredText from 'molecules/StructuredText';
 
 import ContactAnimation from 'components/Contact/ContactAnimation';
 import ContactForm from 'components/Contact/ContactForm';
-
-import type { FC } from 'react';
 
 const Contact: FC<ComponentContactFragment> = ({ heading, body }) => (
   <div className="mt-24">

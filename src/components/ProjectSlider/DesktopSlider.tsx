@@ -1,4 +1,5 @@
 'use client';
+
 import Image from 'next/image';
 import { type FC, type MouseEvent, useEffect, useRef, useState } from 'react';
 

@@ -1,12 +1,11 @@
 import Image from 'next/image';
+import type { FC } from 'react';
 
 import StructuredText from 'molecules/StructuredText';
 
 import HeroAnimation from 'components/Hero/HeroAnimation';
 
 import outlineText from 'utils/outlineText';
-
-import type { FC } from 'react';
 
 const Hero: FC<ComponentHeroFragment> = ({ eyebrow, heading, body, mediaReference }) => (
   <>

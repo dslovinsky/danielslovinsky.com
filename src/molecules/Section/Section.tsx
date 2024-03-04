@@ -1,8 +1,8 @@
+import type { FC, ReactNode } from 'react';
+
 import sectionStyles, { topPaddingVariants } from 'molecules/Section/section.styles';
 
 import { objectHas } from 'utils/typeUtils';
-
-import type { FC, ReactNode } from 'react';
 
 interface SectionProps extends SectionFragment {
   children: ReactNode;

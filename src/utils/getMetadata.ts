@@ -1,8 +1,6 @@
-import { name } from 'utils/constants';
-
-import colors from 'theme/colors';
-
 import type { Metadata } from 'next';
+
+import { name } from 'utils/constants';
 
 const getMetadata = ({ metaTags, indexable, canonicalUrl }: SeoFragment, slug: string): Metadata => {
   const title = slug === 'home' ? { absolute: metaTags?.title || 'Daniel Slovinsky' } : metaTags?.title;
@@ -38,8 +36,6 @@ const getMetadata = ({ metaTags, indexable, canonicalUrl }: SeoFragment, slug: s
       canonical: canonicalUrl || undefined,
     },
     authors: [{ name }],
-    colorScheme: 'dark',
-    themeColor: colors['black-pearl'],
   };
 };
 

@@ -1,6 +1,7 @@
 /* eslint-disable import/prefer-default-export */
-import sgMail, { type ResponseError } from '@sendgrid/mail';
 import { type NextRequest, NextResponse } from 'next/server';
+
+import sgMail, { type ResponseError } from '@sendgrid/mail';
 
 import type { ContactFormData } from 'components/Contact/ContactForm';
 

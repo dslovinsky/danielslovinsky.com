@@ -1,3 +1,5 @@
+import type { ComponentPropsWithoutRef, FC } from 'react';
+
 import { isParagraph } from 'datocms-structured-text-utils';
 import {
   type StructuredTextGraphQlResponse,
@@ -7,8 +9,6 @@ import {
 
 import Button from 'molecules/Button';
 import ButtonGroup from 'molecules/Button/ButtonGroup';
-
-import type { ComponentPropsWithoutRef, FC } from 'react';
 
 type Data = {
   __typename?: string;

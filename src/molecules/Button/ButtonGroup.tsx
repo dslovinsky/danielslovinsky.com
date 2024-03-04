@@ -1,6 +1,6 @@
-import Button from 'molecules/Button/Button';
-
 import type { FC } from 'react';
+
+import Button from 'molecules/Button/Button';
 
 const ButtonGroup: FC<ButtonGroupFragment> = ({ buttons }) => (
   <div className="flex gap-x-8">

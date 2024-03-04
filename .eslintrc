@@ -51,7 +51,6 @@
     "no-console": ["warn", { "allow": ["warn", "error"] }],
     "no-lonely-if": "error",
     "no-nested-ternary": "error",
-    "no-shadow": ["error", { "builtinGlobals": false }],
     "no-undef": "off",
     "no-use-before-define": "off",
     "no-var": "error",
@@ -59,7 +58,6 @@
     "prefer-arrow-callback": "error",
     "prefer-const": ["error", { "destructuring": "all" }],
     "quotes": ["error", "single", { "avoidEscape": true, "allowTemplateLiterals": false }],
-    "sort-imports": ["error", { "ignoreDeclarationSort": true }],
     "spaced-comment": ["error", "always"],
     "@typescript-eslint/no-unused-vars": [
       "error",
@@ -68,6 +66,7 @@
         "argsIgnorePattern": "^_"
       }
     ],
+    "@typescript-eslint/no-shadow": ["error", { "builtinGlobals": false }],
     "@typescript-eslint/no-use-before-define": ["error"],
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/member-delimiter-style": "warn",
@@ -79,59 +78,6 @@
     "import/no-named-default": "error",
     "import/newline-after-import": "warn",
     "import/no-duplicates": ["error", { "prefer-inline": true }],
-    "import/order": [
-      "error",
-      {
-        "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"],
-        "pathGroups": [
-          {
-            "pattern": "assets/**",
-            "group": "internal",
-            "position": "after"
-          },
-          {
-            "pattern": "graphql/**",
-            "group": "internal",
-            "position": "after"
-          },
-          {
-            "pattern": "molecules/**",
-            "group": "internal",
-            "position": "after"
-          },
-          {
-            "pattern": "components/**",
-            "group": "internal",
-            "position": "after"
-          },
-          {
-            "pattern": "templates/**",
-            "group": "internal",
-            "position": "after"
-          },
-          {
-            "pattern": "utils/**",
-            "group": "internal",
-            "position": "after"
-          },
-          {
-            "pattern": "theme/**",
-            "group": "internal",
-            "position": "after"
-          },
-          {
-            "pattern": "types/**",
-            "group": "internal",
-            "position": "after"
-          }
-        ],
-        "pathGroupsExcludedImportTypes": ["builtin", "type"],
-        "newlines-between": "always",
-        "alphabetize": {
-          "order": "asc"
-        }
-      }
-    ],
     "jsx-quotes": ["error", "prefer-double"],
     "no-relative-import-paths/no-relative-import-paths": ["error", { "allowSameFolder": false, "rootDir": "src" }],
     "no-inline-styles/no-inline-styles": 2,

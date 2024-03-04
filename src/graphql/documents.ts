@@ -1,5 +1,4 @@
 import { gql } from '@apollo/client';
-
 import type * as Apollo from '@apollo/client';
 
 export const ButtonFragmentDoc = gql`

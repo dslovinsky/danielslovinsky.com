@@ -1,9 +1,10 @@
 'use client';
+
+import type { FC } from 'react';
+
 import useWindowDimensions from 'hooks/useWindowDimensions';
 
 import GameOfLife from 'components/animations/GameOfLife';
-
-import type { FC } from 'react';
 
 const responsiveSize = (width: number) => {
   if (width < 768) {

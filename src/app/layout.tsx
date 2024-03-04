@@ -1,14 +1,16 @@
-import 'styles/global.css';
+import type { Metadata, Viewport } from 'next';
+import { Inter, Titillium_Web } from 'next/font/google';
+import type { ReactNode } from 'react';
+
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { Inter, Titillium_Web } from 'next/font/google';
+import 'styles/global.css';
 
 import Header from 'components/Header';
 
 import { name } from 'utils/constants';
 
-import type { Metadata } from 'next';
-import type { ReactNode } from 'react';
+import colors from 'theme/colors';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -50,6 +52,11 @@ export const metadata: Metadata = {
     template: `%s | ${name}`,
     default: name,
   },
+};
+
+export const viewport: Viewport = {
+  colorScheme: 'dark',
+  themeColor: colors['black-pearl'],
 };
 
 const RootLayout = ({ children }: { children: ReactNode }) => (
