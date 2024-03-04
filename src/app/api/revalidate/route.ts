@@ -1,9 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { revalidatePath } from 'next/cache';
 import { NextResponse, type NextRequest } from 'next/server';
-
-import getDomain from 'utils/getDomain';
-import getReferencingPaths from 'utils/getReferencingPaths';
 
 type RequestData = {
   recordId: string;
@@ -24,31 +20,5 @@ export const POST = async (request: NextRequest) => {
 
   const requestData = (await request.json()) as RequestData;
 
-  const paths = await getReferencingPaths(requestData);
-  if (paths.length < 1) {
-    return NextResponse.json({
-      revalidated: false,
-      error: `Found no referencing paths for record with ID: ${requestData.recordId}`,
-    });
-  }
-
-  const domain = getDomain();
-
-  paths.forEach(path => {
-    revalidatePath(path);
-
-    // request page once to trigger a static rebuild of the path with fresh data
-    try {
-      void fetch(`${domain}${path}`);
-    } catch (_e) {
-      console.error(`Path at ${path} not found`);
-    }
-  });
-
-  return NextResponse.json({
-    revalidated: true,
-    paths,
-    now: Date.now(),
-    domain,
-  });
+  return NextResponse.json(requestData);
 };
