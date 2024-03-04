@@ -1,4 +1,5 @@
 import type { Route } from 'next';
+
 import type { DatoRecord } from 'types/datoManagement/record';
 import type { RecordType } from 'types/datoManagement/recordType';
 

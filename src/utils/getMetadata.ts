@@ -1,6 +1,6 @@
-import { name } from 'utils/constants';
-
 import type { Metadata } from 'next';
+
+import { name } from 'utils/constants';
 
 const getMetadata = ({ metaTags, indexable, canonicalUrl }: SeoFragment, slug: string): Metadata => {
   const title = slug === 'home' ? { absolute: metaTags?.title || 'Daniel Slovinsky' } : metaTags?.title;

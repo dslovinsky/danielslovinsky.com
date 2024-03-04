@@ -1,8 +1,7 @@
 import Image from 'next/image';
+import type { FC } from 'react';
 
 import SectionHeading from 'molecules/SectionHeading';
-
-import type { FC } from 'react';
 
 const SkillBar: FC<ComponentSkillBarFragment> = ({ heading, skills }) => (
   <div className="flex flex-col items-center gap-6 md:gap-10">

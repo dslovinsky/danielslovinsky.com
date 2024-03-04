@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import graphqlQuery from 'graphql/apolloClient';
@@ -6,8 +7,6 @@ import { AllTemplatePageSlugsDocument, TemplatePageDocument } from 'graphql/docu
 import TemplatePage from 'templates/Page';
 
 import getMetadata from 'utils/getMetadata';
-
-import type { Metadata } from 'next';
 
 export const generateStaticParams = async () => {
   const { allTemplatePages } = await graphqlQuery<AllTemplatePageSlugsQuery>(AllTemplatePageSlugsDocument);

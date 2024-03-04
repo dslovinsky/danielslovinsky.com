@@ -1,4 +1,5 @@
 'use client';
+
 import { type FC, useEffect, useRef } from 'react';
 
 import Slide from 'components/ProjectSlider/Slide';

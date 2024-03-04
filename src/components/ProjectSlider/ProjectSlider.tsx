@@ -1,4 +1,5 @@
 'use client';
+
 import { type FC, useState } from 'react';
 
 import SectionHeading from 'molecules/SectionHeading';

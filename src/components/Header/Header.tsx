@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import type { FC } from 'react';
 
 import graphqlQuery from 'graphql/apolloClient';
 import { GlobalHeaderDocument } from 'graphql/documents';
@@ -7,8 +8,6 @@ import Icon from 'molecules/Icon';
 
 import MenuItem from 'components/Header/MenuItem';
 import MobileMenu from 'components/Header/MobileMenu';
-
-import type { FC } from 'react';
 
 const Header: FC = async () => {
   const { componentHeader } = await graphqlQuery<GlobalHeaderQuery>(GlobalHeaderDocument);

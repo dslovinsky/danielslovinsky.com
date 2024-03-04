@@ -1,4 +1,5 @@
 'use client';
+
 import { type CanvasHTMLAttributes, type FC, memo, useEffect, useRef } from 'react';
 
 const operations = [

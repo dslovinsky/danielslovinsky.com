@@ -1,10 +1,10 @@
+import type { ComponentPropsWithoutRef, FC } from 'react';
+
 import { twMerge } from 'tailwind-merge';
 
 import Icon, { type IconIds, iconIds } from 'molecules/Icon';
 
 import parseUrl from 'utils/parseUrl';
-
-import type { ComponentPropsWithoutRef, FC } from 'react';
 
 const isValidId = (id?: string | null): id is IconIds => !!id && iconIds.includes(id as IconIds);
 

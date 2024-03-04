@@ -1,4 +1,5 @@
 'use client';
+
 import { type ComponentPropsWithoutRef, type FC } from 'react';
 
 interface HamburgerProps extends ComponentPropsWithoutRef<'button'> {

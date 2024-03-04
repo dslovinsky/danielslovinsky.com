@@ -1,4 +1,5 @@
 'use client';
+
 import { type FC, type MouseEventHandler, useState } from 'react';
 
 import Hamburger from 'components/Header/Hamburger';

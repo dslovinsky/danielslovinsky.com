@@ -1,6 +1,6 @@
-import Button, { type ButtonsProps } from 'molecules/Button';
-
 import type { FC } from 'react';
+
+import Button, { type ButtonsProps } from 'molecules/Button';
 
 const MenuItem: FC<ButtonsProps> = ({ id, ...props }) => (
   <Button

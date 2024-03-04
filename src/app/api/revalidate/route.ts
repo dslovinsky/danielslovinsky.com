@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { revalidatePath } from 'next/cache';
-import { type NextRequest, NextResponse } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 
 import getDomain from 'utils/getDomain';
 import getReferencingPaths from 'utils/getReferencingPaths';

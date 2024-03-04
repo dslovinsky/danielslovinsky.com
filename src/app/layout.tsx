@@ -1,6 +1,9 @@
+import type { Metadata, Viewport } from 'next';
+import { Inter, Titillium_Web } from 'next/font/google';
+import type { ReactNode } from 'react';
+
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { Inter, Titillium_Web } from 'next/font/google';
 import 'styles/global.css';
 
 import Header from 'components/Header';
@@ -8,9 +11,6 @@ import Header from 'components/Header';
 import { name } from 'utils/constants';
 
 import colors from 'theme/colors';
-
-import type { Metadata, Viewport } from 'next';
-import type { ReactNode } from 'react';
 
 const inter = Inter({
   subsets: ['latin'],
