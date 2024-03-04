@@ -1,7 +1,5 @@
 import { name } from 'utils/constants';
 
-import colors from 'theme/colors';
-
 import type { Metadata } from 'next';
 
 const getMetadata = ({ metaTags, indexable, canonicalUrl }: SeoFragment, slug: string): Metadata => {
@@ -38,8 +36,6 @@ const getMetadata = ({ metaTags, indexable, canonicalUrl }: SeoFragment, slug: s
       canonical: canonicalUrl || undefined,
     },
     authors: [{ name }],
-    colorScheme: 'dark',
-    themeColor: colors['black-pearl'],
   };
 };
 

@@ -1,13 +1,15 @@
-import 'styles/global.css';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Inter, Titillium_Web } from 'next/font/google';
+import 'styles/global.css';
 
 import Header from 'components/Header';
 
 import { name } from 'utils/constants';
 
-import type { Metadata } from 'next';
+import colors from 'theme/colors';
+
+import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 
 const inter = Inter({
@@ -50,6 +52,11 @@ export const metadata: Metadata = {
     template: `%s | ${name}`,
     default: name,
   },
+};
+
+export const viewport: Viewport = {
+  colorScheme: 'dark',
+  themeColor: colors['black-pearl'],
 };
 
 const RootLayout = ({ children }: { children: ReactNode }) => (
