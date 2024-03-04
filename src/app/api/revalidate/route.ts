@@ -25,6 +25,7 @@ export const POST = async (request: NextRequest) => {
   const requestData = (await request.json()) as RequestData;
 
   const paths = await getReferencingPaths(requestData);
+
   if (paths.length < 1) {
     return NextResponse.json({
       revalidated: false,
