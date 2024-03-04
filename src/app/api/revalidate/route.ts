@@ -1,6 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 import { NextResponse, type NextRequest } from 'next/server';
 
+import getReferencingPaths from 'utils/getReferencingPaths';
+
 type RequestData = {
   recordId: string;
   recordType: string;
@@ -20,5 +22,7 @@ export const POST = async (request: NextRequest) => {
 
   const requestData = (await request.json()) as RequestData;
 
-  return NextResponse.json(requestData);
+  const paths = await getReferencingPaths(requestData);
+
+  return NextResponse.json({ paths });
 };
