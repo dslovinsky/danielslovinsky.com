@@ -1,4 +1,5 @@
 /* eslint-disable import/prefer-default-export */
+import { revalidatePath } from 'next/cache';
 import { NextResponse, type NextRequest } from 'next/server';
 
 import getDomain from 'utils/getDomain';
@@ -34,5 +35,21 @@ export const POST = async (request: NextRequest) => {
 
   const domain = getDomain();
 
-  return NextResponse.json({ domain });
+  paths.forEach(path => {
+    revalidatePath(path);
+
+    // request page once to trigger a static rebuild of the path with fresh data
+    try {
+      void fetch(`${domain}${path}`);
+    } catch (_e) {
+      console.error(`Path at ${path} not found`);
+    }
+  });
+
+  return NextResponse.json({
+    revalidated: true,
+    paths,
+    now: Date.now(),
+    domain,
+  });
 };
