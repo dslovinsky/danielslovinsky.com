@@ -1,6 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import { NextResponse, type NextRequest } from 'next/server';
 
+import getDomain from 'utils/getDomain';
 import getReferencingPaths from 'utils/getReferencingPaths';
 
 type RequestData = {
@@ -24,5 +25,14 @@ export const POST = async (request: NextRequest) => {
 
   const paths = await getReferencingPaths(requestData);
 
-  return NextResponse.json({ paths });
+  if (paths.length < 1) {
+    return NextResponse.json({
+      revalidated: false,
+      error: `Found no referencing paths for record with ID: ${requestData.recordId}`,
+    });
+  }
+
+  const domain = getDomain();
+
+  return NextResponse.json({ domain });
 };
