@@ -39,11 +39,7 @@ export const POST = async (request: NextRequest) => {
     revalidatePath(path);
 
     // request page once to trigger a static rebuild of the path with fresh data
-    try {
-      void fetch(`${domain}${path}`);
-    } catch (_e) {
-      console.error(`Path at ${path} not found`);
-    }
+    void fetch(`${domain}${path}`);
   });
 
   return NextResponse.json({
