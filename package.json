@@ -34,7 +34,7 @@
     "react": "^18.2.0",
     "react-datocms": "^4.1.3",
     "react-dom": "^18.2.0",
-    "validator": "^13.11.0"
+    "validator": "^13.15.20"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
