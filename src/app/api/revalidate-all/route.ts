@@ -23,7 +23,7 @@ export const GET = async (request: NextRequest) => {
   // TODO: Add all templates here
   const { allTemplatePages } = await graphqlQuery<AllTemplatePageSlugsQuery>(AllTemplatePageSlugsDocument);
 
-  // revlidating all at once doesn't work without delay
+  // revalidating all at once doesn't work without delay
   await delayedLoop(
     allTemplatePages,
     ({ slug }) => {

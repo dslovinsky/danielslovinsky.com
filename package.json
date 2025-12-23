@@ -83,5 +83,6 @@
       "eslint --fix",
       "prettier --write --log-level silent"
     ]
-  }
+  },
+  "packageManager": "pnpm@10.18.2"
 }

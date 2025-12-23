@@ -9,5 +9,5 @@ pnpm run dev
 ### Production
 
 ```
-pnpm run build && npm run prod
+pnpm run build && pnpm run prod
 ```
