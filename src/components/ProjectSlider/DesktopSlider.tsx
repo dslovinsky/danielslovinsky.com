@@ -64,6 +64,7 @@ const DesktopSlider: FC<DesktopSliderProps> = ({ projects, activeSlide, setActiv
                         key={skillId}
                         src={logo?.url}
                         alt={logo.alt || `${skillName || ''} logo`}
+                        title={logo.alt || `${skillName || ''}`}
                         height={24}
                         width={24}
                       />

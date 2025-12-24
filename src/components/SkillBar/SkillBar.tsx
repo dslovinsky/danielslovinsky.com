@@ -14,6 +14,7 @@ const SkillBar: FC<ComponentSkillBarFragment> = ({ heading, skills }) => (
               <Image
                 src={logo.url}
                 alt={logo.alt || `${name || ''} logo`}
+                title={logo.alt || `${name || ''}`}
                 height={64}
                 width={64}
                 className="max-h-full"
