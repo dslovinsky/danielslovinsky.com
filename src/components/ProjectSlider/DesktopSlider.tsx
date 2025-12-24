@@ -55,7 +55,7 @@ const DesktopSlider: FC<DesktopSliderProps> = ({ projects, activeSlide, setActiv
               key={id}
               ref={i === 0 ? firstButtonRef : null}
               onClick={e => handleClick(e, i)}
-              className="flex flex-col justify-start gap-y-4 py-4 pl-4 transition-colors hover:bg-white/5 xl:py-6 xl:pl-10"
+              className="flex flex-col justify-start gap-y-4 py-4 pl-4 transition-colors hover:bg-white/5 xl:py-6 xl:pl-10 cursor-pointer"
             >
               <span className="text-start text-lg font-bold">{projectName}</span>
               <div className="flex h-6 gap-4">
