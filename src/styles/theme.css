@@ -1,0 +1,12 @@
+@theme {
+  /* Spacing */
+  --spacing-18: 4.5rem;
+
+  /* Max widths */
+  --max-width-column: 1362px;
+
+  /* Breakpoints */
+  --breakpoint-sm: 480px;
+  --breakpoint-lg: 992px;
+  --breakpoint-2xl: 1440px;
+}

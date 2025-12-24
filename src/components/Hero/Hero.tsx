@@ -1,11 +1,10 @@
 import Image from 'next/image';
 import type { FC } from 'react';
 
+import OutlineText from 'molecules/OutlineText';
 import StructuredText from 'molecules/StructuredText';
 
 import HeroAnimation from 'components/Hero/HeroAnimation';
-
-import outlineText from 'utils/outlineText';
 
 const Hero: FC<ComponentHeroFragment> = ({ eyebrow, heading, body, mediaReference }) => (
   <>
@@ -14,10 +13,10 @@ const Hero: FC<ComponentHeroFragment> = ({ eyebrow, heading, body, mediaReferenc
         {eyebrow && <span className="pb-4 font-titillium text-xl lowercase xl:text-2xl">{eyebrow}</span>}
         {heading && (
           <h1 className="text-8xl font-black uppercase leading-sm sm:text-9xl lg:text-10xl xl:text-11xl">
-            {outlineText(heading)}
+            <OutlineText text={heading} />
           </h1>
         )}
-        <hr className="my-6 w-full border-t-2 text-maya-blue-10" />
+        <hr className="my-6 w-full border-t-2 border-t-maya-blue/10" />
         {mediaReference && (
           <Image
             src={mediaReference.url}

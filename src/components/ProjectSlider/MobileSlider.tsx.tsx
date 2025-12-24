@@ -12,9 +12,9 @@ interface MobileSliderProps {
 
 const MobileSlider: FC<MobileSliderProps> = ({ projects, activeSlide, setActiveSlide }) => {
   const slideContainerRef = useRef<HTMLDivElement>(null);
-  const hasMounted = !!slideContainerRef?.current;
 
   useEffect(() => {
+    const hasMounted = !!slideContainerRef?.current;
     if (hasMounted) {
       const activeProjectButton = document.getElementById(`project-${activeSlide}`);
       activeProjectButton?.scrollIntoView({ block: 'nearest', inline: 'center' });
@@ -49,8 +49,8 @@ const MobileSlider: FC<MobileSliderProps> = ({ projects, activeSlide, setActiveS
             id={`project-${i}`}
             key={id}
             onClick={() => setActiveSlide(i)}
-            className={`flex min-w-max snap-center justify-start border-b-4 p-4 hover:bg-white-5 ${
-              activeSlide === i ? 'border-b-maya-blue' : 'border-b-white-10'
+            className={`flex min-w-max snap-center justify-start border-b-4 p-4 hover:bg-white/5 ${
+              activeSlide === i ? 'border-b-maya-blue' : 'border-b-white/10'
             }`}
           >
             <span className="text-start text-lg font-bold">{projectName}</span>

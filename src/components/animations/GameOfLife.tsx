@@ -50,10 +50,8 @@ const GameOfLife: FC<GameOfLifeProps> = ({ height, width, resolution = 10, fps =
     return initialGrid;
   };
 
-  let grid = buildGrid(numRows, numCols);
-
   const nextFrame = (g: number[][], r: number, c: number) => {
-    const gridCopy = grid.map(arr => [...arr]);
+    const gridCopy = g.map(arr => [...arr]);
 
     gridCopy.forEach((row, i) => {
       row.forEach((_col, j) => {
@@ -97,6 +95,7 @@ const GameOfLife: FC<GameOfLifeProps> = ({ height, width, resolution = 10, fps =
       return;
     }
 
+    let grid = buildGrid(numRows, numCols);
     let prevTime: number;
     let raf: number;
 

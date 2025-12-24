@@ -108,24 +108,23 @@ const ContactForm: FC = () => {
         />
         <button
           type="submit"
-          className="border-2 border-solid border-maya-blue px-10 py-4 font-bold uppercase hover:bg-white-5 focus-visible:bg-white-5 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-transparent md:col-span-2"
+          className="border-2 border-solid border-maya-blue px-10 py-4 font-bold uppercase hover:bg-white/5 focus-visible:bg-white/5 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-transparent md:col-span-2"
           disabled={submitDisabled}
         >
           {status}
         </button>
       </form>
       <div className="mt-3 flex flex-col gap-y-2">
-        {objectEntries(errors).map(
-          ([key, value]) =>
-            value?.map(error => (
-              <div key={`${key}-${error}`} className="flex gap-x-2">
-                <Icon icon="exclamation-triangle" size={18} className="text-red" />
-                <span className="text-red">
-                  <span className="capitalize">{key} </span>
-                  {error}
-                </span>
-              </div>
-            )),
+        {objectEntries(errors).map(([key, value]) =>
+          value?.map(error => (
+            <div key={`${key}-${error}`} className="flex gap-x-2">
+              <Icon icon="exclamation-triangle" size={18} className="text-red" />
+              <span className="text-red">
+                <span className="capitalize">{key} </span>
+                {error}
+              </span>
+            </div>
+          )),
         )}
       </div>
     </div>

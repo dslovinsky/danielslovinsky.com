@@ -16,7 +16,9 @@ export interface ImageCardProduct {
   upload_id: string;
 }
 
-export interface CustomData {}
+export interface CustomData {
+  [key: string]: unknown;
+}
 
 export interface SEOSettings {
   image: string;

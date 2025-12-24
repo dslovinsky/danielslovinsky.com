@@ -20,7 +20,7 @@ const Header: FC = async () => {
 
   return (
     <nav className="sticky top-0 z-50 bg-black-pearl shadow-md shadow-black-pearl">
-      <div className="relative flex justify-center border-b-2 border-b-maya-blue-10 py-4">
+      <div className="relative flex justify-center border-b-2 border-b-maya-blue/10 py-4">
         <div className="flex w-full max-w-column justify-between px-4 md:px-14 xl:px-24">
           <Link href="/">
             <Icon icon="ds-logo" size={24} className="md:h-8 md:w-8" />
