@@ -1,0 +1,12 @@
+@theme {
+  /* Base colors */
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-red: #ff0000;
+  --color-black-pearl: #0d1115;
+  --color-maya-blue: #6adbff;
+
+  /* Special colors */
+  --color-current: currentColor;
+  --color-transparent: transparent;
+}

@@ -8,14 +8,12 @@ import 'styles/global.css';
 
 import Header from 'components/Header';
 
-import { name } from 'utils/constants';
-
-import colors from 'theme/colors';
+import { COLORS, name } from 'utils/constants';
 
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-inter',
+  variable: '--font-inter-var',
   // referencing a fallback variable breaks it - must be hard-coded
   fallback: [
     '-apple-system',
@@ -33,7 +31,7 @@ const titilliumWeb = Titillium_Web({
   weight: ['400', '600', '700', '900'],
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-titillium',
+  variable: '--font-titillium-var',
   fallback: [
     '-apple-system',
     'system-ui',
@@ -56,7 +54,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   colorScheme: 'dark',
-  themeColor: colors['black-pearl'],
+  themeColor: COLORS.blackPearl,
 };
 
 const RootLayout = ({ children }: { children: ReactNode }) => (
