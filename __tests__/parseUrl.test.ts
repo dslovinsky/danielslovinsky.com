@@ -25,7 +25,7 @@ describe('parseUrl', () => {
 
   it('should throw an error', () => {
     const fn = () => parseUrl('test');
-    expect(fn).toThrowError('Invalid URL: test');
+    expect(fn).toThrow('Invalid URL: test');
   });
 
   it("should return as 'div'", () => {
