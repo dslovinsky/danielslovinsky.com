@@ -31,11 +31,11 @@ export interface ButtonGroupRecord extends RecordInterface {
   __typename?: 'ButtonGroupRecord';
   _createdAt: Scalars['DateTime']['output'];
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
@@ -53,11 +53,11 @@ export interface ButtonRecord extends RecordInterface {
   __typename?: 'ButtonRecord';
   _createdAt: Scalars['DateTime']['output'];
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
@@ -107,6 +107,7 @@ export interface ColorField {
 export interface ComponentContactModelBodyField {
   __typename?: 'ComponentContactModelBodyField';
   blocks: Array<ButtonGroupRecord>;
+  inlineBlocks: Array<Scalars['String']['output']>;
   links: Array<Scalars['String']['output']>;
   value: Scalars['JsonField']['output'];
 }
@@ -115,11 +116,11 @@ export interface ComponentContactRecord extends RecordInterface {
   __typename?: 'ComponentContactRecord';
   _createdAt: Scalars['DateTime']['output'];
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
@@ -140,11 +141,11 @@ export interface ComponentHeaderRecord extends RecordInterface {
   __typename?: 'ComponentHeaderRecord';
   _createdAt: Scalars['DateTime']['output'];
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
@@ -163,6 +164,7 @@ export interface ComponentHeaderRecord_SeoMetaTagsArgs {
 export interface ComponentHeroModelBodyField {
   __typename?: 'ComponentHeroModelBodyField';
   blocks: Array<ButtonGroupRecord>;
+  inlineBlocks: Array<Scalars['String']['output']>;
   links: Array<Scalars['String']['output']>;
   value: Scalars['JsonField']['output'];
 }
@@ -217,11 +219,11 @@ export interface ComponentHeroRecord extends RecordInterface {
   __typename?: 'ComponentHeroRecord';
   _createdAt: Scalars['DateTime']['output'];
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
@@ -285,11 +287,11 @@ export interface ComponentProjectSliderRecord extends RecordInterface {
   __typename?: 'ComponentProjectSliderRecord';
   _createdAt: Scalars['DateTime']['output'];
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
@@ -351,11 +353,11 @@ export interface ComponentSkillBarRecord extends RecordInterface {
   __typename?: 'ComponentSkillBarRecord';
   _createdAt: Scalars['DateTime']['output'];
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
@@ -565,6 +567,12 @@ export interface ImgixParams {
   auto?: InputMaybe<Array<ImgixParamsAuto>>;
   bg?: InputMaybe<Scalars['String']['input']>;
   bgRemove?: InputMaybe<Scalars['BooleanType']['input']>;
+  bgRemoveFallback?: InputMaybe<Scalars['BooleanType']['input']>;
+  bgRemoveFgType?: InputMaybe<Array<ImgixParamsBgRemoveFgType>>;
+  bgRemoveSemiTransparency?: InputMaybe<Scalars['BooleanType']['input']>;
+  bgReplace?: InputMaybe<Scalars['String']['input']>;
+  bgReplaceFallback?: InputMaybe<Scalars['BooleanType']['input']>;
+  bgReplaceNegPrompt?: InputMaybe<Scalars['String']['input']>;
   blend?: InputMaybe<Scalars['String']['input']>;
   blendAlign?: InputMaybe<Array<ImgixParamsBlendAlign>>;
   blendAlpha?: InputMaybe<Scalars['IntType']['input']>;
@@ -602,11 +610,26 @@ export interface ImgixParams {
   duotoneAlpha?: InputMaybe<Scalars['IntType']['input']>;
   exp?: InputMaybe<Scalars['IntType']['input']>;
   expires?: InputMaybe<Scalars['IntType']['input']>;
+  faceBlur?: InputMaybe<Scalars['IntType']['input']>;
+  facePixel?: InputMaybe<Scalars['IntType']['input']>;
   faceindex?: InputMaybe<Scalars['IntType']['input']>;
   facepad?: InputMaybe<Scalars['FloatType']['input']>;
   faces?: InputMaybe<Scalars['IntType']['input']>;
   fill?: InputMaybe<ImgixParamsFill>;
   fillColor?: InputMaybe<Scalars['String']['input']>;
+  fillGenFallback?: InputMaybe<Scalars['BooleanType']['input']>;
+  fillGenNegPrompt?: InputMaybe<Scalars['String']['input']>;
+  fillGenPos?: InputMaybe<Array<ImgixParamsFillGenPos>>;
+  fillGenPrompt?: InputMaybe<Scalars['String']['input']>;
+  fillGenSeed?: InputMaybe<Scalars['IntType']['input']>;
+  fillGradientCs?: InputMaybe<ImgixParamsFillGradientCs>;
+  fillGradientLinear?: InputMaybe<Scalars['String']['input']>;
+  fillGradientLinearDirection?: InputMaybe<Array<ImgixParamsFillGradientLinearDirection>>;
+  fillGradientRadial?: InputMaybe<Scalars['String']['input']>;
+  fillGradientRadialRadius?: InputMaybe<Scalars['String']['input']>;
+  fillGradientRadialX?: InputMaybe<Scalars['FloatType']['input']>;
+  fillGradientRadialY?: InputMaybe<Scalars['FloatType']['input']>;
+  fillGradientType?: InputMaybe<ImgixParamsFillGradientType>;
   fit?: InputMaybe<ImgixParamsFit>;
   flip?: InputMaybe<ImgixParamsFlip>;
   fm?: InputMaybe<ImgixParamsFm>;
@@ -627,14 +650,18 @@ export interface ImgixParams {
   interval?: InputMaybe<Scalars['IntType']['input']>;
   invert?: InputMaybe<Scalars['BooleanType']['input']>;
   iptc?: InputMaybe<ImgixParamsIptc>;
+  jpgProgressive?: InputMaybe<Scalars['BooleanType']['input']>;
   loop?: InputMaybe<Scalars['IntType']['input']>;
   lossless?: InputMaybe<Scalars['BooleanType']['input']>;
+  lpBlur?: InputMaybe<Scalars['IntType']['input']>;
   mark?: InputMaybe<Scalars['String']['input']>;
   markAlign?: InputMaybe<Array<ImgixParamsMarkAlign>>;
   markAlpha?: InputMaybe<Scalars['IntType']['input']>;
   markBase?: InputMaybe<Scalars['String']['input']>;
   markFit?: InputMaybe<ImgixParamsMarkFit>;
   markH?: InputMaybe<Scalars['FloatType']['input']>;
+  markIfMinHeight?: InputMaybe<Scalars['IntType']['input']>;
+  markIfMinWidth?: InputMaybe<Scalars['IntType']['input']>;
   markPad?: InputMaybe<Scalars['IntType']['input']>;
   markRot?: InputMaybe<Scalars['FloatType']['input']>;
   markScale?: InputMaybe<Scalars['IntType']['input']>;
@@ -651,6 +678,10 @@ export interface ImgixParams {
   monochrome?: InputMaybe<Scalars['String']['input']>;
   nr?: InputMaybe<Scalars['IntType']['input']>;
   nrs?: InputMaybe<Scalars['IntType']['input']>;
+  objectRemovalNegativePrompt?: InputMaybe<Scalars['String']['input']>;
+  objectRemovalPrompt?: InputMaybe<Scalars['String']['input']>;
+  objectRemovalRect?: InputMaybe<Scalars['String']['input']>;
+  objectRemovalSeed?: InputMaybe<Scalars['IntType']['input']>;
   orient?: InputMaybe<Scalars['IntType']['input']>;
   pad?: InputMaybe<Scalars['IntType']['input']>;
   padBottom?: InputMaybe<Scalars['IntType']['input']>;
@@ -663,16 +694,21 @@ export interface ImgixParams {
   prefix?: InputMaybe<Scalars['String']['input']>;
   px?: InputMaybe<Scalars['IntType']['input']>;
   q?: InputMaybe<Scalars['IntType']['input']>;
+  rasterizeBypass?: InputMaybe<Scalars['BooleanType']['input']>;
   rect?: InputMaybe<Scalars['String']['input']>;
   reverse?: InputMaybe<Scalars['BooleanType']['input']>;
   rot?: InputMaybe<Scalars['FloatType']['input']>;
+  rotType?: InputMaybe<ImgixParamsRotType>;
   sat?: InputMaybe<Scalars['IntType']['input']>;
   sepia?: InputMaybe<Scalars['IntType']['input']>;
   shad?: InputMaybe<Scalars['FloatType']['input']>;
   sharp?: InputMaybe<Scalars['FloatType']['input']>;
   skip?: InputMaybe<Scalars['IntType']['input']>;
+  skipDefaultOptimizations?: InputMaybe<Scalars['BooleanType']['input']>;
+  svgSanitize?: InputMaybe<Scalars['BooleanType']['input']>;
   transparency?: InputMaybe<ImgixParamsTransparency>;
   trim?: InputMaybe<ImgixParamsTrim>;
+  trimAlpha?: InputMaybe<Scalars['FloatType']['input']>;
   trimColor?: InputMaybe<Scalars['String']['input']>;
   trimMd?: InputMaybe<Scalars['FloatType']['input']>;
   trimPad?: InputMaybe<Scalars['IntType']['input']>;
@@ -685,7 +721,6 @@ export interface ImgixParams {
   txtFit?: InputMaybe<ImgixParamsTxtFit>;
   txtFont?: InputMaybe<Scalars['String']['input']>;
   txtLead?: InputMaybe<Scalars['IntType']['input']>;
-  txtLig?: InputMaybe<Scalars['IntType']['input']>;
   txtLine?: InputMaybe<Scalars['IntType']['input']>;
   txtLineColor?: InputMaybe<Scalars['String']['input']>;
   txtPad?: InputMaybe<Scalars['IntType']['input']>;
@@ -695,6 +730,8 @@ export interface ImgixParams {
   txtWidth?: InputMaybe<Scalars['IntType']['input']>;
   txtX?: InputMaybe<Scalars['IntType']['input']>;
   txtY?: InputMaybe<Scalars['IntType']['input']>;
+  upscale?: InputMaybe<Scalars['BooleanType']['input']>;
+  upscaleFallback?: InputMaybe<Scalars['BooleanType']['input']>;
   usm?: InputMaybe<Scalars['IntType']['input']>;
   usmrad?: InputMaybe<Scalars['FloatType']['input']>;
   vib?: InputMaybe<Scalars['IntType']['input']>;
@@ -706,6 +743,11 @@ export enum ImgixParamsAuto {
   Enhance = 'enhance',
   Format = 'format',
   Redeye = 'redeye'
+}
+
+export enum ImgixParamsBgRemoveFgType {
+  Auto = 'auto',
+  Car = 'car'
 }
 
 export enum ImgixParamsBlendAlign {
@@ -775,6 +817,7 @@ export enum ImgixParamsCrop {
 
 export enum ImgixParamsCs {
   Adobergb1998 = 'adobergb1998',
+  Origin = 'origin',
   Srgb = 'srgb',
   Strip = 'strip',
   Tinysrgb = 'tinysrgb'
@@ -782,7 +825,39 @@ export enum ImgixParamsCs {
 
 export enum ImgixParamsFill {
   Blur = 'blur',
+  Gen = 'gen',
+  Generative = 'generative',
+  Gradient = 'gradient',
   Solid = 'solid'
+}
+
+export enum ImgixParamsFillGenPos {
+  Bottom = 'bottom',
+  Center = 'center',
+  Left = 'left',
+  Middle = 'middle',
+  Right = 'right',
+  Top = 'top'
+}
+
+export enum ImgixParamsFillGradientCs {
+  Hsl = 'hsl',
+  Lch = 'lch',
+  Linear = 'linear',
+  Oklab = 'oklab',
+  Srgb = 'srgb'
+}
+
+export enum ImgixParamsFillGradientLinearDirection {
+  Bottom = 'bottom',
+  Left = 'left',
+  Right = 'right',
+  Top = 'top'
+}
+
+export enum ImgixParamsFillGradientType {
+  Linear = 'linear',
+  Radial = 'radial'
 }
 
 export enum ImgixParamsFit {
@@ -851,11 +926,17 @@ export enum ImgixParamsPalette {
   Json = 'json'
 }
 
+export enum ImgixParamsRotType {
+  Pivot = 'pivot',
+  Straighten = 'straighten'
+}
+
 export enum ImgixParamsTransparency {
   Grid = 'grid'
 }
 
 export enum ImgixParamsTrim {
+  Alpha = 'alpha',
   Auto = 'auto',
   Color = 'color'
 }
@@ -919,6 +1000,7 @@ export interface OrientationFilter {
 export interface ProjectModelSummaryField {
   __typename?: 'ProjectModelSummaryField';
   blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
   links: Array<Scalars['String']['output']>;
   value: Scalars['JsonField']['output'];
 }
@@ -927,11 +1009,11 @@ export interface ProjectRecord extends RecordInterface {
   __typename?: 'ProjectRecord';
   _createdAt: Scalars['DateTime']['output'];
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
@@ -1149,11 +1231,11 @@ export interface QueryUploadArgs {
 export interface RecordInterface {
   _createdAt: Scalars['DateTime']['output'];
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
@@ -1199,11 +1281,11 @@ export interface SectionRecord extends RecordInterface {
   __typename?: 'SectionRecord';
   _createdAt: Scalars['DateTime']['output'];
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
@@ -1232,11 +1314,11 @@ export interface SeoRecord extends RecordInterface {
   __typename?: 'SeoRecord';
   _createdAt: Scalars['DateTime']['output'];
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
@@ -1280,11 +1362,11 @@ export interface SkillRecord extends RecordInterface {
   __typename?: 'SkillRecord';
   _createdAt: Scalars['DateTime']['output'];
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
@@ -1349,6 +1431,7 @@ export interface Tag {
 export interface TemplateCaseStudyModelBodyField {
   __typename?: 'TemplateCaseStudyModelBodyField';
   blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
   links: Array<Scalars['String']['output']>;
   value: Scalars['JsonField']['output'];
 }
@@ -1397,6 +1480,7 @@ export enum TemplateCaseStudyModelOrderBy {
 export interface TemplateCaseStudyModelSummaryField {
   __typename?: 'TemplateCaseStudyModelSummaryField';
   blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
   links: Array<Scalars['String']['output']>;
   value: Scalars['JsonField']['output'];
 }
@@ -1405,11 +1489,11 @@ export interface TemplateCaseStudyRecord extends RecordInterface {
   __typename?: 'TemplateCaseStudyRecord';
   _createdAt: Scalars['DateTime']['output'];
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
@@ -1474,11 +1558,11 @@ export interface TemplatePageRecord extends RecordInterface {
   __typename?: 'TemplatePageRecord';
   _createdAt: Scalars['DateTime']['output'];
   _editingUrl?: Maybe<Scalars['String']['output']>;
-  _firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
-  _publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
   _seoMetaTags: Array<Tag>;
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
@@ -1580,6 +1664,7 @@ export interface UploadFilter {
   mimeType?: InputMaybe<UploadMimeTypeFilter>;
   notes?: InputMaybe<UploadNotesFilter>;
   orientation?: InputMaybe<OrientationFilter>;
+  path?: InputMaybe<UploadPathFilter>;
   resolution?: InputMaybe<ResolutionFilter>;
   size?: InputMaybe<UploadSizeFilter>;
   smartTags?: InputMaybe<UploadTagsFilter>;
@@ -1659,6 +1744,13 @@ export enum UploadOrientation {
   Landscape = 'landscape',
   Portrait = 'portrait',
   Square = 'square'
+}
+
+export interface UploadPathFilter {
+  eq?: InputMaybe<Scalars['String']['input']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  neq?: InputMaybe<Scalars['String']['input']>;
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 }
 
 export interface UploadSizeFilter {
@@ -1863,19 +1955,24 @@ export type SectionFragment = { __typename: 'SectionRecord', id: string, idLink?
 export type TemplatePageFragment = { __typename: 'TemplatePageRecord', id: string, slug?: string | null, seo: Array<(
     { __typename?: 'SeoRecord' }
     & SeoFragment
-  )>, components: Array<(
-    { __typename?: 'ComponentContactRecord' }
-    & ComponentContactFragment
-  ) | (
-    { __typename?: 'ComponentHeroRecord' }
-    & ComponentHeroFragment
-  ) | (
-    { __typename?: 'ComponentProjectSliderRecord' }
-    & ComponentProjectSliderFragment
-  ) | (
-    { __typename?: 'ComponentSkillBarRecord' }
-    & ComponentSkillBarFragment
-  )> };
+  )>, components: Array<
+    | (
+      { __typename?: 'ComponentContactRecord' }
+      & ComponentContactFragment
+    )
+    | (
+      { __typename?: 'ComponentHeroRecord' }
+      & ComponentHeroFragment
+    )
+    | (
+      { __typename?: 'ComponentProjectSliderRecord' }
+      & ComponentProjectSliderFragment
+    )
+    | (
+      { __typename?: 'ComponentSkillBarRecord' }
+      & ComponentSkillBarFragment
+    )
+  > };
 
 export type AllTemplatePageSlugsQueryVariables = Exact<{ [key: string]: never; }>;
 

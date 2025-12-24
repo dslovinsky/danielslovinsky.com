@@ -1,6 +1,5 @@
-import { HttpLink, type QueryOptions } from '@apollo/client';
-import { registerApolloClient } from '@apollo/experimental-nextjs-app-support/rsc';
-import { NextSSRApolloClient, NextSSRInMemoryCache } from '@apollo/experimental-nextjs-app-support/ssr';
+import { type DocumentNode, type OperationVariables, HttpLink } from '@apollo/client';
+import { ApolloClient, InMemoryCache, registerApolloClient } from '@apollo/client-integration-nextjs';
 
 import { DATO_GRAPHQL_URI } from 'utils/constants';
 
@@ -17,24 +16,32 @@ const link = new HttpLink({
 
 const { getClient } = registerApolloClient(
   () =>
-    new NextSSRApolloClient({
-      cache: new NextSSRInMemoryCache(),
+    new ApolloClient({
+      cache: new InMemoryCache(),
       link,
     }),
 );
 
-const graphqlQuery = async <T>(query: QueryOptions['query'], variables?: QueryOptions['variables']) => {
+const graphqlQuery = async <T = Record<string, unknown>>(
+  query: DocumentNode,
+  variables?: OperationVariables,
+): Promise<T> => {
   const client = getClient();
-  const { data, loading, error } = await client.query<T>({
+  const { data, error } = await client.query<T>({
     query,
     variables,
   });
 
   if (error) {
     console.error(error);
+    throw error;
   }
 
-  return { ...data, loading, error };
+  if (!data) {
+    throw new Error('No data returned from GraphQL query');
+  }
+
+  return data;
 };
 
 export default graphqlQuery;

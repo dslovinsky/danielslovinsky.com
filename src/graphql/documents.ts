@@ -1,5 +1,4 @@
 import { gql } from '@apollo/client';
-import type * as Apollo from '@apollo/client';
 
 export const ButtonFragmentDoc = gql`
   fragment button on ButtonRecord {
@@ -199,7 +198,6 @@ export const GlobalHeaderDocument = gql`
   }
   ${HeaderFragmentDoc}
 `;
-export type GlobalHeaderQueryResult = Apollo.QueryResult<GlobalHeaderQuery, GlobalHeaderQueryVariables>;
 export const AllTemplatePageSlugsDocument = gql`
   query AllTemplatePageSlugs {
     allTemplatePages {
@@ -207,10 +205,6 @@ export const AllTemplatePageSlugsDocument = gql`
     }
   }
 `;
-export type AllTemplatePageSlugsQueryResult = Apollo.QueryResult<
-  AllTemplatePageSlugsQuery,
-  AllTemplatePageSlugsQueryVariables
->;
 export const TemplatePageDocument = gql`
   query TemplatePage($slug: String) {
     templatePage(filter: { slug: { eq: $slug } }) {
@@ -219,4 +213,3 @@ export const TemplatePageDocument = gql`
   }
   ${TemplatePageFragmentDoc}
 `;
-export type TemplatePageQueryResult = Apollo.QueryResult<TemplatePageQuery, TemplatePageQueryVariables>;
