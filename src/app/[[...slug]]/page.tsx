@@ -21,12 +21,13 @@ export const generateStaticParams = async () => {
 };
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string[];
-  };
+  }>;
 }
 
-export const generateMetadata = async ({ params }: PageProps): Promise<Metadata> => {
+export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
+  const params = await props.params;
   const slug = params?.slug?.join('/') || 'home';
 
   const { templatePage } = await graphqlQuery<TemplatePageQuery>(TemplatePageDocument, { slug });
@@ -40,7 +41,8 @@ export const generateMetadata = async ({ params }: PageProps): Promise<Metadata>
   return getMetadata(seo, slug);
 };
 
-const Page = async ({ params }: PageProps) => {
+const Page = async (props: PageProps) => {
+  const params = await props.params;
   const slug = params?.slug?.join('/') || 'home';
 
   const { templatePage } = await graphqlQuery<TemplatePageQuery>(TemplatePageDocument, { slug });

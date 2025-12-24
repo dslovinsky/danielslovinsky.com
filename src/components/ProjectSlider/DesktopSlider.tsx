@@ -30,7 +30,9 @@ const DesktopSlider: FC<DesktopSliderProps> = ({ projects, activeSlide, setActiv
 
   useEffect(() => {
     const offsetHeight = firstButtonRef.current?.offsetHeight;
-    offsetHeight && setActiveButtonHeight(offsetHeight);
+    if (offsetHeight) {
+      setActiveButtonHeight(offsetHeight);
+    }
   }, []);
 
   const handleClick = ({ currentTarget }: MouseEvent<HTMLButtonElement>, index: number) => {

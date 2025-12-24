@@ -1,9 +1,10 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const { default: colors } = require('./src/theme/colors');
-const { fontFamily, fontSize, lineHeight, letterSpacing } = require('./src/theme/typography');
+/* eslint-disable no-relative-import-paths/no-relative-import-paths */
+import type { Config } from 'tailwindcss';
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import colors from './src/theme/colors';
+import { fontFamily, fontSize, letterSpacing, lineHeight } from './src/theme/typography';
+
+const config: Config = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     colors,
@@ -27,3 +28,5 @@ module.exports = {
   },
   plugins: [],
 };
+
+export default config;

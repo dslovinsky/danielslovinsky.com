@@ -14,7 +14,8 @@ const parseUrl = (href: string) => {
   try {
     url = new URL(href);
   } catch (error) {
-    throw new Error(`Invalid URL: ${href}`);
+    console.error(error);
+    throw new Error(`Invalid URL: ${href}`, { cause: error });
   }
 
   const isInternal = url.hostname === `www.${DOMAIN}` || url.hostname === DOMAIN;

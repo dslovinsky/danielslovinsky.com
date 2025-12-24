@@ -131,7 +131,8 @@ export interface ItemItemType {
   item_types: string[];
 }
 
-export interface Required {}
+// Validators with no additional settings (required, unique)
+export type Required = Record<string, never>;
 
 export interface RequiredSEOFields {
   title: boolean;
