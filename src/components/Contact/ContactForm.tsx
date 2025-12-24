@@ -16,17 +16,24 @@ const defaultFormData = {
   message: '',
 };
 
+enum ContactFormStatus {
+  Idle = 'Send Message',
+  Loading = 'Sending...',
+  Error = 'Submission error',
+  Success = "Thanks! I'll get back to you soon.",
+}
+
 export type ContactFormData = typeof defaultFormData;
 
 const ContactForm: FC = () => {
   const [formData, setFormData] = useState(defaultFormData);
   const [errors, setErrors] = useState<Record<string, string[] | undefined>>({});
-  const [status, setStatus] = useState<'Send Message' | 'Sending...' | 'Submission error' | 'Sent!'>('Send Message');
+  const [status, setStatus] = useState<ContactFormStatus>(ContactFormStatus.Idle);
 
   const onSubmit: FormEventHandler<HTMLFormElement> = async e => {
     e.preventDefault();
     setFormData(defaultFormData);
-    setStatus('Sending...');
+    setStatus(ContactFormStatus.Loading);
 
     try {
       const response = await fetch('/api/contact', {
@@ -38,14 +45,14 @@ const ContactForm: FC = () => {
       });
 
       if (response.ok) {
-        setStatus('Sent!');
+        setStatus(ContactFormStatus.Success);
       } else {
         console.error(response.statusText);
-        setStatus('Submission error');
+        setStatus(ContactFormStatus.Error);
       }
     } catch (error) {
       console.error(error);
-      setStatus('Submission error');
+      setStatus(ContactFormStatus.Error);
     }
   };
 
@@ -53,8 +60,8 @@ const ContactForm: FC = () => {
     { target: { name, value } }: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     validators?: ValidatorFunction[],
   ) => {
-    if (status !== 'Send Message') {
-      setStatus('Send Message');
+    if (status !== ContactFormStatus.Idle) {
+      setStatus(ContactFormStatus.Idle);
     }
     setFormData(prev => ({
       ...prev,
@@ -108,7 +115,7 @@ const ContactForm: FC = () => {
         />
         <button
           type="submit"
-          className="border-2 border-solid border-maya-blue px-10 py-4 font-bold uppercase hover:bg-white/5 focus-visible:bg-white/5 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-transparent md:col-span-2"
+          className="cursor-pointer border-2 border-solid border-maya-blue px-10 py-4 font-bold uppercase hover:bg-white/5 focus-visible:bg-white/5 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-transparent md:col-span-2"
           disabled={submitDisabled}
         >
           {status}
