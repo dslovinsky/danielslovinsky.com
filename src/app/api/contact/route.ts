@@ -5,6 +5,11 @@ import nodemailer from 'nodemailer';
 
 import type { ContactFormData } from 'components/Contact/ContactForm';
 
+// Validate required environment variables
+if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+  throw new Error('Missing required environment variables: GMAIL_USER and/or GMAIL_APP_PASSWORD must be set');
+}
+
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -32,6 +37,6 @@ export const POST = async (req: NextRequest) => {
   } catch (error) {
     console.error('Email sending error:', error);
 
-    return NextResponse.error();
+    return NextResponse.json({ status: 'error', message: 'Failed to send contact message.' }, { status: 500 });
   }
 };
