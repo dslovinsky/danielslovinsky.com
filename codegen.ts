@@ -1,7 +1,7 @@
 /* eslint-disable no-relative-import-paths/no-relative-import-paths */
-import { DATO_GRAPHQL_URI } from './src/utils/constants';
-
 import type { CodegenConfig } from '@graphql-codegen/cli';
+
+import { DATO_GRAPHQL_URI } from './src/utils/constants';
 
 const config: CodegenConfig = {
   schema: [
@@ -52,6 +52,7 @@ const config: CodegenConfig = {
           'typescript-react-apollo': {
             withHooks: false,
             useTypeImports: true,
+            withResultType: false,
           },
         },
       ],
