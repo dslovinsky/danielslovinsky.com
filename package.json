@@ -33,7 +33,7 @@
     "datocms-structured-text-utils": "^5.1.7",
     "dotenv": "^17.2.3",
     "graphql": "^16.12.0",
-    "next": "16.1.5",
+    "next": "16.1.7",
     "nodemailer": "^7.0.12",
     "react": "19.2.3",
     "react-datocms": "^7.2.4",
